@@ -1,0 +1,251 @@
+﻿﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage_Admin.master.cs" Inherits="MasterPage_MasterPage_Admin" %>
+
+
+<html>
+<head runat="server">
+    <style>
+        body{
+            margin:0px;
+            padding:0px;
+        }
+        .header{
+            width:100%;
+            height:100px;
+            background-color:var(--primary-color);
+            align-items:center;
+            display:flex;
+            box-shadow:rgba(0,0,0,0.5) 1px 1px;
+        }
+        .header_navbar{
+            display:flex;
+            align-items:center;
+        }
+
+        .header_title{
+            align-items:center;
+            font-size:2.5rem;
+            color:var(--while-color);
+        }
+        .header_title a{
+            color:var(--while-color);
+            text-decoration:none;
+        }
+
+        .header__taikhoan{
+            margin-left:80%;
+            align-items:center;
+        }
+
+        .header__taikhoan a{
+            text-decoration:none;
+            color:var(--text-color);
+        }
+        .header__taikhoan-link{
+            margin-left:80%;
+            display:flex;
+            align-items:center;
+        }
+
+        .header__taikhoan-anh {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            margin-left: 8px;
+        }
+        .header__taikhoan-ten{
+            font-size:1.5rem;
+            color:var(--while-color);
+        }
+        .taikhoan__popover{
+            
+            border-radius:3px;
+            position:absolute;
+            background-color:var(--while-color);
+            display:none;
+            animation:HeaderNotifyGrowth ease-in 0.3s;
+            transform-origin:20px top;
+            z-index:999;
+        }
+        .taikhoan__popover ul{
+            margin:0px;
+        }
+
+        .header__taikhoan:hover .taikhoan__popover{
+             display:block;
+        }
+            .taikhoan__popover::before{
+                content: "";
+                border-width: 10px 16px;
+                border-style: solid;
+                border-color: transparent transparent var(--while-color) transparent;
+                left: 70%;
+                position:absolute;
+                top: -20px;
+                z-index:0
+            }
+            .taikhoan__popover::after{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 100px;
+                    height: 10px;
+                    left: 15px;
+                    top: -10px;
+                    z-index: 999;
+            }
+        
+            .taikhoan__popover-list{
+            list-style:none;
+            padding:0;
+        }
+        .list-item{
+            padding:12px 12px;
+            font-size:1.4rem;
+        }
+        .btndangxuat{
+            font-size:1.4rem;
+            text-align:left;
+            padding:12px;
+            width:100%;
+            height:100%;
+            background-color:var(--while-color);
+            border:0px;
+        }
+        .btndangxuat:hover{
+            cursor:pointer;
+        }
+        .list-item:hover,
+        .btndangxuat:hover{
+            background-color:rgba(0,0,0,0.05);
+        }
+
+        .content{
+            background-color:var(--content-color);
+            min-width:100%;
+            min-height:100%;
+            padding:30px 0 10px 0;
+
+        }
+        .content__menu{
+            display:flex;
+            /*margin-right:15px;*/
+        }
+        .menu-danhmuc{
+            width:15%;
+        }
+
+        .content__menu-title{
+            text-align:center;
+            font-size:2rem;
+            background-color:var(--while-color);
+            padding:10px 0px;
+            border-bottom:2px solid var(--text-color);
+            box-shadow:rgba(0,0,0,0.3) 2px 2px;
+        }
+
+        .danhmuc-items{
+            background-color:var(--while-color);
+            box-shadow:rgba(0,0,0,0.3) 2px 2px;
+            padding:10px 5px 10px 15px;
+        }
+        .danhmuc-items a:hover{
+            color:var(--primary-color);
+            right:-5px;
+        }
+        .danhmuc-items a{
+            position: relative;
+            display: block;
+	        transition: right linear 0.1s;
+	        right: 0;
+            text-decoration:none;
+            color:var(--text-color);
+            font-size:1.5rem;
+        }
+            .danhmuc-item--active .danhmuc-items_link{
+                color:var(--primary-color);
+            }
+	        .danhmuc-item--active 
+            .danhmuc-items_link::before {
+		        content: "";
+		        top: 50%;
+		        left: -10px;
+		        border: 4px solid;
+		        border-color: transparent transparent transparent var(--primary-color);
+		        transform: translateY( calc(-50% - 1px));
+		        position: absolute;
+                
+	        }
+        .menu-noidung{
+            width:85%;
+            min-height:100%;
+            margin-left:15px;
+        }
+        .form1{
+            margin:0px;
+        }
+
+
+    </style>
+    <!--link css-->
+    <link rel="stylesheet" href="../CSS/base.css"/>
+
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form class="form1" id="form1" runat="server">
+        <div class="header">
+            <div class="grid">
+                <div class="header_navbar">
+                    <div class="header_title">
+                        <a href="../Form_Admin/QuanLyTaiKhoan.aspx">Admin</a>
+                    </div>
+                    <div class="header__taikhoan">
+                        <a href="../Form_Admin/HoSoTaiKhoan.aspx" class="header__taikhoan-link">
+                            <asp:Label CssClass="header__taikhoan-ten" ID="lbTenTaiKhoan" runat="server" Text="Quoc08510"></asp:Label>
+                            <asp:Image ID="imgAnhDaiDien" runat="server" class="header__taikhoan-anh" />
+                        </a>
+                        <div class="taikhoan__popover">
+                            <ul class="taikhoan__popover-list">
+                                <li class="list-item">
+                                    <a href="../Form_Admin/HoSoTaiKhoan.aspx" class="list-item_link">Tài Khoản Của Tôi</a>
+                                </li>           
+                                <asp:Button ID="btnDangXuat" runat="server" Text="Đăng Xuất" class="list-item_link btndangxuat" OnClick="btnDangXuat_Click"/>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="content">
+            <div class="grid">
+                <div class="content__menu">
+
+                    <div class="menu-danhmuc">
+                        <div class="content__menu-title">
+                            Menu
+                        </div>
+                        <div id="danhmuc_quanlytaikhoan" runat="server"  class="danhmuc-items">
+                            <a class="danhmuc-items_link" href="../Form_Admin/QuanLyTaiKhoan.aspx">Quản lý tài khoản</a>
+                        </div>
+                        <div id="danhmuc_quanlydanhmuc" runat="server" class="danhmuc-items">
+                            <a class="danhmuc-items_link" href="../Form_Admin/QuanLyDanhMuc.aspx">Quản lý danh mục</a>
+                        </div>
+                        <div id="danhmuc_baocaothongke" runat="server" class="danhmuc-items">
+                            <a class="danhmuc-items_link" href="../Form_Admin/BaoCaoThongKe.aspx">Báo cáo thông kê</a>
+                        </div>
+                    </div>
+                    <div class="menu-noidung">
+                        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,246 @@
+﻿.chitietsanpham {
+    background-color: var(--while-color);
+    /*min-height:100%;*/
+    padding: 20px;
+    display: flex;
+}
+
+.chitietsanpham_anhSP {
+    width: 400px;
+    height: 400px;
+}
+
+.image-SP {
+    background-color: green;
+    width: 400px;
+    height: 400px;
+}
+
+.chitietsanpham_ThongSo {
+    margin-left: 40px;
+}
+
+.chitietsanpham_ThongSo-tenSP {
+    font-weight: 400;
+    font-size: 2rem;
+    height: 4.4rem;
+    line-height: 2.2rem;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+
+
+.chitietsanpham_ThongSo-RatingDaBanDanhGia {
+    margin-top: 20px;
+    display: flex;
+}
+
+.chitietsanpham_ThongSo-Item {
+    font-weight: 400;
+    font-size: 1.4rem;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-right: 1px solid;
+    display: flex;
+}
+
+    .chitietsanpham_ThongSo-Item:first-child {
+        padding-left: 0px;
+    }
+
+    .chitietsanpham_ThongSo-Item:last-child {
+        border-right: none;
+    }
+
+.chitietsanpham_ThongSo-rating .rating {
+    color: var(--primary-color);
+}
+
+.chitietsanpham_ThongSo-DanhGia {
+    color: var(--text-color);
+}
+
+.chitietsanpham_ThongSo-DaMua {
+    color: var(--text-color);
+}
+
+.text-in-thongso {
+    margin: 0px;
+    margin-left: 5px;
+    color: rgba(0,0,0,0.3);
+}
+
+
+.chitietsanpham_ThongSo-GiaSP {
+    margin-top: 10px;
+    display: flex;
+    background-color: rgba(0,0,0,0.07);
+    padding: 15px 20px;
+}
+
+
+    .chitietsanpham_ThongSo-GiaSP .giaCu {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: rgba(0,0,0,0.3);
+        text-decoration: line-through;
+    }
+
+    .chitietsanpham_ThongSo-GiaSP .giaMoi {
+        font-size: 2.4rem;
+        margin-left: 20px;
+        font-weight: 500;
+        color: var(--primary-color);
+    }
+
+.chitietsanpham_ThongSo-soLuong {
+    align-items: center;
+    padding: 15px 0px;
+    display: flex;
+}
+
+.chitietsanpham_ThongSo-soLuong-control {
+    padding: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.chitietsanpham_ThongSo-soLuong .txt_SoLuongSP {
+    text-align: center;
+    font-size: 1.2rem;
+    border: 1px solid;
+}
+
+.controlText-soluong {
+}
+
+
+.button {
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid rgba(0,0,0,.5);
+    border-radius: 2px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.align-items {
+    align-items: center;
+}
+
+.button_info {
+    margin: 0 8px 8px 0;
+    padding: 5px;
+}
+
+
+.button:hover {
+    cursor: pointer;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+
+.button_mua {
+    min-width: 11.25rem;
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid rgba(0,0,0,.5);
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    background-color: var(--primary-color);
+    margin: 0 8px 8px 0;
+    padding: 5px;
+}
+
+.button_themvaogiohang {
+    background-color: rgba(255,87,34,.1);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.button_mua:hover {
+    background: #f05d40;
+}
+
+.button_themvaogiohang:hover {
+    background: rgba(255,197,178,.181);
+}
+
+
+.chitietsanpham_ThongSo-soLuong-sanPhamHienCo {
+    color: rgba(0,0,0,0.5);
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+
+.chitietsanpham_ThongSo-info {
+    margin-top: 10px;
+    background-color: var(--while-color);
+}
+
+.info_nhomPhanLoai {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.info_PhanLoai {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+.title-info {
+    padding: 0px 20px;
+    font-size: 1.4rem;
+    color: rgba(0,0,0,0.5);
+    width: 110px;
+    justify-content: center;
+    align-items: baseline;
+}
+
+
+.chitietsanpham_ThongSo-ThemVaoGioHangVaMuaNgay {
+    padding-left: 20px;
+    display: flex;
+}
+
+.motasanpham {
+    margin-top: 15px;
+    background: var(--while-color);
+    margin-bottom: 15px;
+}
+
+.motasanpham_title {
+    padding: 15px;
+}
+
+.title_motasanpham {
+    padding: 15px;
+    font-size: 2rem;
+    font-weight: 500;
+    background: var(--content-color);
+    box-shadow:rgba(0,0,0,0.1) 2px 2px;
+}
+
+.info-mota {
+    padding: 0px 30px 15px 30px;
+    font-size: 1.4rem;
+    white-space: pre-line;
+    line-height: 2rem;
+}
+
+.loix {
+    height: 1px;
+}

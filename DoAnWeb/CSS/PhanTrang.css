@@ -1,0 +1,41 @@
+﻿/*phan trang*/
+.phantrang {
+    background-color: var(--ưhile-color);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.btn_page {
+    margin: 0 5px;
+    text-align: center;
+    min-width: 80px;
+    min-height: 29px;
+    max-height: 29px;
+}
+
+    .btn_page input[type=image] {
+        color: var(--text-color);
+    }
+
+    .btn_page:hover {
+        background-color: var(--primary-color);
+    }
+
+.btn_page_nextprev {
+    margin: 0 5px;
+    align-items: center;
+    text-align: center;
+    min-width: 80px;
+    min-height: 25px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+    .btn_page_nextprev:hover {
+        background-color: var(--primary-color);
+    }
+/*phan trang*/

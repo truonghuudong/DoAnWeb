@@ -1,0 +1,134 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage/MasterPage_NguoiBan.master" AutoEventWireup="true" CodeFile="MasterPage_BaoCaoThongKe.master.cs" Inherits="Form_NguoiBan_BaoCaoThongKe_MasterPage_BaoCaoThongKe" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style>
+        .baocao{
+
+        }
+        .baocao__tongquan{
+            border-radius:3px;
+            background-color:var(--while-color);
+            margin-left:30px;
+            box-shadow: rgba(0,0,0,0.1) 2px 2px;
+            padding: 15px;
+        }
+        .tongquan-title{
+            font-size:1.7rem;
+            font-weight:600;
+            margin-bottom:15px;
+        }
+        .tongquan-noidung{
+            padding:10px 0;
+            display:flex;
+        }
+        .noidung_thanhtoan{
+            width:220px;
+        }
+            .noidung_thanhtoan:first-child{
+                border-right:1px solid black; 
+            }
+            .noidung_thanhtoan:last-child{
+                padding:0 0 0 20px;
+            }
+            .thanhtoan-title{
+                font-size:1.5rem;
+                font-weight:600;
+                margin-bottom:15px;
+            }
+            .thanhtoan-theotuan{
+                font-size:1.3rem;
+                font-weight:500;
+                margin-bottom:15px;
+                color:rgb(128, 128, 128)
+            }
+            .thanhtoan-sotien{
+                font-size:2rem;
+                font-weight:600;
+            }
+            .menu__baocaothongke{
+                margin-left:30px;
+                margin-top:15px;
+                background-color:var(--while-color);
+                display:flex;
+                padding:5px;
+                border-bottom:1px solid rgba(0,0,0,0.2);
+            }
+            .button-chucnang{
+                padding:5px;
+                font-size:1.3rem;
+                font-weight:500;
+                margin: 0 3px;
+            }
+                .button-chucnang a:hover{
+                    color:var(--primary-color);
+                }
+                .button-chucnang a{
+                    text-decoration:none;
+                    color:var(--text-color);
+                }
+                .activited{
+                    color:var(--primary-color);
+                    font-weight:600;
+                    border-bottom:4px solid var(--primary-color);
+                }
+
+    </style>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+     <div class="baocao">
+        <div class="baocao__tongquan">
+            <div class="tongquan-title">
+                Tổng Quan
+            </div>
+            <div class="tongquan-noidung">
+                <div class="noidung_thanhtoan">
+                    <div class="thanhtoan-title">
+                        Sẽ thanh toán
+                    </div>
+                    <div class="thanhtoan-theotuan">
+                        Tổng Cộng
+                    </div>
+                    <div class="thanhtoan-sotien">
+                        <asp:Label ID="lb_seThanhToan" runat="server" Text="0"></asp:Label>đ
+                    </div>
+                </div>
+                <div class="noidung_thanhtoan">
+                    <div class="thanhtoan-title">
+                        Đã thanh toán
+                    </div>
+                    <div class="thanhtoan-theotuan">
+                        Tổng Cộng
+                    </div>
+                    <div class="thanhtoan-sotien">
+                        <asp:Label ID="lb_daThanhToan" runat="server" Text="0"></asp:Label>đ
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu__baocaothongke">
+        <div id="btn_sanPhamBanChay" runat="server" class="button-chucnang">
+            <a href="ThongKeSanPhamBanChay.aspx">Sản Phẩm Bán Chạy</a>
+        </div>
+        <div id="btn_sanPhamKhuyenMai" runat="server" class="button-chucnang">
+            <a href="SanPhamKhuyenMai.aspx">Sản Phẩm Khuyến Mãi</a>
+        </div>
+        <div id="btn_khachMuaNhieu" runat="server" class="button-chucnang">
+            <a href="KhachHangMuaNhieuNhat.aspx">Khách Hàng Mua Nhiều Nhất</a>
+        </div>
+        <div id="btn_hangTon" runat="server" class="button-chucnang">
+            <a href="SoLuongHangTonKho.aspx">Số Lượng Tồn Kho</a>
+        </div>
+        <div id="btn_doanhThu" runat="server" class="button-chucnang">
+            <a href="DoanhThu.aspx">Doanh Thu Theo Thời Gian</a>
+        </div>
+    </div>
+    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+
+</asp:Content>
+

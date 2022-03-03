@@ -1,0 +1,320 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage_NguoiBan.master.cs" Inherits="MasterPage_MasterPage_NguoiMua" %>
+
+
+<html>
+<head runat="server">
+    <title>
+    </title>
+
+    <link rel="stylesheet" href="../CSS/base.css"/>
+    <style>
+        body{
+            margin:0px;
+            padding:0px;
+        }
+        .header{
+            width:100%;
+            height:100px;
+            background-color:var(--primary-color);
+            align-items:center;
+            display:flex;
+            box-shadow:rgba(0,0,0,0.5) 1px 1px;
+        }
+        .header_navbar{
+            display:flex;
+            align-items:center;
+        }
+
+        .header_title{
+            align-items:center;
+            font-size:2.5rem;
+            color:var(--while-color);
+        }
+        .header_title a{
+            color:var(--while-color);
+            text-decoration:none;
+        }
+
+        .header__taikhoan{
+            margin-left:76.8%;
+            align-items:center;
+        }
+
+        .header__taikhoan a{
+            text-decoration:none;
+            color:var(--text-color);
+        }
+        .header__taikhoan-link{
+            margin-left:76.8%;
+            display:flex;
+            align-items:center;
+        }
+
+        .header__taikhoan-anh {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            margin-left: 8px;
+        }
+        .header__taikhoan-ten{
+            font-size:1.5rem;
+            color:var(--while-color);
+        }
+        .taikhoan__popover{
+            
+            border-radius:3px;
+            position:absolute;
+            background-color:var(--while-color);
+            display:none;
+            animation:HeaderNotifyGrowth ease-in 0.3s;
+            transform-origin:20px top;
+            z-index:999;
+        }
+        .taikhoan__popover ul{
+            margin:0px;
+        }
+
+        .header__taikhoan:hover .taikhoan__popover{
+             display:block;
+        }
+            .taikhoan__popover::before{
+                content: "";
+                border-width: 10px 16px;
+                border-style: solid;
+                border-color: transparent transparent var(--while-color) transparent;
+                left: 70%;
+                position:absolute;
+                top: -20px;
+                z-index:0
+            }
+            .taikhoan__popover::after{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 100px;
+                    height: 10px;
+                    left: 15px;
+                    top: -10px;
+                    z-index: 999;
+            }
+        
+            .taikhoan__popover-list{
+            list-style:none;
+            padding:0;
+        }
+        .list-item{
+            padding:12px 12px;
+            font-size:1.4rem;
+        }
+        .btndangxuat{
+            font-size:1.4rem;
+            text-align:left;
+            padding:12px;
+            width:100%;
+            height:100%;
+            background-color:var(--while-color);
+            border:0px;
+        }
+        .btndangxuat:hover{
+            cursor:pointer;
+        }
+        .list-item:hover,
+        .btndangxuat:hover{
+            background-color:rgba(0,0,0,0.05);
+        }
+
+        .content{
+            border-radius:5px;
+            background-color:var(--content-color);
+            min-width:100%;
+            min-height:100%;
+            padding:30px 0 150px 0;
+
+        }
+        .noidung{
+            display:flex;
+        }
+            .content__menu{
+                width:15%;
+            }
+            .menu_items{
+                border-radius:3px;
+                
+                box-shadow:rgba(0,0,0,0.1) 2px 2px;
+            }
+        .content__noidung{
+            width:85%;
+        }
+       
+
+
+        /*menu*/
+        .sidenav {
+            border-radius:3px;
+          height: 100%;
+          /*width: 200px;*/
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: var(--while-color);
+          overflow-x: hidden;
+          padding-top: 20px;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a, .dropdown-btn {
+          padding: 6px 8px 6px 16px;
+          text-decoration: none;
+          font-size: 1.5rem;
+          color: var(--text-color);
+          display: block;
+          border: none;
+          background: none;
+          width: 100%;
+          text-align: left;
+          cursor: pointer;
+          outline: none;
+        }
+
+        /* On mouse-over */
+        .sidenav a:hover, .dropdown-btn:hover {
+          color: var(--primary-color);
+        }
+
+        /* Main content */
+        .main {
+          margin-left: 200px; /* Same as the width of the sidenav */
+          font-size: 20px; /* Increased text to enable scrolling */
+          padding: 0px 10px;
+        }
+
+        /* Add an active class to the active dropdown button */
+        .active {
+          background-color: rgba(0,0,0,0.5);
+          color: white;
+        }
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+          display: none;
+          padding-left: 8px;
+        }
+        .dropdown-container a{
+          font-size:1.3rem;
+
+        }
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+          float: right;
+          padding-right: 8px;
+        }
+
+        /* Some media queries for responsiveness */
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
+    </style>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="header">
+            <div class="grid">
+                <div class="header_navbar">
+                    <div class="header_title">
+                        <a href="../BaoCaoThongKe/DoanhThu.aspx">Nguời Bán</a>
+                    </div>
+                    <div class="header__taikhoan">
+                        <a href="~/Form_Admin/HoSoTaiKhoan.aspx" class="header__taikhoan-link">
+                            <asp:Label CssClass="header__taikhoan-ten" ID="lbTenTaiKhoan" runat="server" Text="Quoc08510"></asp:Label>
+                            <asp:Image ID="imgAnhDaiDien" runat="server" class="header__taikhoan-anh" />
+                        </a>
+                        <div class="taikhoan__popover">
+                            <ul class="taikhoan__popover-list">
+                                <li class="list-item">
+                                    <a href="../../Form_NguoiBan/QuanLyTaiKhoan/QuangLyTaiKhoan.aspx" class="list-item_link">Tài Khoản Của Tôi</a>
+                                </li>           
+                                <asp:Button ID="btnDangXuat" runat="server" Text="Đăng Xuất" class="list-item_link btndangxuat" OnClick="btnDangXuat_Click"/>
+                            </ul>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+        <div class="grid">
+            <div class="noidung">
+                <div class="content__menu">
+                    <div class="menu_items">
+                        <%--<asp:Menu ID="Menu1" DataSourceID="SiteMap" runat="server"
+                            CssClass="SomeMenuClass"
+                            StaticMenuStyle-CssClass="StaticMenuStyle"
+                            StaticMenuItemStyle-CssClass="StaticMenuItemStyle"
+                            Orientation="Vertical" 
+                            >
+                        </asp:Menu>
+                        <asp:SiteMapDataSource ID="SiteMap" SiteMapProvider="Menu_NguoiBan" runat="server" ShowStartingNode="False" />--%>
+                        <div class="sidenav">
+                            <div class="dropdown-btn">Quản Lý Sản Phẩm
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <div class="dropdown-container">
+                                <a href="../QuanLySanPham/TatCaSanPham.aspx">Tất Cả Sản Phẩm</a>
+                                <a href="../QuanLySanPham/ThemSanPham.aspx">Thêm Sản Phẩm</a>
+                            </div>
+                            <div class="dropdown-btn">Quản Lý Đơn Hàng
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <div class="dropdown-container">
+                                <a href="../QuanLyDonHang/TatCaDonHang.aspx">Tất Cả Đơn Hàng</a>
+                            </div>
+                            <div class="dropdown-btn">Quản Lý Khuyến Mãi
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <div class="dropdown-container">
+                                <a href="../QuanLyKhuyenMai/ThemKhuyenMai.aspx">Thêm Khuyến Mãi</a>
+                            </div>
+                            <div class="dropdown-btn">Yêu Cầu Danh Mục
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <div class="dropdown-container">
+                                <a href="../YeuCauDanhMuc/TatCaCacYeuCauDanhMuc.aspx">Tất Cả Các Yêu Cầu</a>
+                                <a href="../YeuCauDanhMuc/ThemYeuCauDanhMuc.aspx">Thêm Yêu Cầu Danh Mục</a>
+                            </div>
+                            <a href="../BaoCaoThongKe/ThongKeSanPhamBanChay.aspx">Báo Cáo Thống Kê</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__noidung">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </form>
+
+        <script>
+            /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+            var dropdown = document.getElementsByClassName("dropdown-btn");
+            var i;
+            for (i = 0; i < dropdown.length; i++) {
+              dropdown[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var dropdownContent = this.nextElementSibling;
+              if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+              } else {
+              dropdownContent.style.display = "block";
+              }
+              });
+            }
+        </script>
+</body>
+</html>

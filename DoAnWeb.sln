@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1525
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DoAnWeb", "DoAnWeb\", "{C17FEB4B-4617-4F1E-B4CE-FC2FA0B9EF39}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51273"
+		Debug.AspNetCompiler.PhysicalPath = "DoAnWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51273\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51273"
+		Release.AspNetCompiler.PhysicalPath = "DoAnWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51273\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51273"
+		SlnRelativePath = "DoAnWeb\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{733C458F-ABF6-4994-A4DA-6C4DEA51D5FF} = {733C458F-ABF6-4994-A4DA-6C4DEA51D5FF}
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SERVICE_GUIYSANPHAM(1)", "C:\Users\quoc0\Downloads\SERVICE_GUIYSANPHAM\SERVICE_GUIYSANPHAM\", "{733C458F-ABF6-4994-A4DA-6C4DEA51D5FF}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_59506"
+		Debug.AspNetCompiler.PhysicalPath = "C:\Users\quoc0\Downloads\SERVICE_GUIYSANPHAM\SERVICE_GUIYSANPHAM\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59506\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_59506"
+		Release.AspNetCompiler.PhysicalPath = "C:\Users\quoc0\Downloads\SERVICE_GUIYSANPHAM\SERVICE_GUIYSANPHAM\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59506\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "59506"
+		SlnRelativePath = "C:\Users\quoc0\Downloads\SERVICE_GUIYSANPHAM\SERVICE_GUIYSANPHAM\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C17FEB4B-4617-4F1E-B4CE-FC2FA0B9EF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17FEB4B-4617-4F1E-B4CE-FC2FA0B9EF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{733C458F-ABF6-4994-A4DA-6C4DEA51D5FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{733C458F-ABF6-4994-A4DA-6C4DEA51D5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C4A7DD0E-1B8F-4A36-90F1-60ED31CCDAA7}
+	EndGlobalSection
+EndGlobal

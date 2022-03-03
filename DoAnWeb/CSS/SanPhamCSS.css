@@ -1,0 +1,189 @@
+﻿.home-product {
+    margin-bottom: 10px;
+}
+
+.home-product-item {
+    background-color: var(--while-color);
+    position: relative;
+    box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    transition: transform linear 0.1s;
+    will-change: transform;
+    text-decoration: none;
+    display: block;
+}
+
+    .home-product-item:hover {
+        box-shadow: 0px 1px 20px 0 rgba(0, 0, 0, 0.05);
+        transform: translateY(-2px);
+    }
+
+.home-product-item__img {
+    width: 100%;
+    height: 188px;
+}
+
+.home-product-item__name {
+    font-size: 1.4rem;
+    margin: 6px 10px;
+    color: var(--text-color);
+    line-height: 1.8rem;
+    font-weight: 400;
+    overflow: hidden;
+    height: 3.6rem;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.home-product-item__price {
+    align-items: baseline;
+    display: flex;
+    margin: 5px 10px;
+    justify-content: space-between;
+}
+
+.home-product-item__price-old {
+    font-size: 1.4rem;
+    color: #666;
+    text-decoration: line-through;
+}
+
+.home-product-item__price-current {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+
+.home-product-item__action {
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 10px 0 10px;
+    align-items: center;
+}
+
+.home-product-item__like {
+    font-size: 1.3rem;
+}
+
+i.home-product-item__like-icon-fill {
+    display: none;
+}
+
+.home-product-item__like-liked .home-product-item__like-icon-fill {
+    color: #F63D30;
+    display: inline-block;
+}
+
+.home-product-item__like-liked .home-product-item__like-icon-empty {
+    display: none;
+}
+
+
+.home-product-item__rating {
+    font-size: 0.9rem;
+    color: rgba(0,0,0,0.4);
+    margin-left: auto;
+    margin-right: 3px;
+}
+
+.home-product-item__star-gold {
+    color: var(--star-gold-color);
+}
+
+.home-product-item__sold {
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.home-product-item__origin {
+    padding: 3px 10px 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #595959;
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.home-product-item__brand {
+}
+
+.home-product-item__origin-name {
+}
+
+.home-product-item__favourite {
+    position: absolute;
+    top: 10px;
+    left: -4px;
+    color: var(--primary-color);
+    background-color: currentColor;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    align-items: center;
+    font-weight: 500;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    padding-right: 4px;
+}
+
+
+    .home-product-item__favourite::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        border-top: 3px solid currentColor;
+        border-left: 3px solid transparent;
+        filter: brightness(60%);
+    }
+
+    .home-product-item__favourite span {
+        color: var(--while-color);
+    }
+
+    .home-product-item__favourite i {
+        color: var(--while-color);
+        font-size: 0.9rem;
+        margin: 0 2px 0 5px;
+    }
+/*Tao hinh tam giac cho yeu thich*/
+
+.home-product-item__sale-off {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    width: 40px;
+    height: 36px;
+    background-color: rgba(255,216,64,0.93);
+    /*line-height:*/
+}
+
+    .home-product-item__sale-off::after {
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: -6px;
+        border-width: 0 20px 6px;
+        border-style: solid;
+        border-color: transparent rgba(255,216,64,0.93) transparent rgba(255,216,64,0.93);
+    }
+
+.home-product-item__sale-off-percent {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    position: relative;
+}
+
+.home-product-item__sale-off-label {
+    color: var(--while-color);
+    line-height: 1.3rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+    position: relative;
+}

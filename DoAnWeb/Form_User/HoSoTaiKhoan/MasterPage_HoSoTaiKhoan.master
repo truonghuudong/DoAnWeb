@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Form_User/MasterPage.master" AutoEventWireup="true" CodeFile="MasterPage_HoSoTaiKhoan.master.cs" Inherits="Form_User_HoSoTaiKhoan_MasterPage_HoSoTaiKhoan" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style>
+        .content_hosotaikhoan{
+            display:flex;
+        }
+        .menu{
+            width:15%;
+        }
+
+        /*menu*/
+        .sidenav {
+            border-radius:3px;
+          height: 100%;
+          /*width: 200px;*/
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: var(--while-color);
+          overflow-x: hidden;
+          padding-top: 20px;
+          box-shadow:rgba(0,0,0,0.1) 2px 2px;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a, .dropdown-btn {
+          padding: 6px 8px 6px 16px;
+          text-decoration: none;
+          font-size: 1.5rem;
+          color: var(--text-color);
+          display: block;
+          border: none;
+          background: none;
+          width: 100%;
+          text-align: left;
+          cursor: pointer;
+          outline: none;
+        }
+
+        /* On mouse-over */
+        .sidenav a:hover, .dropdown-btn:hover {
+          color: var(--primary-color);
+        }
+
+
+        /* Main content */
+        .main {
+          margin-left: 200px; /* Same as the width of the sidenav */
+          font-size: 20px; /* Increased text to enable scrolling */
+          padding: 0px 10px;
+        }
+
+        /* Add an active class to the active dropdown button */
+        .active {
+          background-color: rgba(0,0,0,0.5);
+          color: white;
+        }
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+          display: none;
+          padding-left: 8px;
+        }
+        .dropdown-container a{
+          font-size:1.3rem;
+
+        }
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+          float: right;
+          padding-right: 8px;
+        }
+
+        /* Some media queries for responsiveness */
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
+
+        .noidung{
+            margin-left:15px;
+            min-width:85%;
+            max-width:85%;
+        }
+
+    </style>
+    
+    
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="grid">        
+        <div class="content_hosotaikhoan">
+            <div class="menu">
+                <div class="sidenav">
+                    <div class="dropdown-btn">Tài Khoản Của Tôi
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="dropdown-container">
+                        <a href="HoSoTaiKhoan.aspx">Hồ Sơ</a>
+                        <a href="DoiMatKhau.aspx">Đổi Mật Khẩu</a>
+                    </div>
+                    <a href="DonMua.aspx">Đơn Mua</a>
+                </div>
+            </div>
+            <div class="noidung">
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+            /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+            var dropdown = document.getElementsByClassName("dropdown-btn");
+            var i;
+            for (i = 0; i < dropdown.length; i++) {
+              dropdown[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var dropdownContent = this.nextElementSibling;
+              if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+              } else {
+              dropdownContent.style.display = "block";
+              }
+              });
+            }
+        </script>
+
+</asp:Content>
+

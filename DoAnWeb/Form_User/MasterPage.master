@@ -1,0 +1,515 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<html>
+<head runat="server">
+    <title>
+    </title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://pagecdn.io/lib/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="../CSS/base.css"/>
+    <link rel="stylesheet" href="../CSS/main.css"/>
+    <link rel="stylesheet" href="../Font/fontawesome-free-5.15.3-web/fontawesome-free-5.15.3-web/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="stylesheet" href="../CSS/ChitTietSanPham.css" />
+    <link rel="stylesheet" href="../CSS/PhanTrang.css" />
+
+    <style>
+        .AnhDaiDien{
+            width:40px;
+            height:40px;
+            border-radius:20px;
+            text-align:center;
+        }
+        .header-a{
+            min-height:120px;
+            min-width:100%;
+        }
+        .content{
+            /*margin-top:120px;*/
+            /*padding-top:120px;*/
+            background-color:var(--content-color);
+            padding: 10px 0;
+        }
+
+        /*tai khoan*/
+        .stardust-popover{
+            border-radius:3px;
+            position:absolute;
+            background-color:var(--while-color);
+            display:none;
+            animation:HeaderNotifyGrowth ease-in 0.3s;
+            transform-origin:20px top;
+            z-index:999;
+        }
+        .header__navbar-item-taikhoan:hover .stardust-popover{
+            display:block;
+        }
+            .stardust-popover::before {
+                content: "";
+                border-width: 10px 16px;
+                border-style: solid;
+                border-color: transparent transparent var(--while-color) transparent;
+                left: 14px;
+                position:absolute;
+                top: -20px;
+                z-index:0
+            }
+
+            .stardust-popover::after{
+                content: "";
+                display: block;
+                position: absolute;
+                width: 100px;
+                height: 10px;
+                left: 0px;
+                top: -10px;
+                z-index: 99;
+            }
+
+        .stardust-popover__list{
+            list-style:none;
+            padding:0;
+        }
+        .list-item{
+            padding:12px 12px;
+            font-size:1.4rem;
+        }
+        .list-item:hover,
+        .btndangxuat:hover{
+            background-color:rgba(0,0,0,0.05);
+        }
+
+        .list-item_link{
+            text-decoration:none;
+            color:var(--text-color);
+        }
+        .btndangxuat{
+            font-size:1.4rem;
+            text-align:left;
+            padding:12px;
+            width:100%;
+            height:100%;
+            background-color:var(--while-color);
+            border:0px;
+        }
+        
+        /*gio hang*/
+
+        .header__cart_a{
+            text-decoration:none;
+        }
+        .cart_nuber_badge{
+            position: relative;
+            border-radius: 2.75rem;
+            min-width: 0.6875rem;
+            line-height: 1.2em;
+            font-size:1.5rem;
+            padding: 0 0.75rem;
+            text-align: center;
+            height: 1rem;
+            border: 0.125rem solid #ee4d2d;
+            border: 0.125rem solid var(--primary-color,#ee4d2d);
+            color: #ee4d2d;
+            color: var(--primary-color,#ee4d2d);
+            background-color: #fff;
+            left: -1.2rem;
+            top: -1.5rem;
+            margin-right: -0.875rem;
+        }
+        
+
+
+    </style>
+    
+
+
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#header__search-option-item-inshop').click(function () {
+                $('.header__search-option-item:first-child').addClass('header__search-option-item-active');
+                $('.header__search-option-item:last-child').removeClass('header__search-option-item-active');
+                document.getElementById('header__search-selection-label-change').innerHTML ='Theo Tên';
+            })
+            $('#header__search-option-item-outshop').click(function () {
+                $('.header__search-option-item:first-child').removeClass('header__search-option-item-active');
+                $('.header__search-option-item:last-child').addClass('header__search-option-item-active');
+                document.getElementById('header__search-selection-label-change').innerHTML='Theo Shop';
+            })
+        });
+    </script>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+</head>
+<body>
+
+    <!--Block Element Modifier-->
+
+    <div class="app">
+
+        <form runat="server">
+            
+            
+            <!--header-->
+            <header class="header">
+                <div class="grid">
+                    <!-- Header navbar -->
+                    <nav class="header__navbar">
+
+                        <!--Header list menu-->
+
+                        <ul class="header__navbar-list-first">
+
+                            <!-- Ten Shop -->
+                            <li class="header__navbar-item-first header__navbar-item--has-qr header__navbar-item--separate">
+                                Vào cửa hàng                                
+                                <!-- Ma QR code -->
+                                <div class="header__qr">
+                                    <img src="../../HinhAnh/GRcode.png" alt="QR code" class="header__qr-img"/>
+                                    <div class="header__qr-apps">
+                                        <a href="" class="header__qr-link" ><img class="header__qr-download-app" src="../../HinhAnh/chplay.png" alt="Google Play" /></a><!-- Thieu link -->
+                                        <a href="" class="header__qr-link"><img class="header__qr-download-app" src="../../HinhAnh/apple.png" alt="App store" /></a><!-- Thieu link -->
+                                    </div>
+                                </div>
+                                 <!-- Ma QR code -->
+                            </li>
+                            <!-- Ten Shop -->
+
+
+
+                            <!-- Ket noi va anh -->
+                            <li class="header__navbar-item-first">
+                                <span class="header__navbar-title--no-pointer">Kết nối</span>
+                                <a href="" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fab fa-facebook"></i>
+                                </a>
+                                <a href="" class="header__navbar-icon-link">
+                                    <i class="header__navbar-icon fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <!-- Ket noi va anh -->
+
+
+                        </ul>
+                        <!--Header list menu-->
+
+
+                        <!--Header list menu-->
+                        <ul class="header__navbar-list">
+                            <li class="header__navbar-item  header__navbar-item--has-notify">
+                                <!-- Thong bao -->
+                                <a href="" class="header__navbar-item-link"><!-- Thieu link -->
+                                    <i class="header__navbar-icon far fa-bell"></i>
+                                    Thông báo
+                                </a>
+                                <!-- Thong bao -->
+
+
+                                <!-- Notify -->
+                                <div class="header__notify">
+                                    <!-- Header of notify -->
+                                    <div class="header__notify-header">
+                                        <h3>Thông báo mới nhận</h3>
+                                    </div>
+
+
+                                    <!--Info of notify -->
+                                    <ul class="header__notify-list">
+                                        <li class="header__notify-item header__notify-item--viewed">
+                                            <a href="" class="header__notify-link">
+                                                <img src="../../HinhAnh/cdf494d0b01e833facbf88e7dbf3df33_tn.png" alt="" class="header__notify-img">
+                                                <div class="header__notify-info">
+                                                    <span class="header__notify-name">My pham Ohui chinh hang sfdafav sfsadfsadv fadsfasd sfas sfdav fsadaf </span>
+                                                    <span class="header__notify-descroition">Mo ta cua my phan Ohui chinh hang sdfadf sfsadfa sdfasdfsa sfadfasdffasdfa ấdfasdf</span>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                     <!-- Info of notify -->
+
+                                    <footer class="header__notify-footer">
+                                        <a href="" class="header__notify-footer-btn">
+                                            Xem tất cả
+                                        </a>
+                                    </footer>
+
+                                </div>
+                                <!-- Notify -->
+
+                            </li>
+
+
+                            <!-- Tro giup -->
+                            <li class="header__navbar-item">
+                                <a href="" class="header__navbar-item-link"> <!-- Thieu link -->
+                                    <i class="header__navbar-icon far fa-question-circle"></i>
+                                    Trợ giúp
+                                </a>
+                            </li>
+                            <!-- Tro giup -->
+
+
+                            <!-- Dang Nhap va Dang Ky -->
+                            <li runat="server" class="header__navbar-item header__navbar-item--strong header__navbar-item--separate" id="DangKy"><a href="../../Form_User/DangKy.aspx">Đăng Ký</a></li><!-- Thieu link -->
+                            <li runat="server" class="header__navbar-item header__navbar-item--strong" id="DangNhap"  ><a href="../../Form_User/DangNhap.aspx">Đăng Nhập</a></li><!-- Thieu link -->
+                            <!-- Dang Nhap va Dang Ky -->
+                    
+                            <!--tai khoan-->
+                            <li class="header__navbar-item-taikhoan">
+                                <a href="" runat="server" id="TaiKhoan" class="header__navbar-item header__navbar-item-taikhoan">
+                                    <asp:Image ID="ImgDanhDaiDien" runat="server" CssClass="header__navbar-item-img"/>
+                                    <asp:Label ID="lbTenTaiKhoan" runat="server" CssClass="header__navbar-item-name"></asp:Label>
+                                </a>
+
+                                <div class="stardust-popover">
+                                    <ul class="stardust-popover__list">
+                                        <li class="list-item">
+                                            <a href="../../Form_User/HoSoTaiKhoan/HoSoTaiKhoan.aspx" class="list-item_link">Tài Khoản Của Tôi</a>
+                                        </li>
+                                        <asp:Button ID="btnDangXuat" runat="server" Text="Đăng Xuất" class="list-item_link btndangxuat" OnClick="btnDangXuat_Click" />
+                                    </ul>
+                                </div>
+                            </li>
+                            <!--tai khoan-->
+
+                        </ul>
+                        <!--Header list menu-->
+
+                    </nav>
+                    <!-- Header navbar -->
+
+
+
+                
+                    <!-- Header with search -->
+                    <div class="header-with-search">
+                        <div class="header__logo">
+                            <a href="../../../../Form_User/TrangChu.aspx"><img src="../../HinhAnh/Logo.png"/></a>
+                        </div>
+
+                        <!--Thanh Tim kiem -->
+                        <div class="header__search">
+                            <div class="header__search-input-wrap">
+                                <!--<input runat="server" id="inputSearch" type="text" class="header__search-input" placeholder="Nhập để tìm sản phẩm">-->
+                                <asp:TextBox ID="txt_SearchBox" AutoPostBack="true" OnTextChanged="txt_SearchBox_TextChanged" runat="server" class="header__search-input"  placeholder="Nhập để tìm sản phẩm"></asp:TextBox>
+                                
+                                <!-- lich su tim kiem -->
+                                <div class="header__search-history">
+                                    <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
+                                    <ul class="header__search-history-list">
+                                        <li class="header__search-history-list-item">
+                                            <a href="">Kem duong da</a><!-- Thieu link -->
+                                        </li>
+                                        <li class="header__search-history-list-item">
+                                            <a href="">Kem tri mun</a><!-- Thieu link -->
+                                        </li>
+                                        <li class="header__search-history-list-item">
+                                            <a href="">Kem my pham</a><!-- Thieu link -->
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- lich su tim kiem -->
+
+                            </div>
+                                        
+
+                        
+                            <!-- Noi tim kiem -->
+                            <%--<div class="header__search-selection">
+                                <span class="header__search-selection-label" id="header__search-selection-label-change">Trong Shop</span>
+                                <i class="header__search-selection-icon fas fa-chevron-down"></i>
+
+                                <!-- Search option -->
+                                <ul class="header__search-option">
+                                    <li class="header__search-option-item header__search-option-item-active">
+                                        <span id="header__search-option-item-inshop">Theo Tên</span>
+                                        <i class="fas fa-check"></i>
+                                    </li>
+                                    <li class="header__search-option-item">
+                                        <span id="header__search-option-item-outshop">Theo Shop</span>
+                                        <i class="fas fa-check"></i>
+                                    </li>
+                                </ul>
+                                <!-- Search option -->
+
+                            </div>--%>
+                            <!-- Noi tim kiem -->
+
+                            <!-- Button tim kiem -->
+                            <asp:ImageButton ID="btn_Search" runat="server" CssClass="header__search-btn header__search-btn-icon" OnClick="btn_Search_Click" src="../../HinhAnh/Icon/searchicon.png"/>
+                           <%-- <button runat="server" id="btnSearch" class="header__search-btn">
+                                <i class="header__search-btn-icon fas fa-search"></i>
+                            </button>--%>
+                            <!-- Button tim kiem -->
+                        </div>
+                        <!--Thanh Tim kiem -->        
+                    
+
+                        <!-- Gio Hang -->
+                        <div class="header__cart">
+                            <a class="header__cart_a" href="../../Form_User/GioHang.aspx">
+                                <i class="header__cart-icon fas fa-shopping-cart"></i>
+                                <asp:Label class="cart_nuber_badge" ID="lable_cart_badge" runat="server">2</asp:Label>
+                            </a>
+                        </div>
+                        <!-- Gio Hang -->
+
+                    </div>
+                    <!-- Header with search -->
+                
+
+
+                </div>
+
+            </header>
+        
+            <div class="header-a">
+            </div>
+           
+        
+            <!--content-->
+            <div class="content">
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+             <!--footer-->
+            <footer class="footer">
+                <div class="grid">
+                    <div class="grid__row">
+                        <div class="grid__column-2-4">
+                            <h3 class="footer__heading">Chăm sóc khách hàng</h3>
+                            <ul class="footer-list">
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Trung tâm trợ giúp</a>
+                                </li>
+
+                                <li class="footer-item">
+                                     <a href="" class="footer-item__link">Shop mail</a>
+                                </li>
+
+                                <li class="footer-item">
+                                     <a href="" class="footer-item__link">Hướng dẫn mua hàng</a>
+                                </li>
+
+                            </ul>
+
+
+                        </div>
+
+                        <div class="grid__column-2-4">
+                            <h3 class="footer__heading">Giới thiệu</h3>
+                            <ul class="footer-list">
+                                <li class="footer-item">
+                                    <a href="" class="footer-item__link">Giới thiệu</a>
+                                </li>
+
+                                <li class="footer-item">
+                                     <a href="" class="footer-item__link">Tuyển dụng</a>
+                                </li>
+
+                                <li class="footer-item">
+                                     <a href="" class="footer-item__link">Điều khoản</a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <div class="grid__column-2-4">
+                            
+                        </div>
+
+                        <div class="grid__column-2-4">
+                            <h3 class="footer__heading">Theo dõi chúng tôi</h3>
+                            <ul class="footer-list">
+                                <li class="footer-item">
+                                    
+                                    <a href="#" class="footer-item__link">
+                                        <i class="footer-item__icon fab fa-facebook"></i>
+                                        Facebook
+                                    </a>
+                                </li>
+
+                                <li class="footer-item">
+                                    <a href="#" class="footer-item__link">
+                                        <i class="footer-item__icon fab fa-instagram"></i>
+                                        Instagram
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                        <div class="grid__column-2-4">
+                            <h3 class="footer__heading">Vào cửa hàng trên ứng dụng</h3>
+                            <div class="footer__download">
+                                <img class="footer__download-qr" src="../../HinhAnh/GRcode.png" alt="Download QR"/>
+                                <div class="footer__download-app">
+                                    <a href="" class="footer__download-app-link">
+                                        <img class="footer__download-app-icon" src="../../HinhAnh/chplay.png" alt="Google Play"/>
+                                        <img class="footer__download-app-icon" src="../../HinhAnh/apple.png" alt="App Store"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <div class="grid-center">
+                        <a href="" class="gird__row-link">Chính Sách Bảo Mật</a>
+                        <a href="" class="gird__row-link">Quy Chế Hoạt Động</a>
+                        <a href="" class="gird__row-link">Chính Sách Vận Chuyển</a>
+                        <a href="" class="gird__row-link">Chính Sách Hoàn Trả Và Hoàn Tiền</a>
+                    </div>
+                    <div class="grid-center">
+                        <img src="../../HinhAnh/Logo-bo-cong-thuong.png" class="footer__bottome-img-bocongthuong"/>
+                        <p class="grid-center__congty">Công Ty Shop</p>
+                    </div>
+                    <div class="grid-center">
+                        <div class="footer__info-congty">
+                            <p>Địa chỉ:Số 20, ngõ 538, đường Láng, quận Đống Đa, thành phố hà Nội</p>
+                            <p>Mã số doanh nghiệp: 0108838697 do Sở Kế Hoạch & Đầu Tư TP Hà Nội Cấp lần đầu ngày 10/02/2015</p>
+                            <p>©2015-Bản Quyển thuộc về Công Ty TNHH Shop</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </footer>
+        
+        </form>
+<%--        </form>--%>
+    </div>
+
+
+
+
+    <!--Script cua pham scroll chuot-->
+    <!--<script src="https://code.jquery.com/jquery-2.2.4.js">
+    </script>
+    <script>
+        $(document).ready(function(){
+               $(window).scroll(function(){
+                   if($(this).scrollTop()){
+                       $('header').addClass('sticky')
+                   }else{
+                    $('header').removeClass('sticky')
+                   }
+               })
+            });
+    </script>--!>
+    <!--Script cua pham scroll chuot-->
+    
+    
+</body>
+</html>

@@ -1,0 +1,166 @@
+﻿:root {
+    --while-color: #ffff;
+    --black-color: #000;
+    --text-color: #333;
+    --primary-color: #EE4D2D;
+    --border-color:#dbdbdb;
+    --content-color:#eeeeee;
+    --star-gold-color:#FFCE3E;
+
+
+    --header-height: 120px;
+    --navbar-height: 45px;
+    --header-with-search: calc( var(--header-height) - var(--navbar-height));
+}
+
+
+*{
+    box-sizing:inherit;
+}
+
+
+html{
+    
+    font-size:100%;
+
+    /*hack  1rem =10px*/
+    font-size:62.5%;
+
+    line-height:1.6rem;
+    
+    font-family: 'Roboto', sans-serif;
+    
+    box-sizing:border-box;
+}
+
+/*Responsive*/
+
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.grid-center {
+    width: 1400px;
+    max-width: 100%;
+    margin: 24px auto;
+    text-align: center;
+}
+.grid__full-with{
+    width:100%;
+}
+
+.grid__row{
+    display:flex;
+    flex-wrap:wrap;
+    padding-left:-5px;
+    padding-right:-5px;
+}
+
+.grid__row-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+.grid__column-2-4{
+    padding-left:   5px;
+    padding-right:  5px;
+    width:20%;
+}
+.grid__column-2 {
+    padding-left:   5px;
+    padding-right:  5px;
+    width: 16.6667%;
+}
+.grid__column-10 {
+    padding-left:   5px;
+    padding-right:  5px;
+    width: 83.3333%;
+}
+
+
+/*Animation*/
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+
+/*Modal*/
+.modal{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    display:flex;
+}
+
+.modal__overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.4);
+}
+
+.modal__body {
+    width:400px;
+    height:400px;
+    margin: auto;
+    background-color: black;
+    position: relative;
+    z-index:1;
+    border-radius:5px;
+}
+
+button {
+    background-color: var(--while-color);
+    color: var(--text-color);
+}
+
+.btn {
+    min-width: 142px;
+    height: 36px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0 8px;
+    cursor: pointer;
+    /*background-color:var(--while-color);*/
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn.btn--normal:hover{
+    background-color:#dbdbdb;
+}
+
+
+
+.btn.btn--disable{
+    color:#949494;
+    cursor:default;
+    background-color:#c3c3c3;
+}
+
+.btn.btn--primary{
+    background-color:var(--primary-color);
+    color:var(--while-color);
+
+}
+
+
+.btn-size-s{
+    height:30px;
+    font-size:12px;
+}
+
