@@ -20,7 +20,7 @@ public partial class Form_Admin_QuanLyDanhMuc : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            fileUpload.Attributes["onchange"] = "UploadFile(this)";
+            //fileUpload.Attributes["onchange"] = "UploadFile(this)";
             DoDuLieuPaged();
             form_chinhsuadanhmuc.Visible = false;
         }
@@ -127,25 +127,25 @@ public partial class Form_Admin_QuanLyDanhMuc : System.Web.UI.Page
         return DB.ExecuteQuery("GetDanhMuc", p);
     }
 
-    public string UploadHinhAnh()
-    {
-        if (fileUpload.HasFile)
-        {
-            string tenFileHinhAnhDuocUpload = DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + fileUpload.FileName;//DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") +
-            return tenFileHinhAnhDuocUpload;
-        }
-        else
-        {
-            return "";
-        }
-    }
-    public void SaveHinhAnh()
-    {
-        string tenFileHinhAnhDuocUpload = DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + fileUpload.FileName;
-        string thuMucHinhAnh = Server.MapPath("~/HinhAnh/Sprites_DanhMuc/");
-        string duongDanHinhAnhDuocLuu = thuMucHinhAnh + tenFileHinhAnhDuocUpload;
-        fileUpload.SaveAs(duongDanHinhAnhDuocLuu);
-    }
+    //public string UploadHinhAnh()
+    //{
+    //    if (fileUpload.HasFile)
+    //    {
+    //        string tenFileHinhAnhDuocUpload = DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + fileUpload.FileName;//DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") +
+    //        return tenFileHinhAnhDuocUpload;
+    //    }
+    //    else
+    //    {
+    //        return "";
+    //    }
+    //}
+    //public void SaveHinhAnh()
+    //{
+    //    string tenFileHinhAnhDuocUpload = DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + fileUpload.FileName;
+    //    string thuMucHinhAnh = Server.MapPath("~/HinhAnh/Sprites_DanhMuc/");
+    //    string duongDanHinhAnhDuocLuu = thuMucHinhAnh + tenFileHinhAnhDuocUpload;
+    //    fileUpload.SaveAs(duongDanHinhAnhDuocLuu);
+    //}
 
     void SuaDanhMuc(string idDanhMuc, string anhDanhMuc)
     {
@@ -258,7 +258,7 @@ public partial class Form_Admin_QuanLyDanhMuc : System.Web.UI.Page
                 };
             p[0].Value = int.Parse(IdDanhMuc);
             p[1].Value = TenDanhMuc;
-            p[2].Value = AnhDanhMuc;
+            p[2].Value = "";
             int rowsaffected = DB.ExecuteNonQuery("UpdateDanhMucTheoId", p);
             return rowsaffected;
         }
@@ -278,7 +278,7 @@ public partial class Form_Admin_QuanLyDanhMuc : System.Web.UI.Page
                     new SqlParameter ("@anhdanhmuc",System.Data.SqlDbType.NVarChar,200),
                 };
         p[0].Value = tenDanhMuc;
-        p[1].Value = anhDanhMuc;
+        p[1].Value = "";
         return DB.ExecuteNonQuery("SetDanhMuc", p);
     }
 
@@ -289,10 +289,10 @@ public partial class Form_Admin_QuanLyDanhMuc : System.Web.UI.Page
 
     protected void Btn_Sua_Click(object sender, EventArgs e)
     {
-        imgHinhAnh.Visible = true;
-        fileUpload.Visible = true;
+        //imgHinhAnh.Visible = true;
+        //fileUpload.Visible = true;
         //lbUploadHinhAnh.Visible = true;
-        btn_upload_file.Visible = true;
+        //btn_upload_file.Visible = true;
 
 
         lb_thongbao_danhmuc.Visible = false;
@@ -312,17 +312,17 @@ public partial class Form_Admin_QuanLyDanhMuc : System.Web.UI.Page
         lb_thongbao_danhmuc_id.Text = idDanhMuc;
         string anhDanhMuc = tb.Rows[0]["AnhDanhMuc"].ToString();
 
-        imgHinhAnh.ImageUrl = "~/HinhAnh/Sprites_DanhMuc/" + tb.Rows[0]["AnhDanhMuc"].ToString();
+        //imgHinhAnh.ImageUrl = "~/HinhAnh/Sprites_DanhMuc/" + tb.Rows[0]["AnhDanhMuc"].ToString();
         lb_thongbao_danhmuc_anhdanhmuc.Text = tb.Rows[0]["AnhDanhMuc"].ToString();
     }
     protected void btn_Xoa_Click(object sender, EventArgs e)
     {
         form_chinhsuadanhmuc.Visible = true;
         //lbUploadHinhAnh.Visible = false;
-        btn_upload_file.Visible = false;
-        imgHinhAnh.Visible = false;
+        //btn_upload_file.Visible = false;
+        //imgHinhAnh.Visible = false;
         txt_TenDanhMuc.Visible = false;
-        fileUpload.Visible = false;
+        //fileUpload.Visible = false;
         lb_thongbao_danhmuc.Visible = false;
 
         lb_title.Text = "Bạn có muốn xóa danh mục này không.";
@@ -340,19 +340,19 @@ public partial class Form_Admin_QuanLyDanhMuc : System.Web.UI.Page
         p[0].Value = id;
         return DB.ExecuteQuery("GetDanhMucTheoId", p);
     }
-    protected void btnUpload_Click(object sender, EventArgs e)
-    {
-        SaveHinhAnh();
-        imgHinhAnh.ImageUrl = "~/HinhAnh/Sprites_DanhMuc/" + UploadHinhAnh();
-        lb_thongbao_danhmuc_anhdanhmuc.Text = UploadHinhAnh();
-    }
+    //protected void btnUpload_Click(object sender, EventArgs e)
+    //{
+    //    SaveHinhAnh();
+    //    imgHinhAnh.ImageUrl = "~/HinhAnh/Sprites_DanhMuc/" + UploadHinhAnh();
+    //    lb_thongbao_danhmuc_anhdanhmuc.Text = UploadHinhAnh();
+    //}
 
     protected void ibtn_themdanhmuc_Click(object sender, ImageClickEventArgs e)
     {
-        imgHinhAnh.Visible = true;
-        fileUpload.Visible = true;
+        //imgHinhAnh.Visible = true;
+        //fileUpload.Visible = true;
         //lbUploadHinhAnh.Visible = true;
-        btn_upload_file.Visible = true;
+        //btn_upload_file.Visible = true;
         lb_thongbao_danhmuc.Visible = false;
         form_chinhsuadanhmuc.Visible = true;
         txt_TenDanhMuc.Visible = true;
@@ -363,7 +363,7 @@ public partial class Form_Admin_QuanLyDanhMuc : System.Web.UI.Page
         lb_title.Text = "Thêm Danh Mục";
 
         txt_TenDanhMuc.Text = "";
-        imgHinhAnh.ImageUrl = "";
+        //imgHinhAnh.ImageUrl = "";
         lb_thongbao_danhmuc_anhdanhmuc.Text = "";
         lb_thongbao_danhmuc_id.Text = "";
 

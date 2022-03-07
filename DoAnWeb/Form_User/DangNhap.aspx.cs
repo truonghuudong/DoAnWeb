@@ -179,4 +179,5 @@ public partial class DangNhap : System.Web.UI.Page
     {
         click_DangNhap(btnDangNhap_1, e);
     }
+
 }

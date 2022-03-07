@@ -14,7 +14,7 @@ public partial class TrangChu : System.Web.UI.Page
         if (!IsPostBack)
         {
             GetDanhMuc();
-            
+
             GetSanPhamBatKy();
 
             GetQuangCao();

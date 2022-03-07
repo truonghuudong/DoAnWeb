@@ -19,14 +19,14 @@
 
         .quangcao_sale{
             width:100%;
-            height:340px;
+            height:390px;
             display:flex;
             align-items:center;
         }
         .quangcao{
             z-index:0;
             width:100%;
-            height:340px;
+            height:390px;
             overflow:hidden;
             display:flex;
             align-items:center;
@@ -34,18 +34,19 @@
         }
         .quangcao__sale{
             overflow:hidden;
-            height:235px;
+            height:300px;
         }
         
 
         .quangcao__slides{
-            width:783px;
+            width:100%;
             display:flex;
-            height:235px;
+            height:350px;
             overflow:hidden;
             position:absolute;
         }
         .slide-link{
+            width:100%;
             position:absolute;
             opacity:0;
             visibility:hidden;
@@ -63,7 +64,7 @@
 
         .nut-slide span{
             padding:0px 5px;
-            top:100px;
+            top:165px;
             color:var(--while-color);
             font-size:3rem;
             align-items:center;
@@ -99,7 +100,7 @@
         span#btn-next{
             padding-top:15px;
             position:absolute;
-            left:755px;
+            left:76.3%;
             cursor:pointer;
         }
          span#btn-next:hover{
@@ -108,7 +109,8 @@
         }
 
         .slide-link__img{
-            height:235px;
+            width:78.2%;
+            height:350px;
         }
 
         .bien-mat-ben-trai{
@@ -245,6 +247,22 @@
                  /*text-overflow:ellipsis;
                  white-space:nowrap;*/
             }
+            .TenDanhMuc{
+                padding:10px 0px;
+                font-size:1.4rem;
+                border-bottom:solid 1px;
+            }
+            .TenDanhMuc a{
+                text-decoration:none;
+                color:var(--text-color);
+            }
+            .TenDanhMuc a:hover{
+                color:var(--primary-color);
+            }
+            .linearDanhMuc{
+                background-color:var(--while-color);
+                width:100%;
+            }
             /*Danh muc content*/
 
             
@@ -301,6 +319,7 @@
     <div class="content">
         <div class="grid">
 
+            <!-- quang cao -->
             <div class="quangcao_sale">
                 <div class="quangcao">
                     <div class="quangcao__slides">
@@ -319,7 +338,7 @@
                 </div>
 
 
-                <div class="sale">
+                <%--<div class="sale">
                     <div class="sale-img">
                         <a class="sale-img__link" href="#">
                             <img src="../HinhAnh/Sprites_QuangCao/quangcaosale99.png"/>
@@ -330,15 +349,15 @@
                             <img src="../HinhAnh/Sprites_QuangCao/quancaosalehoanxu.png"/>
                         </a>
                     </div>
-                </div>
+                </div>--%>
 
 
             </div>
+            <!-- quang cao -->
 
 
 
-
-            <!-- danh muc -->
+           <%-- <!-- danh muc -->
             <div class="danhmuc">
                 <!-- header danh muc -->
                 <div class="danhmuc__header">
@@ -364,44 +383,59 @@
                 </div>
                 <!-- content danh muc -->
             </div>
-            <!-- danh muc -->
+            <!-- danh muc --%>
 
 
+             <!--header-wapper-->
+            <div class="grid__row">
+                    <div style="width:16%">
+                        <div class="grid__column-2 linearDanhMuc">
+                            <asp:Repeater ID="rptDanhMuc" runat="server">
+                                <ItemTemplate>
+                                    <div class="TenDanhMuc">
+                                        <a  href="DanhMuc.aspx?IdDanhMuc=<%#Eval("IdDanhMuc")%>"><%#Eval("TenDanhMuc")%></a>
+                                    </div>     
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </div>
+                    </div>
+                    <div class="grid__column-10">
+                        <div class="title-goiy">
+                            <div class="header-goiy">Gợi Ý</div>
+                        </div>
+                        <!-- Danh Sach San Pham -->
+                        <div class="grid__row app__container">
 
-            <div class="header-wapper">
-                <div class="title-goiy">
-                    <div class="header-goiy">Gợi Ý</div>
+                        <asp:Repeater ID="rptListSP" runat="server">
+                            <ItemTemplate>
+                                <div class="grid__column-2-4">
+                                    <a href="ChiTietSanPham.aspx?IdSP=<%#Eval("IdSP") %>" class="home-product-item">
+                                            <img class="home-product-item__img" src="../HinhAnh/Sprites_SP/<%#Eval("AnhSP") %>"/>
+                                            <div class="home-product-item__name">
+                                                <%#Eval("TenSP") %>
+                                            </div>
+                                            <div class="home-product-item__price">
+                                                <span class="home-product-item__price-old"><%#Eval("GiaSP")%></span>
+                                                <span class="home-product-item__price-current"><%#Eval("GiaKhuyenMai")%></span>
+                                            </div>
+                                            <div class="home-product-item__favourite">
+                                                <i class="fas fa-check"></i>
+                                                <span>Yêu thích</span>
+                                            </div>
+                                            <div class="home-product-item__sale-off">
+                                                <span class="home-product-item__sale-off-percent"><%#Eval("TiLeKhuyenMai")%>%</span>
+                                                <span class="home-product-item__sale-off-label">GIẢM</span>
+                                            </div>
+                                     </a>
+
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+
                 </div>
                 <!-- Danh Sach San Pham -->
-                <div class="grid__row">
-                    <asp:Repeater ID="rptListSP" runat="server">
-                        <ItemTemplate>
-                 
-                            <div class="grid__column-2">
-                                <a href="ChiTietSanPham.aspx?IdSP=<%#Eval("IdSP") %>" class="home-product-item">
-                                        <img class="home-product-item__img" src="../HinhAnh/Sprites_SP/<%#Eval("AnhSP") %>"/>
-                                        <div class="home-product-item__name">
-                                            <%#Eval("TenSP") %>
-                                        </div>
-                                        <div class="home-product-item__price">
-                                            <span class="home-product-item__price-old"><%#Eval("GiaSP")%></span>
-                                            <span class="home-product-item__price-current"><%#Eval("GiaKhuyenMai")%></span>
-                                        </div>
-                                        <div class="home-product-item__favourite">
-                                            <i class="fas fa-check"></i>
-                                            <span>Yêu thích</span>
-                                        </div>
-                                        <div class="home-product-item__sale-off">
-                                            <span class="home-product-item__sale-off-percent"><%#Eval("TiLeKhuyenMai")%>%</span>
-                                            <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        </div>
-                                 </a>
-
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-
-                </div>
+                
                 <div class="header-button">
                     <asp:Button CssClass="header-wapper__xemthem" ID="btnXemThem" runat="server" Text="Xem Thêm" OnClick="btnXemThem_Click"/>
                 </div>

@@ -250,13 +250,13 @@
 
     </style>
     
-    <script type="text/javascript">
+<%--    <script type="text/javascript">
         function UploadFile(fileUpload) {
             if (fileUpload.value != '') {
                 document.getElementById("<%=btnUpload.ClientID %>").click();
             }
         }
-    </script>
+    </script>--%>
 
 
 </asp:Content>
@@ -276,13 +276,13 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         <Columns>
             
-            <asp:TemplateField HeaderText="Hình Ảnh" >
+            <%--<asp:TemplateField HeaderText="Hình Ảnh" >
                 <HeaderStyle HorizontalAlign="Center" Width="100px" />
                 <ItemStyle HorizontalAlign="Center" />
                 <ItemTemplate>
                     <img style=" Width:50px ; height:50px" src='../HinhAnh/Sprites_DanhMuc/<%#Eval("AnhDanhMuc")%>'/>
                 </ItemTemplate>
-            </asp:TemplateField>
+            </asp:TemplateField>--%>
 
             <asp:TemplateField HeaderText="Tên Danh Mục" >
                 <ItemTemplate>
@@ -381,16 +381,16 @@
                 <div class="danhmuc_title">
                     <asp:Label ID="lb_title" runat="server" Text="Thêm Danh Mục"></asp:Label>
                 </div> 
-                <div class="danhmuc_ibtn">
+                <%--<div class="danhmuc_ibtn">
                     <asp:Image ID="imgHinhAnh" runat="server" CssClass="ibtn_DanhMuc"/>
                     <div></div>
-                    <%--<label runat="server" id="lbUploadHinhAnh" class="file-upload"> <span><strong>Upload Image</strong></span> <asp:FileUpload ID="fileUpload" runat="server" > </asp:FileUpload> </label>   
-                    <asp:Button ID="btnUpload" runat="server" Text="Button" Style="display:none" OnClick="btnUpload_Click"/>--%>
+                    <label runat="server" id="lbUploadHinhAnh" class="file-upload"> <span><strong>Upload Image</strong></span> <asp:FileUpload ID="fileUpload" runat="server" > </asp:FileUpload> </label>   
+                    <asp:Button ID="btnUpload" runat="server" Text="Button" Style="display:none" OnClick="btnUpload_Click"/>
                     <div class="upload-btn-wrapper" id="btn_upload_file" runat="server">
                         <asp:Button class="btnFileUpload" ID="btnUpload" runat="server" Text="Hình Ảnh" OnClick="btnUpload_Click"/>
                         <asp:FileUpload ID="fileUpload" runat="server" />
                     </div>
-                </div>
+                </div>--%>
                 <div class="danhmuc_txt">
                     <asp:TextBox CssClass="txt_DanhMuc" ID="txt_TenDanhMuc" runat="server"></asp:TextBox>
                 </div>

@@ -30,7 +30,6 @@
             /*margin-top:120px;*/
             /*padding-top:120px;*/
             background-color:var(--content-color);
-            padding: 10px 0;
         }
 
         /*tai khoan*/
@@ -292,7 +291,7 @@
                     <!-- Header with search -->
                     <div class="header-with-search">
                         <div class="header__logo">
-                            <a href="../../../../Form_User/TrangChu.aspx"><img src="../../HinhAnh/Logo.png"/></a>
+                            <a href="../../../../Form_User/TrangChu.aspx"><img src="../HinhAnh/Icon/logo.png"/></a>
                         </div>
 
                         <!--Thanh Tim kiem -->

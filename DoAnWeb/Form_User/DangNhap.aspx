@@ -232,7 +232,7 @@
 
                 <!--Captcha-->
                 <div class="formDangNhap_captcha">
-                    <asp:TextBox AutoPostBack="true"  class="formDangNhap__input-captcha" ID="txtcaptcha" runat="server" placeholder="Captcha"></asp:TextBox>
+                    <asp:TextBox AutoPostBack="true" OnTextChanged="txtcaptcha_TextChanged"  class="formDangNhap__input-captcha" ID="txtcaptcha" runat="server" placeholder="Captcha"></asp:TextBox>
                     <asp:Label CssClass="captcha_text" ID="lbcaptcha" runat="server"></asp:Label>
                 </div>
                 <!--Captcha-->
