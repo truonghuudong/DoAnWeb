@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_NguoiBan.master" AutoEventWireup="true" CodeFile="ThemSanPham.aspx.cs" Inherits="Form_NguoiBan_QuanLySanPham_ThemSanPham" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+   <title>Thêm Sản Phẩm</title>
     <style>
         .suasanpham-title {
             font-size: 1.7rem;

@@ -13,6 +13,7 @@
     
     <link rel="stylesheet" href="../CSS/ChitTietSanPham.css" />
     <link rel="stylesheet" href="../CSS/PhanTrang.css" />
+    <title>Chi Tiết Sản Phẩm </title>
     <style>
         .thongbao{
             padding: 0 20px;

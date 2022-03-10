@@ -87,7 +87,7 @@ public partial class DanhMuc : System.Web.UI.Page
             p.DataSource = table.DefaultView;
 
 
-            p.PageSize = 10;
+            p.PageSize = 30;
             p.CurrentPageIndex = trang_thu;
             p.AllowPaging = true;
 

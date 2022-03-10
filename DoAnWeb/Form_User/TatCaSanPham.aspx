@@ -8,9 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+
+    <title>Tất Cả Sản Phẩm</title>
     <style>
         /*phan trang*/
-                .phantrang{
+                .phantrang{ 
                     background-color:var(--ưhile-color);
                     display:flex;
                     text-align:center;

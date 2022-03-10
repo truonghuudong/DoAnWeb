@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Form_NguoiBan/BaoCaoThongKe/MasterPage_BaoCaoThongKe.master" AutoEventWireup="true" CodeFile="DoanhThu.aspx.cs" Inherits="Form_NguoiBan_BaoCaoThongKe_DoanhThu" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Doanh Thu</title>
     <style>
         .ngay{
             margin-left:30px;

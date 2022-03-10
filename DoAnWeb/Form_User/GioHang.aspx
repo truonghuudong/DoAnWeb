@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Form_User/MasterPage.master" AutoEventWireup="true" CodeFile="GioHang.aspx.cs" Inherits="Form_User_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Giỏ Hàng
+
+    </title>
     <style>
         .Title_GioHang{
             background-color:var(--while-color);

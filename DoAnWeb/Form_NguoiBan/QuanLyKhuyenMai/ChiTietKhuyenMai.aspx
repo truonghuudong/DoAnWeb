@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_NguoiBan.master" AutoEventWireup="true" CodeFile="ChiTietKhuyenMai.aspx.cs" Inherits="Form_NguoiBan_QuanLyKhuyenMai_ChiTietKhuyenMai" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-
+    <title>Chi Tiết Khuyến Mãi</title>
     <style>
         .main_chitietKM{
             padding:15PX;

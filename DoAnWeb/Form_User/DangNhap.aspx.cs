@@ -89,54 +89,62 @@ public partial class DangNhap : System.Web.UI.Page
                 int kqDangNhap = dangNhap(inputTenDN.Text, inputPassword.Text);
                 if (kqDangNhap != -1)
                 {
+                    if (kqDangNhap != -2) {
+                        //add session
+                        var userSession = new UserLogin();
+                        userSession.Id = kqDangNhap;
+                        userSession.UserName = inputTenDN.Text;
+                        userSession.PassWord = inputPassword.Text;
+                        userSession.Quyen = quyenTaiKhoan(kqDangNhap) + "";
+                        Session.Add("User", userSession);
 
-
-                    //add session
-                    var userSession = new UserLogin();
-                    userSession.Id = kqDangNhap;
-                    userSession.UserName = inputTenDN.Text;
-                    userSession.PassWord = inputPassword.Text;
-                    userSession.Quyen = quyenTaiKhoan(kqDangNhap)+"";
-                    Session.Add("User", userSession);
-
-                    //add cookies
-                    if (ckRememberUser.Checked == true)
-                    {
-                        HttpCookie userInfo = new HttpCookie("userInfo");
-                        userInfo["userName"] = inputTenDN.Text;
-                        userInfo["userPassword"] = inputPassword.Text;
-                        //userInfo.Expires.Add(new TimeSpan(0, 1, 0));
-                        Response.Cookies.Add(userInfo);
-                    }
-
-                    if (quyenTaiKhoan(kqDangNhap) == 1)
-                    {
-                        Response.Redirect("~/Form_Admin/QuanLyTaiKhoan.aspx");
-                    }
-                    else
-                    {
-                        if (quyenTaiKhoan(kqDangNhap) == 2)
+                        //add cookies
+                        if (ckRememberUser.Checked == true)
                         {
-                            object refUrl = ViewState["RefUrl"];
-                            string link = (string)refUrl;
-                            if (link != null && !link.Contains("/Form_User/DangKy.aspx") 
-                                && !link.Contains("/Form_Admin/") && 
-                                !link.Contains("/Form_NguoiBan/") && 
-                                !link.Contains("Form_User/DangNhap.aspx"))
-                            {
-                                Response.Redirect((string)link);
-                                //lbNotify_DangNhap.Text = (string)refUrl;
-                            }
-                            else
-                            {
-                                Response.Redirect("TrangChu.aspx");
-                            }
+                            HttpCookie userInfo = new HttpCookie("userInfo");
+                            userInfo["userName"] = inputTenDN.Text;
+                            userInfo["userPassword"] = inputPassword.Text;
+                            //userInfo.Expires.Add(new TimeSpan(0, 1, 0));
+                            Response.Cookies.Add(userInfo);
+                        }
+
+                        if (quyenTaiKhoan(kqDangNhap) == 1)
+                        {
+                            Response.Redirect("~/Form_Admin/QuanLyTaiKhoan.aspx");
                         }
                         else
                         {
-                            Response.Redirect("~/Form_NguoiBan/BaoCaoThongKe/ThongKeSanPhamBanChay.aspx");
+                            if (quyenTaiKhoan(kqDangNhap) == 2)
+                            {
+                                object refUrl = ViewState["RefUrl"];
+                                string link = (string)refUrl;
+                                if (link != null && !link.Contains("/Form_User/DangKy.aspx")
+                                    && !link.Contains("/Form_Admin/") &&
+                                    !link.Contains("/Form_NguoiBan/") &&
+                                    !link.Contains("Form_User/DangNhap.aspx")
+                                    &&!link.Contains("ActivationEmail.aspx"))
+                                {
+                                    Response.Redirect((string)link);
+                                    //lbNotify_DangNhap.Text = (string)refUrl;
+                                }
+                                else
+                                {
+                                    Response.Redirect("TrangChu.aspx");
+                                }
+                            }
+                            else
+                            {
+                                Response.Redirect("~/Form_NguoiBan/BaoCaoThongKe/ThongKeSanPhamBanChay.aspx");
+                            }
                         }
+
+
                     }
+                    else
+                    {
+                        lbNotify_DangNhap.Text = "Tài khoản của bạn chưa được xác thực email";
+                    }
+                    
                 }
                 else
                 {

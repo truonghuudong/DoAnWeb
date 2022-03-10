@@ -18,3 +18,15 @@ as
 	update TaiKhoan set MatKhau = @MatKhau where IdTaiKHoan = @idTaiKhoan
 
 
+declare cursor_sp cursor
+	for select IdSP from SanPham
+declare @idsp int
+open cursor_sp
+fetch next from cursor_sp into @idsp
+while(@@FETCH_STATUS=0)
+	begin
+		update SanPham set TyLeThue = 5  where IdSP=@idsp
+		fetch next from cursor_sp into @idsp
+	end
+close cursor_sp
+deallocate cursor_sp

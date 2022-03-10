@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -26,7 +30,7 @@ public partial class DangKy : System.Web.UI.Page
         }
     }
 
-    int DangKyTaiKhoanThanhVien(string TenDN,string Email, string Password)
+    DataTable DangKyTaiKhoanThanhVien(string TenDN,string Email, string Password)
     {
         SqlParameter[] p =
                 {
@@ -37,7 +41,7 @@ public partial class DangKy : System.Web.UI.Page
         p[0].Value = TenDN;
         p[1].Value = Email;
         p[2].Value = Password;
-        return DB.ExecuteNonQuery("SetTaiKhoanThanhVien", p);
+        return DB.ExecuteQuery("SetTaiKhoanThanhVien", p);
     }
 
 
@@ -51,10 +55,12 @@ public partial class DangKy : System.Web.UI.Page
 
                 try
                 {
-                    int ketqua = DangKyTaiKhoanThanhVien(inputTenDN.Text, inputEmail.Text, inputPassword.Text);
-                    if (ketqua >0)
+                    string strKetQua = DangKyTaiKhoanThanhVien(inputTenDN.Text, inputEmail.Text, inputPassword.Text).Rows[0]["IdTaiKhoan"].ToString();
+                    int ketQua = int.Parse(strKetQua);
+                    if (ketQua>0)
                     {
-                        Response.Redirect("DangNhap.aspx");
+                        SendActivationEmail(ketQua);
+                        lbNotify_DangNhap.Text = "Mời Bạn Xác Thực Email";
                     }
                     else
                     {
@@ -63,16 +69,58 @@ public partial class DangKy : System.Web.UI.Page
 
 
                 }
-                catch
+                    catch
                 {
                     lbNotify_DangNhap.Text = "Lỗi";
                 }
 
-            }
+        }
             else
             {
                 lbNotify_DangNhap.Text = "Mật khâu nhập lại không trùng";
             }
         }
     }
+
+
+    private void SendActivationEmail(int ketQua)
+    {
+        //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+        //string activationCode = Guid.NewGuid().ToString();
+        //using (SqlConnection con = new SqlConnection(constr))
+        //{
+        //    using (SqlCommand cmd = new SqlCommand("INSERT INTO UserActivation VALUES(@UserId, @ActivationCode)"))
+        //    {
+        //        using (SqlDataAdapter sda = new SqlDataAdapter())
+        //        {
+        //            cmd.CommandType = CommandType.Text;
+        //            cmd.Parameters.AddWithValue("@UserId", userId);
+        //            cmd.Parameters.AddWithValue("@ActivationCode", activationCode);
+        //            cmd.Connection = con;
+        //            con.Open();
+        //            cmd.ExecuteNonQuery();
+        //            con.Close();
+        //        }
+        //    }
+        //}
+        using (MailMessage mm = new MailMessage("dfashionk24@gmail.com", inputEmail.Text))
+        {
+            mm.Subject = "Account Activation";
+            string body = "Hello " + inputTenDN.Text.Trim() + ",";
+            body += "<br /><br />Please click the following link to activate your account";
+            body += "<br /><a href = '" + Request.Url.AbsoluteUri.Replace("DangKy.aspx", "ActivationEmail.aspx?IdTaiKhoan=" + ketQua) + "'>Click here to activate your account.</a>";
+            body += "<br /><br />Thanks";
+            mm.Body = body;
+            mm.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.EnableSsl = true;
+            NetworkCredential NetworkCred = new NetworkCredential("dfashionk24@gmail.com", "Dong0967842119");
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = NetworkCred;
+            smtp.Port = 587;
+            smtp.Send(mm);
+        }
+    }
+
 }

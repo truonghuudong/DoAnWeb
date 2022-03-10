@@ -3,6 +3,7 @@
 
 <html>
 <head runat="server">
+    <link rel="icon" href="../HinhAnh/Icon/logo_D.png" />
     <style>
         body{
             margin:0px;

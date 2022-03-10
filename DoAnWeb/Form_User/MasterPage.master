@@ -2,8 +2,6 @@
 
 <html>
 <head runat="server">
-    <title>
-    </title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://pagecdn.io/lib/normalize/8.0.1/normalize.min.css" />
     <link rel="stylesheet" href="../CSS/base.css"/>
@@ -14,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link rel="stylesheet" href="../CSS/ChitTietSanPham.css" />
     <link rel="stylesheet" href="../CSS/PhanTrang.css" />
+    <link rel="icon" href="../HinhAnh/Icon/logo_D.png"/>
+
 
     <style>
         .AnhDaiDien{
@@ -181,7 +181,9 @@
                             </li>
                             <!-- Ten Shop -->
 
-
+                            <li class="header__navbar-item-first header__navbar-item--separate">
+                                <a style="text-decoration:none;cursor:pointer" href="../../Form_User/DangKyNguoiBan.aspx" class="header__navbar-title--no-pointer">Kênh Người Bán</a>
+                            </li>
 
                             <!-- Ket noi va anh -->
                             <li class="header__navbar-item-first">
@@ -290,8 +292,10 @@
                 
                     <!-- Header with search -->
                     <div class="header-with-search">
+
+                        <!--logo -->
                         <div class="header__logo">
-                            <a href="../../../../Form_User/TrangChu.aspx"><img src="../HinhAnh/Icon/logo.png"/></a>
+                            <a href="../../../../Form_User/TrangChu.aspx"><img src="../HinhAnh/Icon/logo_C.png"/></a>
                         </div>
 
                         <!--Thanh Tim kiem -->
@@ -472,13 +476,13 @@
                     </div>
                     <div class="grid-center">
                         <img src="../../HinhAnh/Logo-bo-cong-thuong.png" class="footer__bottome-img-bocongthuong"/>
-                        <p class="grid-center__congty">Công Ty Shop</p>
+                        <p class="grid-center__congty">Công Ty Dfashion</p>
                     </div>
                     <div class="grid-center">
                         <div class="footer__info-congty">
                             <p>Địa chỉ:Số 20, ngõ 538, đường Láng, quận Đống Đa, thành phố hà Nội</p>
                             <p>Mã số doanh nghiệp: 0108838697 do Sở Kế Hoạch & Đầu Tư TP Hà Nội Cấp lần đầu ngày 10/02/2015</p>
-                            <p>©2015-Bản Quyển thuộc về Công Ty TNHH Shop</p>
+                            <p>©2015-Bản Quyển thuộc về Công Ty TNHH Dfashion</p>
                         </div>
                     </div>
 

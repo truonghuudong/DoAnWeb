@@ -3,9 +3,7 @@
 
 <html>
 <head runat="server">
-    <title>
-    </title>
-
+    <link rel="icon" href="../HinhAnh/Icon/logo_D.png" />
     <link rel="stylesheet" href="../CSS/base.css"/>
     <style>
         body{

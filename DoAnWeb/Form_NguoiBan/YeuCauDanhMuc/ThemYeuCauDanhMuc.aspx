@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_NguoiBan.master" AutoEventWireup="true" CodeFile="ThemYeuCauDanhMuc.aspx.cs" Inherits="Form_NguoiBan_YeuCauDanhMuc_ThemYeuCauDanhMuc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Thêm Danh Mục</title>
     <style>
         .themYeuCauDanhMuc{
             margin-left:10px;

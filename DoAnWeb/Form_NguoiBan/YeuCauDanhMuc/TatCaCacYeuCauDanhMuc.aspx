@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_NguoiBan.master" AutoEventWireup="true" CodeFile="TatCaCacYeuCauDanhMuc.aspx.cs" Inherits="Form_NguoiBan_YeuCauDanhMuc_TatCaCacYeuCauDanhMuc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Yêu Cầu Danh Mục</title>
     <style>
         
         .yeuCauDanhMuc{

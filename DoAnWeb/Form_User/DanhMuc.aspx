@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="../CSS/SanPhamCSS.css" />
     <link rel="stylesheet" href="../CSS/CSSDanhMuc.css" />
     <script src="https://code.jquery.com/jquery-2.2.4.js">
-    </script>
 
+    </script>
+    <title>Chi Tiết Danh Mục
+
+    </title>
     <script>
         $(document).ready(function () {
             //console.log(IdLoaiSP);
