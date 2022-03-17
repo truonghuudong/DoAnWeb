@@ -241,13 +241,13 @@ public partial class Form_User_Default : System.Web.UI.Page
         p[0].Value = idtaiKhoan;
         p[1].Value = tenNguoiNhan;
         p[2].Value = SDT;
-        p[3].Value = DateTime.Now.ToString("dd/MM/yyyy");
+        p[3].Value = DateTime.Now.ToString("MM/dd/yyyy");
         p[4].Value = diaChi;
         DataTable table = DB.ExecuteQuery("InsertHoaDon", p);
         return table.Rows[0]["IdHoaDon"].ToString();
     }
 
-    void InsertChiTietHoaDon(string idHoaDonn,string idSP,int soLuong,int DonGia)
+    void InsertChiTietHoaDon(string idHoaDonn,string idSP,int soLuong,int DonGia,string size)
     {
         
 
@@ -256,12 +256,14 @@ public partial class Form_User_Default : System.Web.UI.Page
             new SqlParameter("@idHoaDon", SqlDbType.NVarChar, 10),
             new SqlParameter("@IdSP", SqlDbType.NVarChar, 10),
             new SqlParameter("@SoLuong", SqlDbType.Int),
-            new SqlParameter("@DonGia", SqlDbType.Int)
+            new SqlParameter("@DonGia", SqlDbType.Int),
+            new SqlParameter("@Size", SqlDbType.NVarChar,10)
         };
         p[0].Value = idHoaDonn;
         p[1].Value = idSP;
         p[2].Value = soLuong;
         p[3].Value = DonGia;
+        p[4].Value = size;
         DB.ExecuteNonQuery("InsertChiTietHoaDon", p);
     }
 
@@ -275,7 +277,11 @@ public partial class Form_User_Default : System.Web.UI.Page
                 string idHoaDon = InsertHoaDon(idtaiKhoan, tenNguoiNhan, SDT, diaChi);
                 foreach (SanPhamTrongGioHang sp in listItem.spTrongGioHang)
                 {
-                    InsertChiTietHoaDon(idHoaDon, sp.IdSP, int.Parse(sp.SoLuong), int.Parse(sp.GiaSP));
+                    try
+                    {
+                    InsertChiTietHoaDon(idHoaDon, sp.IdSP, int.Parse(sp.SoLuong), int.Parse(sp.GiaSP),sp.Size);
+
+                    }catch{ }
                 }
             }
             Session.Remove("GioHang");

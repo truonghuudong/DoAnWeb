@@ -27,7 +27,21 @@ public partial class ChiTietSanPham : System.Web.UI.Page
             lbSanPhamHienCo.Text = table.Rows[0]["SoLuong"].ToString();
             ltMota.Text = table.Rows[0]["Mota"].ToString();
             DoDuLieuPaged();
+
+            rpt_size.DataSource = GetSizeSanPham(idSP);
+            rpt_size.DataBind();
         }
+    }
+
+
+    DataTable GetSizeSanPham(string idSanPham)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@IdSP",System.Data.SqlDbType.NVarChar,10)
+        };
+        p[0].Value = idSanPham;
+        return DB.ExecuteQuery("GetSizeSanPhamTheoId", p);
     }
 
 
@@ -109,30 +123,40 @@ public partial class ChiTietSanPham : System.Web.UI.Page
         try
         {
             int ketQuaKiemTra = int.Parse(txt_SoLuongSPMua.Text);
-            if (ketQuaKiemTra > 0)
+            if(lb_Size.Text != "")
             {
-                if (Session["user"] == null)
+                if (ketQuaKiemTra > 0)
                 {
-                    Response.Redirect("../Form_User/DangNhap.aspx");
-                }
-                else
-                {
-                    string idSP = Request.QueryString.Get("IdSP").ToString();
-                    DataTable table = GetSanPham(idSP);
-                    if (Session["GioHang"] == null)
+                    if (Session["user"] == null)
                     {
-                        ThemSanPhamVaoGioHangRong(table);
+                        Response.Redirect("../Form_User/DangNhap.aspx");
                     }
                     else
                     {
-                        ThemSanPhamVaoGioHangDaCo(table);
+                        string idSP = Request.QueryString.Get("IdSP").ToString();
+                        DataTable table = GetSanPham(idSP);
+                        if (Session["GioHang"] == null)
+                        {
+                            ThemSanPhamVaoGioHangRong(table);
+                        }
+                        else
+                        {
+                            ThemSanPhamVaoGioHangDaCo(table);
+                        }
+                        Response.Redirect("../Form_User/GioHang.aspx");
                     }
-                    Response.Redirect("../Form_User/GioHang.aspx");
+
+                }
+                else
+                {
+                    lb_thongbao.Text = "Vui lòng chọn số lượng sản phẩm";
+                    lb_thongbao.Visible = true;
                 }
 
             }
             else
             {
+                lb_thongbao.Text = "Vui lòng chọn size sản phẩm";
                 lb_thongbao.Visible = true;
             }
         }
@@ -178,7 +202,7 @@ public partial class ChiTietSanPham : System.Web.UI.Page
         sp.AnhSP = table.Rows[0]["AnhSP"].ToString();
         sp.Tensp = table.Rows[0]["TenSP"].ToString();
         sp.TenShop = table.Rows[0]["TenTaiKhoan"].ToString();
-
+        sp.Size = lb_Size.Text;
         int dem = 0;
         foreach (ListSanPhamTheoIdTaiKhoan listSP in danhSachSanPham)
         {
@@ -323,4 +347,15 @@ public partial class ChiTietSanPham : System.Web.UI.Page
 
 
 
+
+    protected void btnSize_Click(object sender, EventArgs e)
+    {
+        lb_Size.Text = (sender as Button).Text;
+
+        for(int i = 0; i < rpt_size.Items.Count; i++)
+        {
+            (rpt_size.Items[i].FindControl("btnSize") as Button).CssClass= "button button_info button_size";
+        }
+        (sender as Button).CssClass = "button button_info button_size button_active";
+    }
 }

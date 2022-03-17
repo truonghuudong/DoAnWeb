@@ -295,14 +295,14 @@
 
                         <!--logo -->
                         <div class="header__logo">
-                            <a href="../../../../Form_User/TrangChu.aspx"><img src="../HinhAnh/Icon/logo_C.png"/></a>
+                            <a href="../../../../Form_User/TrangChu.aspx"><img src="../../HinhAnh/Icon/logo_C.png"/></a>
                         </div>
 
                         <!--Thanh Tim kiem -->
                         <div class="header__search">
                             <div class="header__search-input-wrap">
                                 <!--<input runat="server" id="inputSearch" type="text" class="header__search-input" placeholder="Nhập để tìm sản phẩm">-->
-                                <asp:TextBox ID="txt_SearchBox" AutoPostBack="true" OnTextChanged="txt_SearchBox_TextChanged" runat="server" class="header__search-input"  placeholder="Nhập để tìm sản phẩm"></asp:TextBox>
+                                <asp:TextBox ID="txt_SearchBox" runat="server" class="header__search-input"  placeholder="Nhập để tìm sản phẩm"></asp:TextBox>
                                 
                                 <!-- lich su tim kiem -->
                                 <div class="header__search-history">
@@ -480,9 +480,9 @@
                     </div>
                     <div class="grid-center">
                         <div class="footer__info-congty">
-                            <p>Địa chỉ:Số 20, ngõ 538, đường Láng, quận Đống Đa, thành phố hà Nội</p>
-                            <p>Mã số doanh nghiệp: 0108838697 do Sở Kế Hoạch & Đầu Tư TP Hà Nội Cấp lần đầu ngày 10/02/2015</p>
-                            <p>©2015-Bản Quyển thuộc về Công Ty TNHH Dfashion</p>
+                            <p>Địa chỉ: Số 11, đường Phạm Như Xương, phường Hòa Khánh, quận Cảm Lệ, thành phố Đà Nẵng</p>
+                            <p>Mã số doanh nghiệp: 0108838697 do Sở Kế Hoạch & Đầu Tư TP Đà Nẵng Cấp lần đầu ngày 15/03/2022</p>
+                            <p>©2022-Bản Quyển thuộc về Công Ty TNHH Dfashion</p>
                         </div>
                     </div>
 

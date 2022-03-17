@@ -189,12 +189,14 @@
         <div class="phanthan" runat="server" id="phanthan">
             <table class="table-giohang"">
                 <tr>
-                    <th style="width:625px">
+                    <th style="width:600px">
                         <div style="display:flex;align-items:center;width:320px">
                             <div style="margin-right:10px;">Sản Phẩm</div>
                         </div>
                     </th>
-
+                    <th>
+                        Size
+                    </th>
                     <th>
                         Đơn Giá
                     </th>
@@ -216,7 +218,7 @@
                     <ItemTemplate>
                         <table class="table-giohang" style="margin-top:10px;"> 
                             <tr style="border-bottom:1px solid rgba(0,0,0,0.3)">
-                                <td colspan="5" >
+                                <td colspan="6" >
                                     <div style="display:flex;align-items:center;margin-top:10px;">
                                         <%--<asp:CheckBox AutoPostBack="true" ID="cb_TatCaSanPhamTrongShop" OnCheckedChanged="cb_TatCaSanPhamTrongShop_CheckedChanged" runat="server" />--%>
                                         <div style="margin-left:5px;"><%#Eval("tenNguoiBan")%></div>
@@ -239,6 +241,9 @@
                                                 <div style="margin-left:5px"><%#Eval("tenSP")%></div>
                                                 <asp:Label ID="lb_idSP_rpt" runat="server" hidden="hidden" Text='<%#Eval("idSP")%>'></asp:Label>
                                             </div>
+                                        </td>
+                                        <td colspan="1" style="width:133px">
+                                            <asp:Label ID="lb_size_sp" runat="server" Text='<%#Eval("size")%>'></asp:Label>
                                         </td>
                                         <td colspan="1" style="width:133px">
                                             <asp:Label ID="lb_giasp_rpt" runat="server" Text='<%#Eval("GiaSP")%>'></asp:Label>

@@ -51,6 +51,19 @@
         .mota{
             margin-top:15px;
         }
+        .button_size-div{
+            margin:0 5px;
+        }
+        .button_size{
+            min-width:50px;
+        }
+        .button_active{
+            background-color:var(--primary-color);
+        }
+        .button_active:hover{
+            color:var(--text-color);
+        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -107,18 +120,24 @@
                         <!-- Can xoa -->
                         <asp:Button class="button button_info" ID="Button1" runat="server" Text="Button" />
                         <asp:Button class="button button_info" ID="Button2" runat="server" Text="Button" />
-                    </div>
+                    </div>--%>
 
-                    <!-- Phân loại-->
+                    <!-- Size-->
                     <div class="info_PhanLoai align-items" id="phanLoai" runat="server">
                         <div class="title-info">
                             <asp:Label ID="lb_PhanLoai" runat="server" Text="Size"></asp:Label>
                         </div>
                         <!-- Can Xoa -->
-                        <asp:Button class="button button_info" ID="Button3" runat="server" Text="To" />
-                        <asp:Button class="button button_info" ID="Button4" runat="server" Text="Nho" />
-                    </div>--%>
-
+                        <asp:Repeater ID="rpt_size" runat="server">
+                            <ItemTemplate>
+                                <div class="button_size-div">
+                                    <asp:Button ID="btnSize" OnClick="btnSize_Click" runat="server" Text='<%#Eval("TenSize")%>' CssClass="button button_info button_size"/>
+                                    <%--<asp:LinkButton class="button button_info" ID="btn_Size" runat="server" Text='<%#Eval("TenSize")%>'></asp:LinkButton>--%>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                    <asp:Label ID="lb_Size" Visible="false" runat="server"></asp:Label>
 
                     <!-- Số lượng sản phẩm cần mua-->
                     <div class="chitietsanpham_ThongSo-soLuong align-items" style="margin-top:160px">

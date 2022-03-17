@@ -37,7 +37,7 @@ public partial class Form_User_TatCaSanPham : System.Web.UI.Page
     {
         SqlParameter[] p =
         {
-            new SqlParameter("@tiemKiem",SqlDbType.Int)
+            new SqlParameter("@timKiem",SqlDbType.Int)
         };
         p[0].Value = gia;
         return DB.ExecuteQuery("GetSanPhamTheoGia", p);
