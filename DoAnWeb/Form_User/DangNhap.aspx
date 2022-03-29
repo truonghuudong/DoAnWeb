@@ -267,16 +267,21 @@
             <!-- Mang xa hoi -->
             <div class="formDanhNhap__socials">
                 <!-- facebook -->
-                <a href="" class="formDanhNhap__socials--facebook btn btn-size-s btn-with-icon " >
+                <%--<asp:LinkButton ID="lbtn_facebook" OnClick="lbtn_facebook_Click" runat="server" href="" class="formDanhNhap__socials--facebook btn btn-size-s btn-with-icon " >
                     <i class="formDanhNhap__socials-icon fab fa-facebook-square"></i>
-                    <span class="formDanhNhap__socials-label">Kết nối với facebook</span>
-                </a>
+                    <span class="formDanhNhap__socials-label"></span>
+                </asp:LinkButton>--%>
+                <asp:LinkButton OnClick="lbtn_facebook_Click" ID="lbtn_facebook" runat="server" CssClass="formDanhNhap__socials--facebook btn btn-size-s btn-with-icon">
+                    <i class="formDanhNhap__socials-icon fab fa-facebook-square"></i>
+                    <span class="formDanhNhap__socials-label"></span>
+                </asp:LinkButton>
+
                 <!-- facebook -->
 
                 <!-- google -->
                 <a href="" class="formDanhNhap__socials--google btn btn-size-s btn-with-icon">
                     <i class="formDanhNhap__socials-icon fab fa-google"></i>
-                    <span class="formDanhNhap__socials-label">Kết nối với google</span>
+                    <span class="formDanhNhap__socials-label"></span>
                 </a>
                 <!-- google -->
             
