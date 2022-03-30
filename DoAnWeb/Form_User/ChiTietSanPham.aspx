@@ -63,7 +63,87 @@
         .button_active:hover{
             color:var(--text-color);
         }
+         /*from*/
+                .form{
+                    position:fixed;
+                    top:0;
+                    bottom:0;
+                    left:0;
+                    right:0;
+                    /*min-height:100%;
+                    min-width:100%;*/
+                    display:flex;
+                }
+                .form__overlay{
+                    position:absolute;
+                    width:100%;
+                    height:100%;
+                    background-color:rgba(0,0,0,0.4);
+                }
+                .form__body{
+                    margin:auto;
+                    background-color:var(--while-color);
+                    z-index:1;
+                    border-radius:5px;
+                    width:400px;
+                    height:360px;
+                    box-shadow:rgba(0,0,0,0.2) 2px 2px;
+                }
+                .form__body-inner{
+                    margin:auto;
+                    text-align:center;
+                }
 
+                    .inner-title{
+                        font-size:1.7rem;
+                        font-weight:600;
+                        color:var(--primary-color);
+                    }
+                    .inner-items{
+                        margin:5px 0;
+                    }
+                    .inner-items:first-child{
+                        margin:15px;
+                    }
+                    .inner-items input[type=text]{
+                        padding-left:10px;
+                        font-size:1.5rem;
+                        width:250px;
+                        height:40px;
+                    }
+
+                    .btn{
+                        margin-top:10px;
+                        background-color:var(--primary-color);
+                        color:var(--while-color);
+                    }
+
+                    .btn:hover{
+                        background-color:#f05d40;
+                    }
+
+                    .thongbao{
+                        padding: 0 20px;
+                        margin:5px 0 10px 0;
+                        font-size:1.5rem;
+                        color:var(--primary-color);
+                    }
+
+                    .btn_thoat{
+                        text-align:right;
+                        font-size:1.7rem;
+                        border-top-right-radius:3px;
+                    }
+                    .btn_thoat input[type=submit]{
+                        border-top-right-radius:3px;
+                        background-color:var(--while-color);
+                        border:none;
+                    }
+                    .btn_thoat input[type=submit]:hover{
+                        background-color:var(--primary-color);
+                        color:var(--while-color);
+                    }
+                /*from*/
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -239,6 +319,41 @@
         </div>
 
     </div>
+
+    <div class="form" runat="server" visible ="false" id="form_muangay"> 
+        <div class="form__overlay">
+        </div> 
+        <div class="form__body">
+            <div class="btn_thoat">
+                <asp:Button ID="btn_thoat_form" runat="server" Text="X" OnClick="btn_thoat_form_Click"/>
+            </div>
+            <div style="display:flex;height:300px">
+                <div class="form__body-inner">
+                    <div class="inner-title">
+                        Thanh Toán
+                    </div>
+                    <div class="inner-items" style="margin-top:20px;">
+                        <asp:TextBox ID="txt_TenNguoiNhan"  PlaceHolder="Tên Người Nhận" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="inner-items">
+                        <asp:TextBox ID="txt_SDT" runat="server" PlaceHolder="Số Điện Thoại"></asp:TextBox>
+                    </div>
+                    <div class="inner-items"> 
+                        <asp:TextBox ID="txt_DiaChi" PlaceHolder="Địa Chỉ" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="inner-items">
+                        <asp:Label ID="lb_thongbao_form" CssClass="thongbao" Visible="false" runat="server" Text="Vui lòng nhập đầy đủ thông tin"></asp:Label>
+                    </div>
+                    <div class="inner-items"> 
+                        <asp:Button CssClass="btn" ID="btn_ThanhToan_form" OnClick="btn_ThanhToan_form_Click" runat="server" Text="Thanh Toán" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 </asp:Content>
 

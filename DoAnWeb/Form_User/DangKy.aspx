@@ -12,7 +12,7 @@
         .formDangNhap{
             background-color:var(--while-color);
             width:450px;
-            height:485px;
+            height:410px;
             margin:auto;
             box-shadow:1px 1px 3px #999;
             border-radius:5px;
@@ -96,7 +96,7 @@
         /* formDangNhap controls */
         .formDangNhap__controls{
             display:flex;
-            margin-top:65px;
+            margin-top:30px;
             justify-content:flex-end;
         }
 
@@ -218,7 +218,7 @@
                 <!-- formDangNhap controls -->
                 <div class="formDangNhap__controls">
                     <asp:Button class="btn btn--normal formDangNhap__controls-back" runat="server"  ID="btnTroLai" text="TRỞ LẠI" OnClick="btnTroLai_Click"/>
-                    <asp:Button class="btn btn--primary" runat="server" ID="btnDangNhap_1"  text="ĐĂNG KÝ" OnClick="btnDangNhap_1_Click"/>      
+                    <asp:Button class="btn btn--primary" runat="server" ID="btnDangKy_1"  text="ĐĂNG KÝ" OnClick="btnDangKy_1_Click"/>      
                 </div>
                 <!-- formDangNhap controls -->
 
@@ -226,7 +226,7 @@
              <!-- container -->
             
             <!-- Mang xa hoi -->
-            <div class="formDanhNhap__socials">
+            <%--<div class="formDanhNhap__socials">
                 <!-- facebook -->
                 <a href="" class="formDanhNhap__socials--facebook btn btn-size-s btn-with-icon " >
                     <i class="formDanhNhap__socials-icon fab fa-facebook-square"></i>
@@ -241,7 +241,7 @@
                 </a>
                 <!-- google -->
             
-            </div>
+            </div>--%>
             <!-- Mang xa hoi -->
 
         </div>

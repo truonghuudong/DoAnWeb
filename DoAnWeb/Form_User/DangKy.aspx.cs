@@ -46,9 +46,18 @@ public partial class DangKy : System.Web.UI.Page
 
 
 
-    protected void btnDangNhap_1_Click(object sender, EventArgs e)
+    protected void btnDangKy_1_Click(object sender, EventArgs e)
     {
-        if(!inputTenDN.Text.Equals("") && !inputEmail.Text.Equals("") && !inputPassword.Text.Equals("") && !inputPassword_NhapLai.Text.Equals(""))
+        if (inputEmail.Text.Equals("")||
+                inputPassword.Text.Equals("")||
+                inputPassword_NhapLai.Text.Equals("")||
+                inputTenDN.Text.Equals(""))
+        {
+            lbNotify_DangNhap.Text = "Vui lòng nhập thông tin đầy đủ!";
+        }
+        else
+        {
+            if(!inputTenDN.Text.Equals("") && !inputEmail.Text.Equals("") && !inputPassword.Text.Equals("") && !inputPassword_NhapLai.Text.Equals(""))
         {
             if (inputPassword_NhapLai.Text.Equals(inputPassword.Text))
             {
@@ -79,6 +88,7 @@ public partial class DangKy : System.Web.UI.Page
             {
                 lbNotify_DangNhap.Text = "Mật khâu nhập lại không trùng";
             }
+        }
         }
     }
 

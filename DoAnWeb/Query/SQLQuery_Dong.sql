@@ -47,3 +47,23 @@ as
 			from dbo.SanPham sp,TaiKhoan tk
 			where sp.GiaSP <= @timKiem and sp.IdSP not in (select IdSP from ChiTietKhuyenMai) and sp.IdTaiKhoan = tk.IdTaiKhoan
 	end
+
+
+
+DECLARE cursor_sp cursor
+	for select IdSP from SanPham
+declare @idsp int
+open cursor_sp
+fetch next from cursor_sp into @idsp
+while (@@FETCH_STATUS = 0)
+	begin
+		if(@idsp>=197)
+			begin
+				insert into Size values(@idsp,'S')
+				insert into Size values(@idsp,'M')
+				insert into Size values(@idsp,'L')
+			end
+		fetch next from cursor_sp into @idsp
+	end
+close cursor_sp
+deallocate cursor_sp

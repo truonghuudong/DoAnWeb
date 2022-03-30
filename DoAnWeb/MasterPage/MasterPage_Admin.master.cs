@@ -151,22 +151,29 @@ public partial class MasterPage_MasterPage_Admin : System.Web.UI.MasterPage
 
     void addClassDanhMuc()
     {
-        string link = HttpContext.Current.Request.RawUrl.ToString(); 
-        if (link.Contains("/Form_Admin/QuanLyDanhMuc.aspx") || link.Contains("/Form_Admin/QuanLyChiTietDanhMuc.aspx"))
+        string link = HttpContext.Current.Request.RawUrl.ToString();
+        if (link.Contains("/Form_Admin/HoSoTaiKhoan.aspx"))
         {
-            danhmuc_quanlydanhmuc.Attributes.Add("class", "danhmuc-item--active danhmuc-items");
+            danhmuc_hosotaikhoan.Attributes.Add("class", "danhmuc-item--active danhmuc-items");
         }
         else
         {
-            if (link.Contains("/Form_Admin/QuanLyTaiKhoan.aspx"))
+            if (link.Contains("/Form_Admin/QuanLyDanhMuc.aspx") || link.Contains("/Form_Admin/QuanLyChiTietDanhMuc.aspx"))
             {
-                danhmuc_quanlytaikhoan.Attributes.Add("class", "danhmuc-item--active danhmuc-items");
+                danhmuc_quanlydanhmuc.Attributes.Add("class", "danhmuc-item--active danhmuc-items");
             }
             else
             {
-                if (link.Contains("/Form_Admin/BaoCaoThongKe.aspx"))
+                if (link.Contains("/Form_Admin/QuanLyTaiKhoan.aspx"))
                 {
-                    danhmuc_baocaothongke.Attributes.Add("class", "danhmuc-item--active danhmuc-items");
+                    danhmuc_quanlytaikhoan.Attributes.Add("class", "danhmuc-item--active danhmuc-items");
+                }
+                else
+                {
+                    if (link.Contains("/Form_Admin/BaoCaoThongKe.aspx"))
+                    {
+                        danhmuc_baocaothongke.Attributes.Add("class", "danhmuc-item--active danhmuc-items");
+                    }
                 }
             }
         }

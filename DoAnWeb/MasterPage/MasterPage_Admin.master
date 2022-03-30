@@ -66,6 +66,7 @@
             animation:HeaderNotifyGrowth ease-in 0.3s;
             transform-origin:20px top;
             z-index:999;
+            margin-left:10px;
         }
         .taikhoan__popover ul{
             margin:0px;
@@ -79,7 +80,7 @@
                 border-width: 10px 16px;
                 border-style: solid;
                 border-color: transparent transparent var(--while-color) transparent;
-                left: 70%;
+                left: 65%;
                 position:absolute;
                 top: -20px;
                 z-index:0
@@ -209,9 +210,9 @@
                         </a>
                         <div class="taikhoan__popover">
                             <ul class="taikhoan__popover-list">
-                                <li class="list-item">
+                                <%--<li class="list-item">
                                     <a href="../Form_Admin/HoSoTaiKhoan.aspx" class="list-item_link">Tài Khoản Của Tôi</a>
-                                </li>           
+                                </li>   --%>        
                                 <asp:Button ID="btnDangXuat" runat="server" Text="Đăng Xuất" class="list-item_link btndangxuat" OnClick="btnDangXuat_Click"/>
                             </ul>
                         </div>
@@ -229,6 +230,9 @@
                     <div class="menu-danhmuc">
                         <div class="content__menu-title">
                             Menu
+                        </div>
+                        <div id="danhmuc_hosotaikhoan" runat="server"  class="danhmuc-items">
+                            <a class="danhmuc-items_link" href="../Form_Admin/HoSoTaiKhoan.aspx">Hồ sơ tài khoản</a>
                         </div>
                         <div id="danhmuc_quanlytaikhoan" runat="server"  class="danhmuc-items">
                             <a class="danhmuc-items_link" href="../Form_Admin/QuanLyTaiKhoan.aspx">Quản lý tài khoản</a>

@@ -172,6 +172,7 @@ public partial class Form_User_HoSoTaiKhoan_BinhLuan : System.Web.UI.Page
     {
         string idSP = Request.QueryString.Get("IdSP").ToString();
         GetBinhLuan(GetIdTaiKhoanTuSession().ToString(), idSP, txt_NoiDung_BinhLuan.InnerText);
+        txt_NoiDung_BinhLuan.InnerText = "";
         DoDuLieuPaged();
     }
 }

@@ -302,7 +302,7 @@
                         <div class="header__search">
                             <div class="header__search-input-wrap">
                                 <!--<input runat="server" id="inputSearch" type="text" class="header__search-input" placeholder="Nhập để tìm sản phẩm">-->
-                                <asp:TextBox ID="txt_SearchBox" runat="server" class="header__search-input"  placeholder="Nhập để tìm sản phẩm"></asp:TextBox>
+                                <asp:TextBox AutoPostBack="true" ID="txt_SearchBox" runat="server" class="header__search-input"  placeholder="Nhập để tìm sản phẩm"></asp:TextBox>
                                 
                                 <!-- lich su tim kiem -->
                                 <div class="header__search-history">

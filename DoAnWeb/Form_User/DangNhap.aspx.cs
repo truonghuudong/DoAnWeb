@@ -231,7 +231,7 @@ public partial class DangNhap : System.Web.UI.Page
 
                     if (quyenTaiKhoan(kqDangNhap) == 1)
                     {
-                        Response.Redirect("~/Form_Admin/QuanLyTaiKhoan.aspx");
+                        Response.Redirect("~/Form_Admin/HoSoTaiKhoan.aspx");
                     }
                     else
                     {

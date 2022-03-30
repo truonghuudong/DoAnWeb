@@ -42,10 +42,9 @@
         .btn_xacnhan:hover{
             background-color:rgba(0,0,0,0.5);
         }
-        .button{
+        .button_doimatkhau{
             margin-top:50px;
             margin-left:20%;
-         
         }
         .thongbao_capnhat{
             font-size:1.3rem;
@@ -103,7 +102,7 @@
 
 
         </div>
-        <div class="button">
+        <div class="button_doimatkhau">
             <div class="thongbao_capnhat">
                 <asp:Label ID="lb_thongbao_capnhat" runat="server"  ></asp:Label>
             </div>

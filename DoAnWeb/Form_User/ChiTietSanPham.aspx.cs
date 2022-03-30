@@ -180,7 +180,7 @@ public partial class ChiTietSanPham : System.Web.UI.Page
         sp.SoLuong = txt_SoLuongSPMua.Text;
         sp.TenShop = table.Rows[0]["TenTaiKhoan"].ToString();
         sp.AnhSP = table.Rows[0]["AnhSP"].ToString();
-
+        sp.Size = lb_Size.Text;
         listSP.TenNguoiBan = sp.TenShop;
         listSP.IdNguoiBan = table.Rows[0]["IdTaiKhoan"].ToString();
         listSP.SpTrongGioHang.Add(sp);
@@ -228,9 +228,22 @@ public partial class ChiTietSanPham : System.Web.UI.Page
     protected void btn_MuaNgay_Click(object sender, EventArgs e)
     {
 
+        if (Session["user"] == null)
+        {
+            Response.Redirect("../Form_User/DangNhap.aspx");
+        }
+        else
+        {
+            form_muangay.Visible = true;
+        }
     }
 
-
+    void xoaDuLieuFormMuaNgay()
+    {
+        txt_DiaChi.Text = "";
+        txt_SDT.Text = "";
+        txt_TenNguoiNhan.Text = "";
+    }
 
 
     DataTable GetBinhLuan(int idSanPham)
@@ -357,5 +370,92 @@ public partial class ChiTietSanPham : System.Web.UI.Page
             (rpt_size.Items[i].FindControl("btnSize") as Button).CssClass= "button button_info button_size";
         }
         (sender as Button).CssClass = "button button_info button_size button_active";
+    }
+
+    protected void btn_thoat_form_Click(object sender, EventArgs e)
+    {
+        form_muangay.Visible = false;
+        xoaDuLieuFormMuaNgay();
+    }
+
+    protected void btn_ThanhToan_form_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            int ketQuaKiemTra = int.Parse(txt_SoLuongSPMua.Text);
+            if (lb_Size.Text != "")
+            {
+                if (ketQuaKiemTra > 0)
+                {
+                    
+                        string idSP = Request.QueryString.Get("IdSP").ToString();
+                        DataTable table = GetSanPham(idSP);
+
+                        string idHoaDon = InsertHoaDon(GetIdTaiKhoan(), txt_TenNguoiNhan.Text, txt_SDT.Text, txt_DiaChi.Text);
+                        InsertChiTietHoaDon(idHoaDon, idSP, int.Parse(txt_SoLuongSPMua.Text)
+                                , int.Parse(table.Rows[0]["GiaKhuyenMai"].ToString()), lb_Size.Text);
+
+                    Response.Redirect("~/Form_User/HoSoTaiKhoan/DonMua.aspx");
+                }
+                else
+                {
+                    lb_thongbao.Text = "Vui lòng chọn số lượng sản phẩm";
+                    lb_thongbao.Visible = true;
+                }
+
+            }
+            else
+            {
+                lb_thongbao.Text = "Vui lòng chọn size sản phẩm";
+                lb_thongbao.Visible = true;
+            }
+        }
+        catch
+        {
+            lb_thongbao.Visible = true;
+        }
+    }
+
+    string InsertHoaDon(string idtaiKhoan, string tenNguoiNhan, string SDT, string diaChi)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@idTaiKhoan",SqlDbType.NVarChar,10),
+            new SqlParameter("@TenNguoiNhan",SqlDbType.NVarChar,200),
+            new SqlParameter("@SDTnguoinhan",SqlDbType.NVarChar,10),
+            new SqlParameter("@ngay",SqlDbType.DateTime),
+            new SqlParameter("@diaChi",SqlDbType.NVarChar,200)
+        };
+        p[0].Value = idtaiKhoan;
+        p[1].Value = tenNguoiNhan;
+        p[2].Value = SDT;
+        p[3].Value = DateTime.Now.ToString("MM/dd/yyyy");
+        p[4].Value = diaChi;
+        DataTable table = DB.ExecuteQuery("InsertHoaDon", p);
+        return table.Rows[0]["IdHoaDon"].ToString();
+    }
+
+    void InsertChiTietHoaDon(string idHoaDonn, string idSP, int soLuong, int DonGia, string size)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@idHoaDon", SqlDbType.NVarChar, 10),
+            new SqlParameter("@IdSP", SqlDbType.NVarChar, 10),
+            new SqlParameter("@SoLuong", SqlDbType.Int),
+            new SqlParameter("@DonGia", SqlDbType.Int),
+            new SqlParameter("@Size", SqlDbType.NVarChar,10)
+        };
+        p[0].Value = idHoaDonn;
+        p[1].Value = idSP;
+        p[2].Value = soLuong;
+        p[3].Value = DonGia;
+        p[4].Value = size;
+        DB.ExecuteNonQuery("InsertChiTietHoaDon", p);
+    }
+    string GetIdTaiKhoan()
+    {
+        UserLogin user = new UserLogin();
+        user = (UserLogin)Session["User"];
+        return user.Id + "";
     }
 }

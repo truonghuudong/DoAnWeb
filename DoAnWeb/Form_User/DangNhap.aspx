@@ -97,12 +97,14 @@
             align-items:center;
         }
         .captcha_text{
+            min-width:85px;
             padding:10px;
             margin-left:45%;
             font-size:2.4rem;
             border: solid 1px red;
             border-radius:5px;
             color:silver;
+            text-align:center;
         }
         .formDangNhap__input-captcha{
             width:50%;
@@ -139,7 +141,7 @@
         }
 
         .formDangNhap__btn{
-            min-width:142px;
+            min-width:50px;
             height:36px;
         }
 
@@ -161,6 +163,8 @@
             justify-content:space-between;
             border-bottom-left-radius:5px;
             border-bottom-right-radius:5px;
+            padding-left:100px;
+            padding-right:100px;
         }
 
         .formDanhNhap__socials-icon{
@@ -195,6 +199,24 @@
         .formDanhNhap__socials-label{
             margin:0 20px;
         }
+
+        .btn_mangXaHoi{
+            min-width: 100px;
+            height: 30px;
+            text-decoration: none;
+            border: none;
+            border-radius: 2px;
+            font-size: 1.5rem;
+            padding: 0 8px;
+            cursor: pointer;
+            /*background-color:var(--while-color);*/
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align:center;
+
+        }
+
         /* Mang xa hoi */
     </style>
 
@@ -271,17 +293,15 @@
                     <i class="formDanhNhap__socials-icon fab fa-facebook-square"></i>
                     <span class="formDanhNhap__socials-label"></span>
                 </asp:LinkButton>--%>
-                <asp:LinkButton OnClick="lbtn_facebook_Click" ID="lbtn_facebook" runat="server" CssClass="formDanhNhap__socials--facebook btn btn-size-s btn-with-icon">
+                <asp:LinkButton OnClick="lbtn_facebook_Click" ID="lbtn_facebook" runat="server" CssClass="formDanhNhap__socials--facebook btn_mangXaHoi btn-size-s btn-with-icon">
                     <i class="formDanhNhap__socials-icon fab fa-facebook-square"></i>
-                    <span class="formDanhNhap__socials-label"></span>
                 </asp:LinkButton>
 
                 <!-- facebook -->
 
                 <!-- google -->
-                <a href="" class="formDanhNhap__socials--google btn btn-size-s btn-with-icon">
+                <a href="" class="formDanhNhap__socials--google btn_mangXaHoi btn-size-s btn-with-icon">
                     <i class="formDanhNhap__socials-icon fab fa-google"></i>
-                    <span class="formDanhNhap__socials-label"></span>
                 </a>
                 <!-- google -->
             

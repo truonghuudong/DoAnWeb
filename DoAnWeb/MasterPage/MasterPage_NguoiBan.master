@@ -59,7 +59,6 @@
             color:var(--while-color);
         }
         .taikhoan__popover{
-            
             border-radius:3px;
             position:absolute;
             background-color:var(--while-color);
@@ -67,6 +66,7 @@
             animation:HeaderNotifyGrowth ease-in 0.3s;
             transform-origin:20px top;
             z-index:999;
+            margin-left:50px;
         }
         .taikhoan__popover ul{
             margin:0px;
@@ -80,7 +80,7 @@
                 border-width: 10px 16px;
                 border-style: solid;
                 border-color: transparent transparent var(--while-color) transparent;
-                left: 70%;
+                left: 65%;
                 position:absolute;
                 top: -20px;
                 z-index:0
@@ -212,6 +212,9 @@
           .sidenav {padding-top: 15px;}
           .sidenav a {font-size: 18px;}
         }
+
+
+
     </style>
 
     <asp:ContentPlaceHolder id="head" runat="server">
@@ -227,15 +230,15 @@
                         <a href="../BaoCaoThongKe/DoanhThu.aspx">Nguời Bán</a>
                     </div>
                     <div class="header__taikhoan">
-                        <a href="~/Form_Admin/HoSoTaiKhoan.aspx" class="header__taikhoan-link">
+                        <a href="../QuanLyTaiKhoan/QuangLyTaiKhoan.aspx" class="header__taikhoan-link">
                             <asp:Label CssClass="header__taikhoan-ten" ID="lbTenTaiKhoan" runat="server" Text="Quoc08510"></asp:Label>
                             <asp:Image ID="imgAnhDaiDien" runat="server" class="header__taikhoan-anh" />
                         </a>
                         <div class="taikhoan__popover">
                             <ul class="taikhoan__popover-list">
-                                <li class="list-item">
+                                <%--<li class="list-item">
                                     <a href="../../Form_NguoiBan/QuanLyTaiKhoan/QuangLyTaiKhoan.aspx" class="list-item_link">Tài Khoản Của Tôi</a>
-                                </li>           
+                                </li>   --%>        
                                 <asp:Button ID="btnDangXuat" runat="server" Text="Đăng Xuất" class="list-item_link btndangxuat" OnClick="btnDangXuat_Click"/>
                             </ul>
                         </div>
@@ -258,6 +261,7 @@
                         </asp:Menu>
                         <asp:SiteMapDataSource ID="SiteMap" SiteMapProvider="Menu_NguoiBan" runat="server" ShowStartingNode="False" />--%>
                         <div class="sidenav">
+                            <a href="../QuanLyTaiKhoan/QuangLyTaiKhoan.aspx">Hồ Sơ Của Tôi</a>
                             <div class="dropdown-btn">Quản Lý Sản Phẩm
                                 <i class="fa fa-caret-down"></i>
                             </div>
