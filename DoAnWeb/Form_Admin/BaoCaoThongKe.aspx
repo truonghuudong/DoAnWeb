@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
-
+<title>Báo cáo thống kê</title>
  <style>
         .BaoCao-title{
             font-size:1.7rem;

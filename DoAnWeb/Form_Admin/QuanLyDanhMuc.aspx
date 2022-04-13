@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_Admin.master" AutoEventWireup="true" CodeFile="QuanLyDanhMuc.aspx.cs" Inherits="Form_Admin_QuanLyDanhMuc" %>
-
+<title>Danh mục</title>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style>
         .title_danhmuc{

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_Admin.master" AutoEventWireup="true" CodeFile="ThayDoiMatKhauTaiKhoan.aspx.cs" Inherits="Form_Admin_ThayDoiMatKhauTaiKhoan" %>
-
+<title>Đổi mật khẩu</title>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
     <style>

@@ -18,6 +18,7 @@ public partial class Form_NguoiBan_QuanLyKhuyenMai_ChiTietKhuyenMai : System.Web
     {
         if (!IsPostBack)
         {
+            trang_thu = 0;
             DoDuLieuPaged();
         }
     }
@@ -188,10 +189,27 @@ public partial class Form_NguoiBan_QuanLyKhuyenMai_ChiTietKhuyenMai : System.Web
         {
             cb_TatCa_Chung.Checked = true;
         }
+        else
+        {
+            cb_TatCa_Chung.Checked = false;
+        }
+    }
+
+    void CB_ChungBangTrue()
+    {
+        for (int i = 0; i < rpt_ChiTietKhuyenMai.Items.Count; i++)
+        {
+            CheckBox cb = (rpt_ChiTietKhuyenMai.Items[i].FindControl("cb_TrangThai") as CheckBox);
+            string idSP = (rpt_ChiTietKhuyenMai.Items[i].FindControl("lb_idSp") as Label).Text;
+            if (cb_TatCa_Chung.Checked == true)
+            {
+                    cb.Checked = true;
+            }
+        }
     }
 
 
-    void CB_ChungBangTrue()
+    void addTatCaKhuyenMai()
     {
         string idKm = Request.QueryString.Get("IdKM").ToString();
 
@@ -203,8 +221,6 @@ public partial class Form_NguoiBan_QuanLyKhuyenMai_ChiTietKhuyenMai : System.Web
 
             if (cb_TatCa_Chung.Checked == true)
             { 
-                if (cb.Checked == false)
-                {
                     cb.Checked = cb_TatCa_Chung.Checked;
                     TextBox txt = (rpt_ChiTietKhuyenMai.Items[i].FindControl("txt_TyLeKhuyenMai") as TextBox);
                     txt.Enabled = true;
@@ -218,7 +234,6 @@ public partial class Form_NguoiBan_QuanLyKhuyenMai_ChiTietKhuyenMai : System.Web
                     //{
 
                     //}
-                }
             }
         }
     }
@@ -281,7 +296,7 @@ public partial class Form_NguoiBan_QuanLyKhuyenMai_ChiTietKhuyenMai : System.Web
 
     protected void cb_TatCa_Chung_CheckedChanged(object sender, EventArgs e)
     {
-        if (!txt_tyleKM_chung.Text.Equals("") && cb_TatCa_Chung.Checked == true)
+        if (cb_TatCa_Chung.Checked == true)
         {
             CB_ChungBangTrue();
         }
@@ -323,7 +338,7 @@ public partial class Form_NguoiBan_QuanLyKhuyenMai_ChiTietKhuyenMai : System.Web
 
             //}
         }
-
+        KiemTraChecked();
     }
 
     protected void txt_TyLeKhuyenMai_TextChanged(object sender, EventArgs e)
@@ -341,5 +356,11 @@ public partial class Form_NguoiBan_QuanLyKhuyenMai_ChiTietKhuyenMai : System.Web
         //{
 
         //}
+    }
+
+    protected void btn_Them_Click(object sender, EventArgs e)
+    {
+        addTatCaKhuyenMai();
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Thêm Thành Công')", true);
     }
 }

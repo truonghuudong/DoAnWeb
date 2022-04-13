@@ -14,11 +14,14 @@
         }
         .conten_tyle{
             display:flex;
+            margin-top:15px;
+            /*justify-content:center;*/
+            align-items:center;
         }
         .label_tyle{
             font-size:15px;
-            padding-right:50px;
-            padding-left:50px
+            padding-right:25px;
+            padding-left:25px
         }
         .chitietdanhmuc-danhsach{
             border-collapse:collapse;
@@ -53,6 +56,12 @@
                  max-width:300px;
             }
 
+            .btn_them{
+                margin-left:10px;
+            }
+            .btn_them:hover{
+                background-color:var(--primary-color);
+            }
 
             /*phan trang*/
             .phantrang{
@@ -67,9 +76,11 @@
                 .btn_page{
                     margin: 0 5px;
                     text-align:center;
-                    min-width:80px;
-                    min-height:29px;
-                    max-height:29px;
+                    min-width:45px;
+                    min-height:25px;
+                    max-height:25px;
+                    font-weight:bold;
+                    font-size:1.7rem;
                 }
                 .btn_page input[type=image]{
                     color:var(--text-color);
@@ -81,9 +92,9 @@
                     margin: 0 5px;
                     align-items:center;
                     text-align:center;
-                    min-width:80px;
+                    min-width:45px;
                     min-height:25px;
-                    font-size:2rem;
+                    font-size:1.7rem;
                     font-weight:bold;
                 }
                 .btn_page_nextprev:hover{
@@ -98,14 +109,7 @@
         <div class="tiede_KM">
             CHI TIẾT KHUYẾN MÃI
         </div>
-        <div class="conten_tyle">
-            <div class="label_tyle">
-                Tỷ lệ
-            </div>
-            <div>
-                <asp:TextBox CssClass="tylekhuyenmai widthlonhon" ID="txt_tyleKM_chung" runat="server"></asp:TextBox>
-            </div>
-        </div>
+        
         <div class="bang_KM">
             <table class="chitietdanhmuc-danhsach">
                     <tr>
@@ -159,23 +163,35 @@
 
                 </table>
 
+            <div class="conten_tyle">
+                <div class="label_tyle">
+                    Tỷ lệ
+                </div>
+                <div>
+                    <asp:TextBox CssClass="tylekhuyenmai widthlonhon" ID="txt_tyleKM_chung" runat="server"></asp:TextBox>
+                </div>
+                <div>
+                    <asp:Button CssClass="btn_them" ID="btn_Them" runat="server" Text="Thêm" OnClick="btn_Them_Click"/>
+                </div>
+            </div>
+
            <%-- Phan trang --%>
 
         <div class="phantrang">
             <div>
-                <asp:Button cssclass="btn_page" ID="btn_TrangDau" runat="server" Text="Trang Đầu" OnClick="btn_TrangDau_Click"/>
+                <asp:Button cssclass="btn_page" ID="btn_TrangDau" runat="server" Text="<<" OnClick="btn_TrangDau_Click"/>
             </div>
             <div>
                 <asp:Button cssclass="btn_page_nextprev"  ID="btn_Prev" runat="server" Text="<" OnClick="btn_Prev_Click"/>
             </div>
             <div>
-                <asp:TextBox style="width:50px;text-align:center;min-width:80px;min-height:30px;max-height:30px;" ID="txt_STTPage" runat="server" Enabled="false"></asp:TextBox>
+                <asp:TextBox style="width:50px;text-align:center;min-width:80px;min-height:30px;max-height:30px;font-weight:bold" ID="txt_STTPage" runat="server" Enabled="false"></asp:TextBox>
             </div>
             <div>
                 <asp:Button cssclass="btn_page_nextprev"  ID="btn_Next" runat="server" Text=">"  OnClick="btn_Next_Click"/>
             </div>
             <div>
-                <asp:Button cssclass="btn_page" ID="btn_TrangCuoi" runat="server" Text="Trang Cuối" OnClick="btn_TrangCuoi_Click"/>
+                <asp:Button cssclass="btn_page" ID="btn_TrangCuoi" runat="server" Text=">>" OnClick="btn_TrangCuoi_Click"/>
             </div>
         </div>
          <%-- Phan trang --%>

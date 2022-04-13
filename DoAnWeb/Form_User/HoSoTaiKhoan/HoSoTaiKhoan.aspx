@@ -172,8 +172,8 @@
                         Số Điện Thoại
                     </div>
                     <div class="input-thongtin">
-                        <asp:Label ID="lb_hoso_sodienthoai" runat="server" Text="08125436259"></asp:Label>
-
+                        <%--<asp:Label ID="lb_hoso_sodienthoai" runat="server" Text="08125436259"></asp:Label>--%>
+                        <asp:TextBox CssClass="txt_tennguoidung" ID="txt_SoDienThoai" runat="server"></asp:TextBox>
                     </div>
                 </div>
 

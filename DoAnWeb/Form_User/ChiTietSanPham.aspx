@@ -26,6 +26,7 @@
             padding-bottom:5px;
             
         }
+
         .danhgiasanpham_title{
             font-size:2rem;
             padding:15px;
@@ -144,13 +145,85 @@
                         color:var(--while-color);
                     }
                 /*from*/
+                .body-inner_ibtn{
+                    margin-top:5px;
+                    text-align:center;
+                }
+            .fileUpload-button{
+                /*width:120px;*/
+                margin-left:150px;
+                position: relative;
+                width:120px;
+                overflow:hidden;
+            }
+            .body-inner_ibtn input[type=image]{
+                width:70px;
+                height:70px;
+            }
+            .fileUpload{
+                font-size: 120px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+            }
+            
+
+        .body-inner_txt{
+            text-align:center;
+            margin-top:5px;
+        }
+            .body-inner_txt input[type=text]{
+                text-align:center;
+                font-size:1.5rem;
+                margin:3px 0;
+            }
+        .form__body-thongbao{
+            margin:5px 0;
+            font-size:1.3rem;
+            color:red;
+            text-align:center;
+        }
+        .body-inner_button{
+            margin-top:5px;
+            text-align:center;
+        }
+            .body-inner_button input[type=submit]{
+                padding:2px 0;
+                min-width:94px;
+                font-size:1.5rem;
+                border-radius:5px;
+            }
+            .body-inner_button input[type=submit]:hover{
+                background-color:var(--primary-color);
+                border-radius:5px;
+            }
+
     </style>
+
+    <script type="text/javascript">
+        function UploadFile(fileUpload) {
+            if (fileUpload.value != '') {
+                document.getElementById("<%=ibtn_AnhDaiDien.ClientID%>").click();
+            }
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="grid">
         <div class="chitietsanpham">
             <div class="chitietsanpham_anhSP">
-                <asp:Image ID="imageSP" runat="server" class="image-SP"/>
+                <div class="body-inner_ibtn" id="img_thutrangphuc" visible="false" runat="server">
+                        <div class="fileUpload-button" runat="server" id="fileUpload_button">
+                            <asp:ImageButton ID="ibtn_AnhDaiDien" ImageUrl="~/HinhAnh/Sprites_AnhDaiDien/anhdaidien1.jpg" OnClick="ibtn_AnhDaiDien_Click" runat="server"/>
+                            <asp:FileUpload CssClass="fileUpload" ID="fileUpload" runat="server" />
+                            <asp:Label ID="lb_linkanhtamthoi" runat="server" Hidden="hidden"></asp:Label>
+                        </div>
+                    </div>
+                <div>
+                    <asp:Image ID="imageSP" runat="server" class="image-SP" />
+                </div>
             </div>
 
             <!-- thông số sản phẩm(tên - giá ...) -->

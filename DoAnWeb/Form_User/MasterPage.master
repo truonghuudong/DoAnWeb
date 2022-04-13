@@ -225,11 +225,28 @@
                                     <ul class="header__notify-list">
                                         <li class="header__notify-item header__notify-item--viewed">
                                             <a href="" class="header__notify-link">
-                                                <img src="../../HinhAnh/cdf494d0b01e833facbf88e7dbf3df33_tn.png" alt="" class="header__notify-img">
+                                                <img src="../../HinhAnh/Sprites_SP/52.jpg" alt="" class="header__notify-img">
                                                 <div class="header__notify-info">
-                                                    <span class="header__notify-name">My pham Ohui chinh hang sfdafav sfsadfsadv fadsfasd sfas sfdav fsadaf </span>
-                                                    <span class="header__notify-descroition">Mo ta cua my phan Ohui chinh hang sdfadf sfsadfa sdfasdfsa sfadfasdffasdfa ấdfasdf</span>
+                                                    <span class="header__notify-name">Váy đen body </span>
+                                                    <span class="header__notify-descroition">
+                                                        Lịch lãm tôn lên vẻ ngoài của người mặc,Phom dáng hiện đại,  thích hợp đi làm, đi tiệc
+
+                                                    </span>
                                                 </div>
+                                                
+                                            </a>
+                                            
+
+                                             <a href="" class="header__notify-link">
+                                                <img src="../../HinhAnh/Sprites_SP/v7.png" alt="" class="header__notify-img">
+                                                <div class="header__notify-info">
+                                                    <span class="header__notify-name">Bộ vest nam công sở màu xanh </span>
+                                                    <span class="header__notify-descroition">                                          
+                                                        Phom dáng hiện đại, khỏe khoắn, cá tính thích hợp đi làm, đi chơi. 
+                                                        Chất liệu vải dày dặn, không bai xù, thấm hút mồ hôi tốt tạo cảm giác thoải mái khi vận động. 
+                                                    </span>
+                                                </div>
+                                                
                                             </a>
                                         </li>
 

@@ -28,8 +28,20 @@ public partial class ChiTietSanPham : System.Web.UI.Page
             ltMota.Text = table.Rows[0]["Mota"].ToString();
             DoDuLieuPaged();
 
+            if (table.Rows[0]["IdLoaiSP"].ToString().Equals("144") ||
+                table.Rows[0]["IdLoaiSP"].ToString().Equals("148") ||
+                table.Rows[0]["IdLoaiSP"].ToString().Equals("149") ||
+                table.Rows[0]["IdLoaiSP"].ToString().Equals("150") ||
+                table.Rows[0]["IdLoaiSP"].ToString().Equals("151"))
+            {
+                img_thutrangphuc.Visible = true;
+            }
+       
+
+
             rpt_size.DataSource = GetSizeSanPham(idSP);
             rpt_size.DataBind();
+            fileUpload.Attributes["onchange"] = "UploadFile(this)";
         }
     }
 
@@ -457,5 +469,37 @@ public partial class ChiTietSanPham : System.Web.UI.Page
         UserLogin user = new UserLogin();
         user = (UserLogin)Session["User"];
         return user.Id + "";
+    }
+
+    //lấy link hình ảnh
+    public string UploadHinhAnh()
+    {
+        if (fileUpload.HasFile)
+        {
+            string tenFileHinhAnhDuocUpload = DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + fileUpload.FileName;//DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") +
+            return tenFileHinhAnhDuocUpload;
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    //lưu hình ảnh
+    public void SaveHinhAnh()
+    {
+        string tenFileHinhAnhDuocUpload = DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + fileUpload.FileName;
+        string thuMucHinhAnh = Server.MapPath("~/HinhAnh/ThuTrangPhuc/");
+        string duongDanHinhAnhDuocLuu = thuMucHinhAnh + tenFileHinhAnhDuocUpload;
+        fileUpload.SaveAs(duongDanHinhAnhDuocLuu);
+    }
+
+
+    //ibtn_AnhDaiDien click
+    protected void ibtn_AnhDaiDien_Click(object sender, ImageClickEventArgs e)
+    {
+        SaveHinhAnh();
+        lb_linkanhtamthoi.Text = UploadHinhAnh();
+        ibtn_AnhDaiDien.ImageUrl = "~/HinhAnh/ThuTrangPhuc/" + UploadHinhAnh();
     }
 }

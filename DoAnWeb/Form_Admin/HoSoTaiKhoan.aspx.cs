@@ -20,7 +20,7 @@ public partial class Form_Admin_HoSoTaiKhoan : System.Web.UI.Page
             DataTable tb = GetThongTinTaiKhoan(idtaikhoan);
             lb_hoso_tendangnhap.Text = tb.Rows[0]["TenTaiKhoan"].ToString();
             lb_hoso_email.Text = tb.Rows[0]["Email"].ToString();
-            lb_hoso_sodienthoai.Text = tb.Rows[0]["SDT"].ToString();
+            txt_SoDienThoai.Text = tb.Rows[0]["SDT"].ToString();
             txt_tennguoidung.Text = tb.Rows[0]["TenNguoiDung"].ToString();
             img_hoso_hinhanh.ImageUrl = "~/HinhAnh/Sprites_AnhDaiDien/" + tb.Rows[0]["Anh"].ToString();
         }
@@ -101,7 +101,7 @@ public partial class Form_Admin_HoSoTaiKhoan : System.Web.UI.Page
 
     void CapNhatThongTinTaiKhoan()
     {
-        int ketqua = UpdateHoSoTaiKhoan(txt_tennguoidung.Text,lb_hoso_email.Text,lb_hoso_sodienthoai.Text,lb_thongbao_hoso_anhdanhmuc.Text);
+        int ketqua = UpdateHoSoTaiKhoan(txt_tennguoidung.Text,lb_hoso_email.Text,txt_SoDienThoai.Text,lb_thongbao_hoso_anhdanhmuc.Text);
         if (ketqua>0)
         {
             lb_thongbao_capnhat.Text = "Cập nhật thành công";

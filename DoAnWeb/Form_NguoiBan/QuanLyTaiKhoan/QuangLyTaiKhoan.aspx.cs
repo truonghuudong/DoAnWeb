@@ -20,7 +20,7 @@ public partial class Form_NguoiBan_QuanLyTaiKhoan_QuangLyTaiKhoan : System.Web.U
             DataTable tb = GetThongTinTaiKhoan(idtaikhoan);
             lb_hoso_tendangnhap.Text = tb.Rows[0]["TenTaiKhoan"].ToString();
             lb_hoso_email.Text = tb.Rows[0]["Email"].ToString();
-            lb_hoso_sodienthoai.Text = tb.Rows[0]["SDT"].ToString();
+            txt_SoDienThoai.Text = tb.Rows[0]["SDT"].ToString();
             txt_tennguoidung.Text = tb.Rows[0]["TenNguoiDung"].ToString();
             img_hoso_hinhanh.ImageUrl = "~/HinhAnh/Sprites_AnhDaiDien/" + tb.Rows[0]["Anh"].ToString();
             txt_DiaChi.Text = tb.Rows[0]["DiaChi"].ToString();
@@ -102,7 +102,7 @@ public partial class Form_NguoiBan_QuanLyTaiKhoan_QuangLyTaiKhoan : System.Web.U
 
     void CapNhatThongTinTaiKhoan()
     {
-        int ketqua = UpdateHoSoTaiKhoan(txt_tennguoidung.Text, lb_hoso_email.Text, lb_hoso_sodienthoai.Text, lb_thongbao_hoso_anhdanhmuc.Text,txt_DiaChi.Text);
+        int ketqua = UpdateHoSoTaiKhoan(txt_tennguoidung.Text, lb_hoso_email.Text, txt_SoDienThoai.Text, lb_thongbao_hoso_anhdanhmuc.Text,txt_DiaChi.Text);
         if (ketqua > 0)
         {
             lb_thongbao_capnhat.Text = "Cập nhật thành công";
