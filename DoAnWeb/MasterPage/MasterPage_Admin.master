@@ -201,7 +201,7 @@
             <div class="grid">
                 <div class="header_navbar">
                     <div class="header_title">
-                        <a href="../Form_Admin/QuanLyTaiKhoan.aspx">Admin</a>
+                        <a href="../Form_Admin/HoSoTaiKhoan.aspx">Admin</a>
                     </div>
                     <div class="header__taikhoan">
                         <a href="../Form_Admin/HoSoTaiKhoan.aspx" class="header__taikhoan-link">
@@ -239,6 +239,9 @@
                         </div>
                         <div id="danhmuc_quanlydanhmuc" runat="server" class="danhmuc-items">
                             <a class="danhmuc-items_link" href="../Form_Admin/QuanLyDanhMuc.aspx">Quản lý danh mục</a>
+                        </div>
+                        <div id="danhmuc_quanlythue" runat="server" class="danhmuc-items">
+                            <a class="danhmuc-items_link" href="../Form_Admin/QuanLyThue.aspx">Quản lý thuế</a>
                         </div>
                         <div id="danhmuc_baocaothongke" runat="server" class="danhmuc-items">
                             <a class="danhmuc-items_link" href="../Form_Admin/BaoCaoThongKe.aspx">Báo cáo thông kê</a>

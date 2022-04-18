@@ -45,6 +45,13 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
                     txt_MoTaSP.Text = sp.Rows[0]["MoTa"].ToString();
                     imgHinhAnh.ImageUrl = "~/HinhAnh/Sprites_SP/" + sp.Rows[0]["AnhSP"].ToString();
 
+
+                    ddl_thue_sua.DataSource = GetThue();
+                    ddl_thue_sua.DataTextField = "TenThue";
+                    ddl_thue_sua.DataValueField = "TyLeThue";
+                    ddl_thue_sua.DataBind();
+
+
                 }
                 else
                 {
@@ -67,9 +74,17 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
                 ddl_LoaiSP.DataValueField = "IdLoaiSP";
                 ddl_LoaiSP.DataBind();
 
+
+                ddl_thue_them.DataSource = GetThue();
+                ddl_thue_them.DataTextField = "TenThue";
+                ddl_thue_them.DataValueField = "TyLeThue";
+                ddl_thue_them.DataBind();
+
             }
 
+
             
+
         }
 
     }
@@ -79,6 +94,12 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
         SqlParameter[] p = { };
         return DB.ExecuteQuery("GetDanhMuc", p);
     }
+
+    DataTable GetThue() {
+        SqlParameter[] p = { };
+        return DB.ExecuteQuery("GetThue", p);
+    }
+
 
     private DataTable GetLoaiSP(int idDanhMuc)
     {
@@ -101,7 +122,7 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
         p[0].Value = idsp;
         return DB.ExecuteQuery("GetSanPhamTheoId", p);
     }
-    int InsertSanPham(string idtaikhoan, string idloaisp, string tensp, string anhsp, string giasp, string soluong, string mota)
+    int InsertSanPham(string idtaikhoan, string idloaisp, string tensp, string anhsp, string giasp, string soluong, string mota,string thue)
     {
         SqlParameter[] p =
         {
@@ -111,7 +132,8 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
             new SqlParameter("@anhsp", SqlDbType.NVarChar,200),
             new SqlParameter("@giasp", SqlDbType.Int),
             new SqlParameter("@soluong", SqlDbType.Int),
-            new SqlParameter("@mota", SqlDbType.NVarChar,1000)
+            new SqlParameter("@mota", SqlDbType.NVarChar,1000),
+            new SqlParameter("@thue", SqlDbType.NVarChar,10)
         };
         p[0].Value = idtaikhoan;
         p[1].Value = idloaisp;
@@ -120,11 +142,12 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
         p[4].Value = int.Parse(giasp);
         p[5].Value = int.Parse(soluong);
         p[6].Value = mota;
+        p[7].Value = thue;
         return DB.ExecuteNonQuery("SetSanPham", p);
     }
     
 
-    int UpdateSanPham(string idsp, string idloaisp, string tensp, string anhsp, string giasp, string soluong, string mota)
+    int UpdateSanPham(string idsp, string idloaisp, string tensp, string anhsp, string giasp, string soluong, string mota,string thue)
     {
         SqlParameter[] p =
         {
@@ -135,6 +158,7 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
             new SqlParameter("@giasp", SqlDbType.Int),
             new SqlParameter("@soluong", SqlDbType.Int),
             new SqlParameter("@mota", SqlDbType.NVarChar,1000),
+            new SqlParameter("@thue", SqlDbType.NVarChar,10)
         };
         p[0].Value = idsp;
         p[1].Value = idloaisp;
@@ -143,6 +167,7 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
         p[4].Value = giasp;
         p[5].Value = soluong;
         p[6].Value = mota;
+        p[7].Value = thue;
         return DB.ExecuteNonQuery("UpdateThongTinSPTheoId", p);
     }
 
@@ -156,19 +181,19 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
             {
                 int ketqua = UpdateSanPham(lb_IdSP.Text, ddl_LoaiSP_Sua.SelectedValue, txt_TenSP.Text,
                             lb_thongbao_danhmuc_anhdanhmuc.Text, txt_GiaSP.Text,
-                            txt_SoLuongSP.Text, txt_MoTaSP.Text);
+                            txt_SoLuongSP.Text, txt_MoTaSP.Text,ddl_thue_sua.SelectedValue);
                 if (ketqua > 0)
                 {
-                    lb_thongBao_Sua.Text = "Sửa thành công";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Sửa Thành Công')", true);
                 }
                 else
                 {
-                    lb_thongBao_Sua.Text = "Sửa không thành công";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Sửa Thất Bại')", true);
                 }
             }
             catch
             {
-                lb_thongBao_Sua.Text = "Lỗi không xác định";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Lỗi Không Xác Định')", true);
             }
         }
         else
@@ -221,19 +246,19 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
             try
             {
                 int ketqua = InsertSanPham(GetIdTaiKhoanTuSession().ToString(), ddl_LoaiSP.SelectedValue,
-                    txt_TenSP_Them.Text, lb_HinhAnh_Them.Text, txt_GiaSP_Them.Text, txt_SoLUongSP_Them.Text, txt_MoTa_Them.Text);
+                    txt_TenSP_Them.Text, lb_HinhAnh_Them.Text, txt_GiaSP_Them.Text, txt_SoLUongSP_Them.Text, txt_MoTa_Them.Text,ddl_thue_them.SelectedValue);
                 if (ketqua > 0)
                 {
-                    lb_thongBao_Them.Text = "Thêm thành công";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Thêm Thành Công')", true);
                 }
                 else
                 {
-                    lb_thongBao_Them.Text = "Thêm không thành công";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Thêm Thất Bại')", true);
                 }
             }
             catch
             {
-                lb_thongBao_Them.Text = "Lỗi không xác định";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Lỗi không xác định')", true);
 
             }
         }

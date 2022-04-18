@@ -83,7 +83,7 @@
                     <th style="width:120px">Số Lượng</th>
                     <th style="width:120px">Tổng Tiền</th>
                 </tr>
-                <asp:Repeater ID="rpt_ThongKe" runat="server">
+                <asp:Repeater ID="rpt_ThongKe" OnItemDataBound="rpt_ThongKe_ItemDataBound" runat="server">
                     <ItemTemplate>
                         <tr>
                             <td>
@@ -96,7 +96,8 @@
                                 <%#Eval("SoLuong")%>
                             </td>
                             <td>
-                                <%#Eval("TongDonGia")%>
+                                <%--<%#Eval("TongDonGia")%>--%>
+                                <asp:Label ID="lb_TongHoaDon" runat="server"></asp:Label>
                             </td>
                         </tr>
                     </ItemTemplate>

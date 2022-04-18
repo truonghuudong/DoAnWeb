@@ -174,6 +174,13 @@ public partial class MasterPage_MasterPage_Admin : System.Web.UI.MasterPage
                     {
                         danhmuc_baocaothongke.Attributes.Add("class", "danhmuc-item--active danhmuc-items");
                     }
+                    else
+                    {
+                        if (link.Contains("/Form_Admin/QuanLyThue.aspx"))
+                        {
+                            danhmuc_quanlythue.Attributes.Add("class", "danhmuc-item--active danhmuc-items");
+                        }
+                    }
                 }
             }
         }

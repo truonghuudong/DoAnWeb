@@ -25,14 +25,35 @@ public partial class Form_NguoiBan_BaoCaoThongKe_DoanhThu : System.Web.UI.Page
     {
         DoDuLieuPaged();
     }
+        int tongDoanhThu = 0;
+        int tongThue = 0;
+        int tongTienSauThue = 0;
 
     protected void rpt_ThongKe_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
+
         if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
         {
             //DropDownList ddlCountries = (e.Item.FindControl("ddlCountries") as DropDownList);
             CheckBox cb_tangthai = (e.Item.FindControl("cb_trangThai") as CheckBox);
+            Label lb_Ngay = (e.Item.FindControl("lb_Ngay") as Label);
+            Label lb_DoanhThu = (e.Item.FindControl("lb_DoanhThu") as Label);
+            Label lb_Thue = (e.Item.FindControl("lb_Thue") as Label);
+            Label lb_TienSauThue = (e.Item.FindControl("lb_TienSauThue") as Label);
 
+
+            DateTime ngay = DateTime.Parse((e.Item.DataItem as DataRowView)["Ngay"].ToString());
+            int doanhThu = int.Parse((e.Item.DataItem as DataRowView)["DoanhThu"].ToString());
+            int tienThue = int.Parse((e.Item.DataItem as DataRowView)["TienThue"].ToString());
+            int soTien = int.Parse((e.Item.DataItem as DataRowView)["SoTien"].ToString());
+            tongDoanhThu += doanhThu;
+            tongThue += tienThue;
+            tongTienSauThue += soTien;
+
+            lb_Ngay.Text = ngay.ToString("dd/MM/yyyy");
+            lb_DoanhThu.Text = String.Format("{0:0,0}", doanhThu);
+            lb_Thue.Text = String.Format("{0:0,0}", tienThue);
+            lb_TienSauThue.Text = String.Format("{0:0,0}", soTien);
 
             //lấy trậng thái hiện tại của loaisp
             string trangthai = (e.Item.DataItem as DataRowView)["TrangThai"].ToString();
@@ -47,6 +68,9 @@ public partial class Form_NguoiBan_BaoCaoThongKe_DoanhThu : System.Web.UI.Page
 
         }
 
+        lb_TongDoanhThu.Text = String.Format("{0:0,0}", tongDoanhThu);
+        lb_TongThue.Text = String.Format("{0:0,0}", tongThue);
+        lb_TongTienSauThue.Text = String.Format("{0:0,0}", tongTienSauThue);
     }
 
     DataTable GetDoanhThuTheoNgay(string IdTaiKhoan,DateTime NgayBatDau, DateTime NgayKetThuc)

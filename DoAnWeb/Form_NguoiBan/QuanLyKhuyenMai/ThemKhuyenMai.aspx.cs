@@ -260,4 +260,10 @@ public partial class Form_NguoiBan_QuanLyKhuyenMai_ThemKhuyenMai : System.Web.UI
             UpdateTrangThaiKM(idKhuyenMai, "0");
         }
     }
+
+    protected void btn_ThemSP_KM_Click(object sender, EventArgs e)
+    {
+        string idKhuyenMai = (sender as Button).CommandArgument;
+        Response.Redirect("XemSanPhamKM.aspx?IdKM=" + idKhuyenMai);
+    }
 }

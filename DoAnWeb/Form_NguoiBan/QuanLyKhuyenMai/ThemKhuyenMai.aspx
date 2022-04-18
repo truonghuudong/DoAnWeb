@@ -319,6 +319,7 @@
                                 </td>
                                 <td>
                                     <asp:Button ID="bnt_ThemSP_KM" CommandArgument='<%#Eval("IdKhuyenMai")%>' runat="server" OnClick="bnt_ThemSP_KM_Click" Text="Thêm SP KM" />
+                                    <asp:Button ID="btn_ThemSP_KM" CommandArgument='<%#Eval("IdKhuyenMai")%>' runat="server" Text="Xem" OnClick="btn_ThemSP_KM_Click" />
                                 </td>
                                 <td>
                                     <asp:Button CommandArgument='<%#Eval("IdKhuyenMai")%>' OnClick="btn_sua_Click" ID="btn_sua" runat="server" Text="Sửa" />

@@ -73,8 +73,10 @@ public partial class Form_NguoiBan_BaoCaoThongKe_MasterPage_BaoCaoThongKe : Syst
             UserLogin user = new UserLogin();
             user = (UserLogin)Session["User"];
             string idTaiKhoan = user.Id + "";
-            lb_daThanhToan.Text = GetTongTienDaThanhToan(idTaiKhoan).Rows[0]["TongTien"].ToString();
-            lb_seThanhToan.Text = GetTongTienSeThanhToan(idTaiKhoan).Rows[0]["TongTien"].ToString();
+            int tongTienDaThanhToan = int.Parse(GetTongTienDaThanhToan(idTaiKhoan).Rows[0]["TongTien"].ToString());
+            int tongTienSeThanhToan = int.Parse(GetTongTienSeThanhToan(idTaiKhoan).Rows[0]["TongTien"].ToString());
+            lb_daThanhToan.Text = String.Format("{0:0,0}", tongTienDaThanhToan);
+            lb_seThanhToan.Text = String.Format("{0:0,0}", tongTienSeThanhToan);
         }
         catch
         {

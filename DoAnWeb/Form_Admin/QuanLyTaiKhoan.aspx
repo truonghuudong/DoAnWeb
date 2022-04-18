@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_Admin.master" AutoEventWireup="true" CodeFile="QuanLyTaiKhoan.aspx.cs" Inherits="Form_Admin_TrangChuAdmin" %>
-<title>Quản lý tài khoản</title>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Quản lý tài khoản</title>
     <style>
         .nguoimua-title{
             font-size:1.7rem;

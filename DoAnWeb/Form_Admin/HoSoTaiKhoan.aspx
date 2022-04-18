@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_Admin.master" AutoEventWireup="true" CodeFile="HoSoTaiKhoan.aspx.cs" Inherits="Form_Admin_HoSoTaiKhoan" %>
-<title>Hồ sơ tài khoản</title>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Hồ sơ tài khoản</title>
     <style>
         .title-hosotaikhoan{
             font-size:2rem;

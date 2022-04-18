@@ -7,7 +7,6 @@
         .BaoCao-title{
             font-size:1.7rem;
             background-color:var(--while-color);
-            padding:15px 5px;
             font-weight:600;
             border-radius:5px;
         }
@@ -135,6 +134,17 @@
                 background-color: lightgrey;
             }
 
+
+
+            .btn_ThongKe{
+                padding:10px;
+                background-color:var(--while-color);
+                border:none;
+                border-radius:3px;
+            }
+            .btn_ThongKe:hover{
+                background-color:var(--primary-color);
+            }
     </style>
 
     <%--<script type="text/javascript">
@@ -158,7 +168,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="BaoCaoThongKe">
             <div class="BaoCao-title"> 
-                Thống Kê
+                <asp:Button CssClass="btn_ThongKe" OnClick="btn_ThongKeTheoNgay_Click" ID="btn_ThongKeTheoNgay" runat="server" Text="Thống Kê Theo Ngày" />
+                <asp:Button CssClass="btn_ThongKe" OnClick="btn_ThongKeTheoThang_Click" ID="btn_ThongKeTheoThang" runat="server" Text="Thống Kê Theo Tháng" />
             </div>
             <%--<div class="BaoCao-girdview">
                 <asp:gridview runat="server" ID="gv_BaoCao" AllowSorting="True" Width="100%" AutoGenerateColumns="False">
@@ -169,6 +180,9 @@
                     </Columns>
                 </asp:gridview>
             </div>--%>
+
+        <%-- thống kê theo ngày --%>
+        <div runat="server" id="formthongKeTheoNgay">
             <div class="baocao-thongke">
                 <div class="thongke_tylethanhtoan">
                     Tỷ lệ thanh toán:
@@ -216,7 +230,6 @@
                 </div>
 
             </div>
-
             <div class="thongke">
                 <table class="thongke-danhsach">
                     <tr>
@@ -237,10 +250,10 @@
                                     <%#Eval("TenNguoiBan")%>
                                 </td>
                                 <td>
-                                    <%#Eval("DoanhThu")%>
+                                    <asp:Label ID="lb_DoanhThu" runat="server"></asp:Label>
                                 </td>
                                 <td>
-                                    <%#Eval("TongThue")%>
+                                    <asp:Label ID="lb_Thue" runat="server" ></asp:Label>
                                 </td>
                                 <td>
                                     <asp:Label ID="lb_DoanhThuConLai" runat="server" ></asp:Label>
@@ -256,16 +269,81 @@
                         <td>
                             <asp:Label Font-Bold="true" ID="lb_tongDanhThuWebSite" runat="server" Text="0"></asp:Label>
                         </td>
-
                     </tr>
-
-
                 </table>
-
-
             </div>
-                           
+        </div>
+        <%-- thống kê theo ngày --%>
+        
+
+        <%-- thống kê theo tháng --%>
+        <div runat="server" visible="false" id="form_thongKeTheoThang">
+            <div class="baocao-thongke">
+                <div class="thongke_ngay">
+                    <div class="txtngay">
+                        Năm
+                        <div class="txtngay_input">
+                            <asp:DropDownList style="margin-left:5px;" ID="ddl_nam" runat="server"></asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="txtngay">
+                        Tháng
+                        <asp:DropDownList style="margin-left:5px;" ID="ddl_thang" runat="server"></asp:DropDownList>
+                    </div>
+                </div>
+            </div>
+
+            <div class="thongke">
+                <table class="thongke-danhsach">
+                    <tr>
+                        <th style="min-width:100px;">ID</th>
+                        <th style="min-width:130px;">Nhà Cung Cấp</th>
+                        <th style="min-width:130px;">Số Điện Thoại</th>
+                        <th style="min-width:130px;">Tổng Doanh Thu</th>
+                        <th style="min-width:130px;">Thuế</th>
+                        <th>Doanh Thu Sau Thuế</th>
+                        <th>Doanh Thu Của WebSite</th>
+                        <th>Trạng Thái</th>
+                    </tr>
+                    <asp:Repeater ID="rpt_thongKeTheoThang" runat="server">
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <%#Eval("IdTaiKhoan")%>
+                                </td>
+                                <td>
+                                    <%#Eval("TenNguoiBan")%>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lb_DoanhThu" runat="server"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lb_Thue" runat="server" ></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lb_DoanhThuConLai" runat="server" ></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lb_DoanhThuWebSite" runat="server" ></asp:Label>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <tr>
+                        <td style="text-align:right; font-weight:600" colspan="6">Tổng cộng</td>
+                        <td >
+                            <asp:Label Font-Bold="true" ID="lb_TongDoanhThuCuaThang" runat="server" Text="0"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <%-- thống kê theo tháng --%>
+
     </div>
+
+
+
 
 </asp:Content>
 

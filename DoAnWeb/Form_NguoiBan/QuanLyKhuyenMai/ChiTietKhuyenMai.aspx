@@ -100,6 +100,15 @@
                 .btn_page_nextprev:hover{
                     background-color:var(--primary-color);
                 }
+                .btn_page_numberpage{
+                    width:50px;
+                    text-align:center;
+                    min-width:80px;
+                    min-height:30px;
+                    max-height:30px;
+                    font-weight:bold
+                }
+
                 /*phan trang*/
 
     </style>
@@ -185,7 +194,7 @@
                 <asp:Button cssclass="btn_page_nextprev"  ID="btn_Prev" runat="server" Text="<" OnClick="btn_Prev_Click"/>
             </div>
             <div>
-                <asp:TextBox style="width:50px;text-align:center;min-width:80px;min-height:30px;max-height:30px;font-weight:bold" ID="txt_STTPage" runat="server" Enabled="false"></asp:TextBox>
+                <asp:TextBox cssclass="btn_page_numberpage" ID="txt_STTPage" runat="server" Enabled="false"></asp:TextBox>
             </div>
             <div>
                 <asp:Button cssclass="btn_page_nextprev"  ID="btn_Next" runat="server" Text=">"  OnClick="btn_Next_Click"/>

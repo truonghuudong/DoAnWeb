@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_Admin.master" AutoEventWireup="true" CodeFile="QuanLyDanhMuc.aspx.cs" Inherits="Form_Admin_QuanLyDanhMuc" %>
-<title>Danh mục</title>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Danh mục</title>
     <style>
         .title_danhmuc{
             padding:10px;
@@ -211,8 +211,8 @@
         }
 
 
-        /*phan trang*/
-                .phantrang{
+            /*phan trang*/
+            .phantrang{
                     background-color:var(--ưhile-color);
                     display:flex;
                     text-align:center;
@@ -224,9 +224,11 @@
                 .btn_page{
                     margin: 0 5px;
                     text-align:center;
-                    min-width:80px;
-                    min-height:29px;
-                    max-height:29px;
+                    min-width:45px;
+                    min-height:25px;
+                    max-height:25px;
+                    font-weight:bold;
+                    font-size:1.7rem;
                 }
                 .btn_page input[type=image]{
                     color:var(--text-color);
@@ -238,14 +240,23 @@
                     margin: 0 5px;
                     align-items:center;
                     text-align:center;
-                    min-width:80px;
+                    min-width:45px;
                     min-height:25px;
-                    font-size:2rem;
+                    font-size:1.7rem;
                     font-weight:bold;
                 }
                 .btn_page_nextprev:hover{
                     background-color:var(--primary-color);
                 }
+                .btn_page_numberpage{
+                    width:50px;
+                    text-align:center;
+                    min-width:80px;
+                    min-height:30px;
+                    max-height:30px;
+                    font-weight:bold
+                }
+
                 /*phan trang*/
 
     </style>
@@ -355,19 +366,19 @@
 
         <div class="phantrang">
             <div>
-                <asp:Button cssclass="btn_page" ID="btn_TrangDau" runat="server" Text="Trang Đầu" OnClick="btn_TrangDau_Click"/>
+                <asp:Button cssclass="btn_page" ID="btn_TrangDau" runat="server" Text="<<" OnClick="btn_TrangDau_Click"/>
             </div>
             <div>
                 <asp:Button cssclass="btn_page_nextprev"  ID="btn_Prev" runat="server" Text="<" OnClick="btn_Prev_Click"/>
             </div>
             <div>
-                <asp:TextBox style="width:50px;text-align:center;min-width:80px;min-height:30px;max-height:30px;" ID="txt_STTPage" runat="server" Enabled="false"></asp:TextBox>
+                <asp:TextBox cssclass="btn_page_numberpage" ID="txt_STTPage" runat="server" Enabled="false"></asp:TextBox>
             </div>
             <div>
                 <asp:Button cssclass="btn_page_nextprev"  ID="btn_Next" runat="server" Text=">"  OnClick="btn_Next_Click"/>
             </div>
             <div>
-                <asp:Button cssclass="btn_page" ID="btn_TrangCuoi" runat="server" Text="Trang Cuối" OnClick="btn_TrangCuoi_Click"/>
+                <asp:Button cssclass="btn_page" ID="btn_TrangCuoi" runat="server" Text=">>" OnClick="btn_TrangCuoi_Click"/>
             </div>
         </div>
 

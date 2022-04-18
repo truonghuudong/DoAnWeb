@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_Admin.master" AutoEventWireup="true" CodeFile="QuanLyChiTietDanhMuc.aspx.cs" Inherits="Form_Admin_QuanLyChiTietDanhMuc" %>
-<title>Chi tiết danh mục</title>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Chi tiết danh mục</title>
     <style>
         .chitietdanhmuc-danhsach{
             border-collapse:collapse;
@@ -137,7 +137,7 @@
                             <asp:Label ID="lb_tenLoaiSP" runat="server" Text='<%#Eval("TenLoaiSP")%>'></asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList AutoPostBack="true" OnSelectedIndexChanged="ddl_trangthai_ctdm_SelectedIndexChanged"  CssClass="DropDownList"  ID="ddl_trangthai_ctdm" runat="server"></asp:DropDownList>
+                            <asp:DropDownList CssClass="DropDownList" ID="ddl_trangthai_ctdm" AutoPostBack="true" runat="server"></asp:DropDownList>
                         </td>
                         <td  style="text-align:center">
                             <%-- <%#Eval("IdLoaiSP")%> --%>

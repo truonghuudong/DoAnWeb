@@ -43,4 +43,16 @@ public partial class Form_NguoiBan_BaoCaoThongKe_KhachHangMuaNhieuNhat : System.
         }
     }
 
+
+    protected void rpt_ThongKe_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            int tongHoaDon = int.Parse((e.Item.DataItem as DataRowView)["TongDonGia"].ToString());
+
+            Label lb_TongHoaDon = (e.Item.FindControl("lb_TongHoaDon") as Label);
+            lb_TongHoaDon.Text = String.Format("{0:0,0}", tongHoaDon);
+
+        }
+    }
 }

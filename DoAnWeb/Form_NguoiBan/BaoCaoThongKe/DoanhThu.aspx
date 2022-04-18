@@ -152,7 +152,8 @@
                     width:50px;
                     height:50px;
                 }
-                .phantrang{
+                /*phan trang*/
+            .phantrang{
                     background-color:var(--ưhile-color);
                     display:flex;
                     text-align:center;
@@ -164,9 +165,11 @@
                 .btn_page{
                     margin: 0 5px;
                     text-align:center;
-                    min-width:80px;
-                    min-height:29px;
-                    max-height:29px;
+                    min-width:45px;
+                    min-height:25px;
+                    max-height:25px;
+                    font-weight:bold;
+                    font-size:1.7rem;
                 }
                 .btn_page input[type=image]{
                     color:var(--text-color);
@@ -178,14 +181,24 @@
                     margin: 0 5px;
                     align-items:center;
                     text-align:center;
-                    min-width:80px;
+                    min-width:45px;
                     min-height:25px;
-                    font-size:2rem;
+                    font-size:1.7rem;
                     font-weight:bold;
                 }
                 .btn_page_nextprev:hover{
                     background-color:var(--primary-color);
                 }
+                .btn_page_numberpage{
+                    width:50px;
+                    text-align:center;
+                    min-width:80px;
+                    min-height:30px;
+                    max-height:30px;
+                    font-weight:bold
+                }
+
+                /*phan trang*/
     </style>
 
 
@@ -240,23 +253,35 @@
                             <tr>
                                 <td><%#Eval("IdHoaDon")%></td>
                                 <td>
-                                    <%#Eval("Ngay")%>
+                                    <asp:Label ID="lb_Ngay" runat="server" ></asp:Label>
                                 </td>
                                 <td>
                                     <asp:CheckBox Enabled="false" ID="cb_trangThai" runat="server" />
                                 </td>
                                 <td>
-                                    <%#Eval("DoanhThu")%>
+                                    <asp:Label ID="lb_DoanhThu" runat="server" ></asp:Label>
                                 </td>
                                 <td>
-                                    <%#Eval("TienThue")%>
+                                    <asp:Label ID="lb_Thue" runat="server"></asp:Label>
                                 </td>
                                 <td>
-                                    <%#Eval("SoTien")%>
+                                    <asp:Label ID="lb_TienSauThue" runat="server"></asp:Label>
                                 </td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
+                    <tr>
+                        <td style="text-align:right" colspan="3">Tổng Cộng</td>
+                        <td>
+                            <asp:Label ID="lb_TongDoanhThu" runat="server"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_TongThue" runat="server" ></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="lb_TongTienSauThue" runat="server"></asp:Label>
+                        </td>
+                    </tr>
                 </table>
             </div>
 
@@ -266,19 +291,19 @@
 
         <div class="phantrang">
             <div>
-                <asp:Button cssclass="btn_page" ID="btn_TrangDau" runat="server" Text="Trang Đầu" OnClick="btn_TrangDau_Click"/>
+                <asp:Button cssclass="btn_page" ID="btn_TrangDau" runat="server" Text="<<" OnClick="btn_TrangDau_Click"/>
             </div>
             <div>
                 <asp:Button cssclass="btn_page_nextprev"  ID="btn_Prev" runat="server" Text="<" OnClick="btn_Prev_Click"/>
             </div>
             <div>
-                <asp:TextBox style="width:50px;text-align:center;min-width:80px;min-height:30px;max-height:30px;" ID="txt_STTPage" runat="server" Enabled="false"></asp:TextBox>
+                <asp:TextBox cssclass="btn_page_numberpage" ID="txt_STTPage" runat="server" Enabled="false"></asp:TextBox>
             </div>
             <div>
                 <asp:Button cssclass="btn_page_nextprev"  ID="btn_Next" runat="server" Text=">"  OnClick="btn_Next_Click"/>
             </div>
             <div>
-                <asp:Button cssclass="btn_page" ID="btn_TrangCuoi" runat="server" Text="Trang Cuối" OnClick="btn_TrangCuoi_Click"/>
+                <asp:Button cssclass="btn_page" ID="btn_TrangCuoi" runat="server" Text=">>" OnClick="btn_TrangCuoi_Click"/>
             </div>
         </div>
 

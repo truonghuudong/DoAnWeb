@@ -142,6 +142,14 @@
                     <asp:TextBox TextMode="Number" MaxLength="0" class="soLuongSP" ID="txt_SoLuongSP" runat="server"></asp:TextBox>
                 </div>
                 <div class="chitietsanpham-items">
+                    <div class="chitietsanpham-items_title">
+                        Thuế:
+                    </div>
+                    <asp:DropDownList ID="ddl_thue_sua"  runat="server"></asp:DropDownList>
+                </div>
+                
+                
+                <div class="chitietsanpham-items">
                     <div class="danhmuc_ibtn">
                         <asp:Image ID="imgHinhAnh" runat="server" CssClass="ibtn_Anh" />
                         <div></div>
@@ -217,6 +225,14 @@
                     </div>
                     <asp:TextBox TextMode="Number" MaxLength="0" class="soLuongSP" ID="txt_SoLUongSP_Them" runat="server"></asp:TextBox>
                 </div>
+                <div class="chitietsanpham-items">
+                    <div class="chitietsanpham-items_title">
+                        Thuế:
+                    </div>
+                    <asp:DropDownList ID="ddl_thue_them" runat="server"></asp:DropDownList>
+                </div>
+
+
                 <div class="chitietsanpham-items"> 
                     <div class="danhmuc_ibtn">
                         <asp:Image ID="img_HinhAnh_Them" runat="server" CssClass="ibtn_Anh" />
@@ -239,7 +255,7 @@
                 </div>
                 <div class="chitietsanpham-items">
                     <div class="chitietsanpham-items_title">
-                        Mô tả
+                        Mô tả:
                     </div>
                     <asp:TextBox ID="txt_MoTa_Them" class="moTaSP" TextMode="MultiLine" runat="server"></asp:TextBox>
                 </div>
