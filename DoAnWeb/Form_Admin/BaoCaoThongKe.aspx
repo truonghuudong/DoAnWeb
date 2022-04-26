@@ -288,7 +288,7 @@
                     </div>
                     <div class="txtngay">
                         Tháng
-                        <asp:DropDownList style="margin-left:5px;" ID="ddl_thang" runat="server"></asp:DropDownList>
+                        <asp:DropDownList style="margin-left:5px;" AutoPostBack="true" OnSelectedIndexChanged="ddl_thang_SelectedIndexChanged" ID="ddl_thang" runat="server"></asp:DropDownList>
                     </div>
                 </div>
             </div>
@@ -305,14 +305,18 @@
                         <th>Doanh Thu Của WebSite</th>
                         <th>Trạng Thái</th>
                     </tr>
-                    <asp:Repeater ID="rpt_thongKeTheoThang" runat="server">
+                    <asp:Repeater ID="rpt_thongKeTheoThang" OnItemDataBound="rpt_thongKeTheoThang_ItemDataBound" runat="server">
                         <ItemTemplate>
                             <tr>
                                 <td>
+                                    <asp:Label ID="lb_idthongke" Visible="false" runat="server" Text='<%#Eval("IdThongKe")%>'></asp:Label>
                                     <%#Eval("IdTaiKhoan")%>
                                 </td>
                                 <td>
-                                    <%#Eval("TenNguoiBan")%>
+                                    <%#Eval("TenTaiKhoan")%>
+                                </td>
+                                <td>
+                                    <%#Eval("SDT")%>
                                 </td>
                                 <td>
                                     <asp:Label ID="lb_DoanhThu" runat="server"></asp:Label>
@@ -325,6 +329,9 @@
                                 </td>
                                 <td>
                                     <asp:Label ID="lb_DoanhThuWebSite" runat="server" ></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:CheckBox ID="cb_TrangThai" AutoPostBack="true" OnCheckedChanged="cb_TrangThai_CheckedChanged" runat="server" />
                                 </td>
                             </tr>
                         </ItemTemplate>

@@ -120,7 +120,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             return link;
         }catch
         { }
-        return null;
+        return "AnhDaiDien.jpg";
     }
 
 

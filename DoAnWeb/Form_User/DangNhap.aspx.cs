@@ -95,12 +95,12 @@ public partial class DangNhap : System.Web.UI.Page
                     }
                     else
                     {
-                        Response.Redirect("TrangChu.aspx");
+                        Response.Redirect("~/Form_User/TrangChu.aspx");
                     }
                 }
                 catch
                 {
-                    Response.Redirect("TrangChu.aspx");
+                    Response.Redirect("~/Form_User/TrangChu.aspx");
                 }
 
                 //pnlFaceBookUser.Visible = true;
@@ -209,61 +209,75 @@ public partial class DangNhap : System.Web.UI.Page
                 int kqDangNhap = dangNhap(inputTenDN.Text, inputPassword.Text);
                 if (kqDangNhap != -1)
                 {
-
-
-                    //add session
-                    var userSession = new UserLogin();
-                    userSession.Id = kqDangNhap;
-                    userSession.UserName = inputTenDN.Text;
-                    userSession.PassWord = inputPassword.Text;
-                    userSession.Quyen = quyenTaiKhoan(kqDangNhap) + "";
-                    Session.Add("User", userSession);
-
-                    //add cookies
-                    if (ckRememberUser.Checked == true)
+                    if (kqDangNhap == -2)
                     {
-                        HttpCookie userInfo = new HttpCookie("userInfo");
-                        userInfo["userName"] = inputTenDN.Text;
-                        userInfo["userPassword"] = inputPassword.Text;
-                        //userInfo.Expires.Add(new TimeSpan(0, 1, 0));
-                        Response.Cookies.Add(userInfo);
-                    }
-
-                    if (quyenTaiKhoan(kqDangNhap) == 1)
-                    {
-                        Response.Redirect("~/Form_Admin/HoSoTaiKhoan.aspx");
+                        lbNotify_DangNhap.Text = "Tài Khoản Chưa Được Kích Hoạt";
                     }
                     else
                     {
-                        if (quyenTaiKhoan(kqDangNhap) == 2)
-                        {
-                            try
-                            {
-                                object refUrl = ViewState["RefUrl"];
-                                string link = (string)refUrl;
-                                if (link != null && !link.Contains("/Form_User/DangKy.aspx")
-                                    && !link.Contains("/Form_Admin/") &&
-                                    !link.Contains("/Form_NguoiBan/") &&
-                                    !link.Contains("Form_User/DangNhap.aspx"))
-                                {
-                                    Response.Redirect((string)link);
-                                    //lbNotify_DangNhap.Text = (string)refUrl;
-                                }
-                                else
-                                {
-                                    Response.Redirect("TrangChu.aspx");
-                                }
-                            }
-                            catch
-                            {
+                        //add session
+                        var userSession = new UserLogin();
+                        userSession.Id = kqDangNhap;
+                        userSession.UserName = inputTenDN.Text;
+                        userSession.PassWord = inputPassword.Text;
+                        userSession.Quyen = quyenTaiKhoan(kqDangNhap) + "";
+                        Session.Add("User", userSession);
 
-                            }
+                        //add cookies
+                        if (ckRememberUser.Checked == true)
+                        {
+                            HttpCookie userInfo = new HttpCookie("userInfo");
+                            userInfo["userName"] = inputTenDN.Text;
+                            userInfo["userPassword"] = inputPassword.Text;
+                            //userInfo.Expires.Add(new TimeSpan(0, 1, 0));
+                            Response.Cookies.Add(userInfo);
+                        }
+
+                        if (quyenTaiKhoan(kqDangNhap) == -1)
+                        {
+                            lbNotify_DangNhap.Text = "Đăng Nhập Không Thành Công";
                         }
                         else
                         {
-                            Response.Redirect("~/Form_NguoiBan/BaoCaoThongKe/ThongKeSanPhamBanChay.aspx");
+                            if (quyenTaiKhoan(kqDangNhap) == 1)
+                            {
+                                Response.Redirect("~/Form_Admin/HoSoTaiKhoan.aspx");
+                            }
+                            else
+                            {
+                                if (quyenTaiKhoan(kqDangNhap) == 2)
+                                {
+                                    try
+                                    {
+                                        object refUrl = ViewState["RefUrl"];
+                                        string link = (string)refUrl;
+                                        if (link != null && !link.Contains("/Form_User/DangKy.aspx")
+                                            && !link.Contains("/Form_Admin/") &&
+                                            !link.Contains("/Form_NguoiBan/") &&
+                                            !link.Contains("Form_User/DangNhap.aspx"))
+                                        {
+                                            Response.Redirect((string)link);
+                                            //lbNotify_DangNhap.Text = (string)refUrl;
+                                        }
+                                        else
+                                        {
+                                            Response.Redirect("~/Form_User/TrangChu.aspx");
+                                        }
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                                }
+                                else
+                                {
+                                    Response.Redirect("~/Form_NguoiBan/QuanLyTaiKhoan/QuangLyTaiKhoan.aspx");
+                                }
+                            }
                         }
                     }
+
+                    
                 }
                 else
                 {
@@ -284,16 +298,24 @@ public partial class DangNhap : System.Web.UI.Page
 
     public int quyenTaiKhoan(int Id)
     {
-        int quyen;
-        SqlParameter[] p =
+        try
         {
+            int quyen;
+            SqlParameter[] p =
+            {
             new SqlParameter("@Id",System.Data.SqlDbType.Int),
-        };
-        p[0].Value = Id;
-        DataTable table = DB.ExecuteQuery("AnhDaiDien", p);
+            };
+            p[0].Value = Id;
+            DataTable table = DB.ExecuteQuery("AnhDaiDien", p);
 
-        quyen = int.Parse(table.Rows[0][5].ToString());
-        return quyen;
+            quyen = int.Parse(table.Rows[0][5].ToString());
+            return quyen;
+        }
+        catch
+        {
+
+        }
+        return -1;
     }
 
 

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_NguoiBan.master" AutoEventWireup="true" CodeFile="DoiMatKhau.aspx.cs" Inherits="Form_NguoiBan_QuanLyTaiKhoan_DoiMatKhau" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Đổi mật khẩu</title>
     <style>
         .title_doimatkhau{
             font-size:2rem;

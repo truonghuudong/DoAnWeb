@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_NguoiBan.master" AutoEventWireup="true" CodeFile="QuangLyTaiKhoan.aspx.cs" Inherits="Form_NguoiBan_QuanLyTaiKhoan_QuangLyTaiKhoan" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Hồ sơ tài khoản</title>
     <style>
         .title-hosotaikhoan{
             font-size:2rem;
@@ -164,7 +165,7 @@
                         Tên Shop
                     </div>
                     <div class="input-thongtin">
-                        <asp:TextBox CssClass="txt_tennguoidung" ID="txt_tennguoidung" runat="server"></asp:TextBox>
+                        <asp:TextBox CssClass="txt_tennguoidung" AutoPostBack="true" ID="txt_tennguoidung" runat="server"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row-label">
@@ -181,7 +182,7 @@
                     </div>
                     <div class="input-thongtin">
                         <%--<asp:Label ID="lb_hoso_sodienthoai" runat="server" Text="08125436259"></asp:Label>--%>
-                        <asp:TextBox CssClass="txt_tennguoidung" ID="txt_SoDienThoai" runat="server"></asp:TextBox>
+                        <asp:TextBox CssClass="txt_tennguoidung" AutoPostBack="true" ID="txt_SoDienThoai" runat="server"></asp:TextBox>
                     </div>
                 </div>
                 <div class="row-label">

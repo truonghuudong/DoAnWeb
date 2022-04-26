@@ -246,7 +246,26 @@ public partial class ChiTietSanPham : System.Web.UI.Page
         }
         else
         {
-            form_muangay.Visible = true;
+            int ketQuaKiemTra=0;
+            try
+            {
+                ketQuaKiemTra = int.Parse(txt_SoLuongSPMua.Text);
+            }
+            catch
+            {
+
+            }
+            if (ketQuaKiemTra>0 && lb_Size.Text !="")
+            {
+                form_muangay.Visible = true;
+            }
+            else
+            {
+                lb_thongbao.Visible = true;
+                lb_thongbao.Text = "Vui lòng chọn đầy đủ thông tin";
+            }
+
+
         }
     }
 

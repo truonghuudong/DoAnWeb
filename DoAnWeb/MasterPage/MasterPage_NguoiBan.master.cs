@@ -95,16 +95,24 @@ public partial class MasterPage_MasterPage_NguoiMua : System.Web.UI.MasterPage
     //lay link anh dai dien
     string LinkAnhDaiDien(int Id)
     {
-        string link = null;
-        SqlParameter[] p =
+        try
         {
+            string link = null;
+            SqlParameter[] p =
+            {
             new SqlParameter("@Id",System.Data.SqlDbType.Int),
-        };
-        p[0].Value = Id;
-        DataTable table = DB.ExecuteQuery("AnhDaiDien", p);
+            };
+            p[0].Value = Id;
+            DataTable table = DB.ExecuteQuery("AnhDaiDien", p);
 
-        link = table.Rows[0][3].ToString();
-        return link;
+            link = table.Rows[0][3].ToString();
+            return link;
+        }
+        catch
+        {
+
+        }
+        return "AnhDaiDien.jpg";
     }
 
     void KiemTraQuyen(int quyen)

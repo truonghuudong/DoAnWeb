@@ -123,7 +123,7 @@
                         <%#Eval("SDTNguoiNhan")%>
                     </td>
                     <td>
-                        <%#Eval("Ngay")%>
+                        <asp:Label ID="lb_Ngay" runat="server"></asp:Label>
                     </td>
                     <td>
                         <asp:DropDownList AutoPostBack="true" OnSelectedIndexChanged="ddl_TrangThai_SelectedIndexChanged" CssClass="dropdownlist" ID="ddl_TrangThai" runat="server"></asp:DropDownList>

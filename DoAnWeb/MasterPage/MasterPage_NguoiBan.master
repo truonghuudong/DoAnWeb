@@ -227,7 +227,7 @@
             <div class="grid">
                 <div class="header_navbar">
                     <div class="header_title">
-                        <a href="../BaoCaoThongKe/DoanhThu.aspx">Nguời Bán</a>
+                        <a href="../QuanLyTaiKhoan/QuangLyTaiKhoan.aspx">Nguời Bán</a>
                     </div>
                     <div class="header__taikhoan">
                         <a href="../QuanLyTaiKhoan/QuangLyTaiKhoan.aspx" class="header__taikhoan-link">

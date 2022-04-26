@@ -74,10 +74,16 @@ public partial class Form_User_HoSoTaiKhoan_DonMua : System.Web.UI.Page
         {
             Repeater rpt_CTHD = e.Item.FindControl("rpt_ChiTietHoaDon") as Repeater;
 
+
+
             string idhoadon = (e.Item.FindControl("lb_IdHoaDon") as Label).Text;
+            DateTime ngay = DateTime.Parse((e.Item.DataItem as DataRowView)["Ngay"].ToString()); 
+
 
             DropDownList ddl_TrangThai = e.Item.FindControl("ddl_TrangThai") as DropDownList;
+            Label lb_ngay = e.Item.FindControl("lb_Ngay") as Label;
 
+            lb_ngay.Text = ngay.ToString("dd/MM/yyyy");
             ddl_TrangThai.DataSource = dataTrangThai();
             ddl_TrangThai.DataTextField = "TrangThai";
             ddl_TrangThai.DataValueField = "Id";
