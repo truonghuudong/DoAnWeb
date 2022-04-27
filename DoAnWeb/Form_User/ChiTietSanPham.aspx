@@ -150,7 +150,7 @@
                 }
             .fileUpload-button{
                 /*width:120px;*/
-                margin-left:150px;
+                margin-left:138px;
                 position: relative;
                 width:120px;
                 overflow:hidden;

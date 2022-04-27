@@ -285,6 +285,7 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
 
                 if (ketqua > 0)
                 {
+                    XoaThongTinThem();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Thêm Thành Công')", true);
                 }
                 else
@@ -420,4 +421,22 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
         }
 
     }
+
+    void XoaThongTinThem()
+    {
+        txt_TenSP_Them.Text = "";
+        txt_SoLUongSP_Them.Text = "";
+        img_HinhAnh_Them.ImageUrl = "";
+        txt_GiaSP_Them.Text = "";
+        txt_MoTa_Them.Text = "";
+
+        for (int i = 4; i <= countSize; i++)
+        {
+            string idTextBox = "txt_Size" + i;
+            TextBox txtSize = themsanpham_size.FindControl(idTextBox) as TextBox;
+            txtSize.Text = "";
+        }
+
+    }
+
 }

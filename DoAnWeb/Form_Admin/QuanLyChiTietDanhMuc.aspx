@@ -150,7 +150,7 @@
             </table>
     </div>
     <div class="themdanhmuc">
-        <asp:ImageButton ImageUrl="~/HinhAnh/Icon/buttonAdd.png" CssClass="themdanhmuc__button" ID="ibtn_themdanhmuc" runat="server" OnClick="ibtn_themdanhmuc_Click"/>
+        <asp:ImageButton Visible="false" ImageUrl="~/HinhAnh/Icon/buttonAdd.png" CssClass="themdanhmuc__button" ID="ibtn_themdanhmuc" runat="server" OnClick="ibtn_themdanhmuc_Click"/>
     </div>
 
     <div class="form" runat="server" id="form_chitietdanhmuc_capnhat"> 

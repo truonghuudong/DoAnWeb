@@ -17,14 +17,12 @@ public partial class Form_NguoiBan_BaoCaoThongKe_DoanhThu : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            DoDuLieuPaged();
+            txt_TuNgay.Attributes.Add("onclick", "txt_TuNgayClick()");
+            txt_DenNgay.Attributes.Add("onclick", "txt_DenNgayClick()");
+            
         }
     }
 
-    protected void Calendar2_SelectionChanged(object sender, EventArgs e)
-    {
-        DoDuLieuPaged();
-    }
         int tongDoanhThu = 0;
         int tongThue = 0;
         int tongTienSauThue = 0;
@@ -78,12 +76,12 @@ public partial class Form_NguoiBan_BaoCaoThongKe_DoanhThu : System.Web.UI.Page
         SqlParameter[] p =
         {
             new SqlParameter("@idTaiKhoan",SqlDbType.NVarChar,10),
-            new SqlParameter("@NgayBatDau",SqlDbType.DateTime),
-            new SqlParameter("@NgayKetThuc",SqlDbType.DateTime),
+            new SqlParameter("@NgayBatDau",SqlDbType.NVarChar,10),
+            new SqlParameter("@NgayKetThuc",SqlDbType.NVarChar,10),
         };
         p[0].Value = IdTaiKhoan;
-        p[1].Value = NgayBatDau.ToString("dd/MM/yyyy");
-        p[2].Value = NgayKetThuc.ToString("dd/MM/yyyy");
+        p[1].Value = NgayBatDau.ToString("MM/dd/yyyy");
+        p[2].Value = NgayKetThuc.ToString("MM/dd/yyyy");
         return DB.ExecuteQuery("DoanhThuTheoNgayDaChon", p);
     }
 
@@ -97,8 +95,8 @@ public partial class Form_NguoiBan_BaoCaoThongKe_DoanhThu : System.Web.UI.Page
             UserLogin user = new UserLogin();
             user = (UserLogin)Session["User"];
             string idTaiKhoan = user.Id + "";
-            DateTime ngayBatDau = cl_NgayBatDau.SelectedDate;
-            DateTime ngayKetThuc = cl_NgayKetThuc.SelectedDate;
+            DateTime ngayBatDau = cl_TuNgay.SelectedDate;
+            DateTime ngayKetThuc = cl_DenNgay.SelectedDate;
             p.DataSource = GetDoanhThuTheoNgay(idTaiKhoan, ngayBatDau,ngayKetThuc).DefaultView;
 
             p.PageSize = 10;
@@ -179,4 +177,40 @@ public partial class Form_NguoiBan_BaoCaoThongKe_DoanhThu : System.Web.UI.Page
         DoDuLieuPaged();
     }
     #endregion
+
+    protected void ibtn_DenNgay_Click(object sender, ImageClickEventArgs e)
+    {
+        cl_DenNgay.Visible = true;
+        cl_TuNgay.Visible = false;
+    }
+
+    protected void ibtn_TuNgay_Click(object sender, ImageClickEventArgs e)
+    {
+        cl_TuNgay.Visible = true;
+        cl_DenNgay.Visible = false;
+    }
+
+    protected void cl_TuNgay_SelectionChanged(object sender, EventArgs e)
+    {
+        txt_TuNgay.Text = cl_TuNgay.SelectedDate.ToString("dd/MM/yyyy");
+        cl_TuNgay.Visible = false;
+        lb_thongbao.Visible = false;
+    }
+
+    protected void cl_DenNgay_SelectionChanged(object sender, EventArgs e)
+    {
+        if (cl_DenNgay.SelectedDate > cl_TuNgay.SelectedDate)
+        {
+            txt_DenNgay.Text = cl_DenNgay.SelectedDate.ToString("dd/MM/yyyy");
+
+
+            DoDuLieuPaged();
+        }
+        else
+        {
+            txt_DenNgay.Text = "";
+            lb_thongbao.Text = "Chọn sai, vui lòng chọn lại";
+        }
+        cl_DenNgay.Visible = false;
+    }
 }
