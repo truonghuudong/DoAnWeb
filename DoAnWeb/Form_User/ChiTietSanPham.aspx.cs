@@ -16,6 +16,10 @@ public partial class ChiTietSanPham : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        //tạo mảng các id sản phẩm cần xuất hiện thử đồ
+        string[] idSanPhamCanThuDo = {"49","50"};
+
         if (!IsPostBack)
         {
             string idSP = Request.QueryString.Get("IdSP").ToString();
@@ -28,16 +32,11 @@ public partial class ChiTietSanPham : System.Web.UI.Page
             ltMota.Text = table.Rows[0]["Mota"].ToString();
             DoDuLieuPaged();
 
-            if (table.Rows[0]["IdLoaiSP"].ToString().Equals("144") ||
-                table.Rows[0]["IdLoaiSP"].ToString().Equals("148") ||
-                table.Rows[0]["IdLoaiSP"].ToString().Equals("149") ||
-                table.Rows[0]["IdLoaiSP"].ToString().Equals("150") ||
-                table.Rows[0]["IdLoaiSP"].ToString().Equals("151"))
+            if (idSanPhamCanThuDo.Contains(table.Rows[0]["IdSP"].ToString()))
             {
                 img_thutrangphuc.Visible = true;
             }
        
-
 
             rpt_size.DataSource = GetSizeSanPham(idSP);
             rpt_size.DataBind();

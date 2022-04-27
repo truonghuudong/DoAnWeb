@@ -97,6 +97,22 @@
             font-size:1.5rem;
             color:var(--primary-color);
         }
+
+        .button_add{
+            border-radius:22px;
+            min-width:50px;
+            max-width:50px;
+            max-height:22px;
+            background-color:rgba(0,0,0,0.03);
+        }
+        .button_add:hover{
+            background-color:var(--primary-color);
+        }
+        .txt_size{
+            max-width:100px;
+            margin-right:5px;
+            text-align:center;
+        }
     </style>
 
 
@@ -176,6 +192,20 @@
                     <br />
                     <asp:TextBox ID="txt_MoTaSP" class="moTaSP" TextMode="MultiLine" runat="server"></asp:TextBox>
                 </div>
+                 <div class="chitietsanpham-items" >
+                    <div class="chitietsanpham-items_title">
+                        Size:
+                    </div>
+                    <div runat="server" id="suasanpham_size">
+                        
+                    </div>
+                    <div style="margin-bottom:0px; justify-content:center; align-items:center;align-self: flex-start">
+                         <%--<asp:TextBox ID="TextBox1" CssClass="txt_size" placeholder="size" runat="server"></asp:TextBox>--%>
+                        <asp:ImageButton CssClass="button_add" ID="ibtn_SuaSanPham" runat="server" OnClick="ibtn_SuaSanPham_Click" ImageUrl="~/HinhAnh/Icon/buttonAdd.png"/>
+                    </div>
+                </div>
+
+
                 <div class="chitietsanpham-items">
                     <div class="chitietsanpham-items_title">
                        
@@ -258,6 +288,20 @@
                         Mô tả:
                     </div>
                     <asp:TextBox ID="txt_MoTa_Them" class="moTaSP" TextMode="MultiLine" runat="server"></asp:TextBox>
+                </div>
+                <div class="chitietsanpham-items" >
+                    <div class="chitietsanpham-items_title">
+                        Size:
+                    </div>
+                    <div runat="server" id="themsanpham_size">
+                        <asp:TextBox ID="txt_Size1" CssClass="txt_size" placeholder="size" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txt_Size2" CssClass="txt_size" placeholder="size" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txt_Size3" CssClass="txt_size" placeholder="size" runat="server"></asp:TextBox>
+                    </div>
+                    <div style="margin-bottom:0px; justify-content:center; align-items:center;align-self: flex-start">
+                         <%--<asp:TextBox ID="TextBox1" CssClass="txt_size" placeholder="size" runat="server"></asp:TextBox>--%>
+                        <asp:ImageButton CssClass="button_add" ID="ImageButton1" runat="server" OnClick="ImageButton1_Click" ImageUrl="~/HinhAnh/Icon/buttonAdd.png"/>
+                    </div>
                 </div>
                 <div class="chitietsanpham-items">
                     <div class="chitietsanpham-items_title">

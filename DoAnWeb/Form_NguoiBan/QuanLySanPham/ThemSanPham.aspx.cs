@@ -13,7 +13,8 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
     {
         if (!IsPostBack)
         {
-
+            countSizeSua = 0;
+            countSize = 3;
             fileUpload.Attributes["onchange"] = "UploadFile(this)";
             fileUpload_Them.Attributes["onchange"] = "UploadFileThem(this)";
             try
@@ -52,6 +53,7 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
                     ddl_thue_sua.DataBind();
 
 
+                    KhoiTaoSize(idsp);
                 }
                 else
                 {
@@ -179,9 +181,11 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
         {
             try
             {
+                string idsp = Request.QueryString.Get("IdSP");
                 int ketqua = UpdateSanPham(lb_IdSP.Text, ddl_LoaiSP_Sua.SelectedValue, txt_TenSP.Text,
                             lb_thongbao_danhmuc_anhdanhmuc.Text, txt_GiaSP.Text,
                             txt_SoLuongSP.Text, txt_MoTaSP.Text,ddl_thue_sua.SelectedValue);
+                ThemSizeSanPham(idsp);
                 if (ketqua > 0)
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Sửa Thành Công')", true);
@@ -237,6 +241,28 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
         return user.Id;
     }
 
+
+    string GetIdSanPhamVuaThem()
+    {
+        SqlParameter[] p = { };
+        DataTable table = DB.ExecuteQuery("getIdSanPhamVuaThem", p);
+        return table.Rows[0]["IdSP"].ToString();
+    }
+
+    void ThemSizeSanPham(string idSP,string tenSize)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@idsp",SqlDbType.NVarChar,10),
+            new SqlParameter("@tensize",SqlDbType.NVarChar,10)
+        };
+        p[0].Value = idSP;
+        p[1].Value = tenSize;
+        DB.ExecuteNonQuery("SetSizeSanPham", p);
+    }
+
+
+   
     protected void btnThemSP(object sender, EventArgs e)
     {
         if (
@@ -245,8 +271,18 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
         {
             try
             {
+
                 int ketqua = InsertSanPham(GetIdTaiKhoanTuSession().ToString(), ddl_LoaiSP.SelectedValue,
                     txt_TenSP_Them.Text, lb_HinhAnh_Them.Text, txt_GiaSP_Them.Text, txt_SoLUongSP_Them.Text, txt_MoTa_Them.Text,ddl_thue_them.SelectedValue);
+                string idSanPhamVuaThem = GetIdSanPhamVuaThem();
+
+                for(int i = 1; i <= countSize; i++)
+                {
+                    string idTenTextBox = "txt_Size" + i;
+                    TextBox txtSize = themsanpham_size.FindControl(idTenTextBox) as TextBox;
+                    ThemSizeSanPham(idSanPhamVuaThem, txtSize.Text);
+                }
+
                 if (ketqua > 0)
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Thêm Thành Công')", true);
@@ -281,5 +317,107 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
         ddl_LoaiSP.DataTextField = "TenLoaiSP";
         ddl_LoaiSP.DataValueField = "IdLoaiSP";
         ddl_LoaiSP.DataBind();
+    }
+
+
+    static int countSize = 3;
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    {
+        
+        countSize++;
+        for(int i = 4; i <= countSize; i++)
+        {
+            TextBox txtSize = new TextBox();
+            txtSize.ID = "txt_Size" + i;
+            txtSize.Visible = true;
+            txtSize.Attributes.Add("placeholder","size");
+            txtSize.Attributes.Add("class", "txt_size");
+            themsanpham_size.Controls.Add(txtSize);
+        }
+    }
+
+
+
+    DataTable GetSizeTheoId(string idSP)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@IdSP",System.Data.SqlDbType.NVarChar,10)
+        };
+        p[0].Value = idSP;
+        return DB.ExecuteQuery("GetSizeSanPhamTheoId", p);
+    }
+
+    void KhoiTaoSize(string idSP)
+    {
+        DataTable table = GetSizeTheoId(idSP);
+        countSizeSuaCu = table.Rows.Count;
+        for (int i = 1; i <= countSizeSuaCu; i++)
+        {
+            string tenSize = table.Rows[i-1]["TenSize"].ToString();
+            TextBox txtSize = new TextBox();
+            txtSize.ID = "txt_Size" + i;
+            txtSize.Visible = true;
+            txtSize.Attributes.Add("placeholder", "size");
+            txtSize.Text = tenSize;
+            txtSize.Attributes.Add("class", "txt_size");
+            suasanpham_size.Controls.Add(txtSize);
+        }
+    }
+
+    static int countSizeSua=0;
+    static int countSizeSuaCu;
+    protected void ibtn_SuaSanPham_Click(object sender, ImageClickEventArgs e)
+    {
+
+        countSizeSua++;
+
+        string idsp = Request.QueryString.Get("IdSP");
+
+        KhoiTaoSize(idsp);
+        for (int i = countSizeSuaCu+1; i <= countSizeSua+countSizeSuaCu; i++)
+        {
+            TextBox txtSize = new TextBox();
+            txtSize.ID = "txt_Size" + i;
+            txtSize.Visible = true;
+            txtSize.Attributes.Add("placeholder", "size");
+            txtSize.Attributes.Add("class", "txt_size");
+            suasanpham_size.Controls.Add(txtSize);
+        }
+    }
+
+    void DeleteSizeCu(string idsp)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@idsp",SqlDbType.NVarChar,10)
+        };
+        p[0].Value = idsp;
+        DB.ExecuteNonQuery("DeleteSizeSanPham", p);
+    }
+    void UpdateSizeSanPham(string idsp,string tensize)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@idsp",SqlDbType.NVarChar,10),
+            new SqlParameter("@tenSize",SqlDbType.NVarChar,10)
+        };
+        p[0].Value = idsp;
+        p[1].Value = tensize;
+        DB.ExecuteNonQuery("InsertSizeSanPham", p);
+    }
+
+
+
+    void ThemSizeSanPham(string idSP)
+    {
+        DeleteSizeCu(idSP);
+        for (int i = 1; i <= countSizeSua + countSizeSuaCu; i++)
+        {
+            string idTxt = "txt_Size" + i;
+            TextBox txtSizeSua = suasanpham_size.FindControl(idTxt) as TextBox;
+            UpdateSizeSanPham(idSP, txtSizeSua.Text);
+        }
+
     }
 }
