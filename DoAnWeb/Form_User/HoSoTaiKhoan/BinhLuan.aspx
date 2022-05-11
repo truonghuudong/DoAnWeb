@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Form_User/HoSoTaiKhoan/MasterPage_HoSoTaiKhoan.master" AutoEventWireup="true" CodeFile="BinhLuan.aspx.cs" Inherits="Form_User_HoSoTaiKhoan_BinhLuan" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Bình Luận Sản Phẩm</title>
     <style>
         .anhsp{
             width:400px;

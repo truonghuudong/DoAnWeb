@@ -158,6 +158,7 @@
             .body-inner_ibtn input[type=image]{
                 width:70px;
                 height:70px;
+                /*border-radius:35px;*/
             }
             .fileUpload{
                 font-size: 120px;
@@ -352,8 +353,8 @@
                         </div>
                 
                         <div class="chitietsanpham_ThongSo-soLuong-sanPhamHienCo">
-                            <asp:Label ID="lbSanPhamHienCo" runat="server" Text="1123"></asp:Label>
-                            <span> Sản phẩm hiện có</span>
+                            <%--<asp:Label ID="lbSanPhamHienCo" runat="server" Text="1123"></asp:Label>--%>
+                            <%--<span> Sản phẩm hiện có</span>--%>
                         </div>
                     </div>
 

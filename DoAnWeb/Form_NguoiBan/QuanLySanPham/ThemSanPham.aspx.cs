@@ -439,4 +439,20 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
 
     }
 
+
+    protected void txt_GiaSP_Them_TextChanged(object sender, EventArgs e)
+    {
+        if (int.Parse(txt_GiaSP_Them.Text) < 0)
+        {
+            txt_GiaSP_Them.Text = 0+"";
+        }
+    }
+
+    protected void txt_GiaSP_TextChanged(object sender, EventArgs e)
+    {
+        if (int.Parse(txt_GiaSP.Text) < 0)
+        {
+            txt_GiaSP.Text = 0 + "";
+        }
+    }
 }

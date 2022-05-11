@@ -18,7 +18,7 @@ public partial class ChiTietSanPham : System.Web.UI.Page
     {
 
         //tạo mảng các id sản phẩm cần xuất hiện thử đồ
-        string[] idSanPhamCanThuDo = {"92","93", "94", "95" ,"96", "97" };
+        string[] idSanPhamCanThuDo = {"92","99", "98", "95" ,"96", "97","100","288","291","295","297","298","301" };
 
         if (!IsPostBack)
         {
@@ -28,7 +28,7 @@ public partial class ChiTietSanPham : System.Web.UI.Page
             lbGiaSPCu.Text = table.Rows[0]["GiaSP"].ToString();
             lbTenSP.Text = table.Rows[0]["TenSP"].ToString();
             lbGiaSPMoi.Text = table.Rows[0]["GiaKhuyenMai"].ToString();
-            lbSanPhamHienCo.Text = table.Rows[0]["SoLuong"].ToString();
+            //lbSanPhamHienCo.Text = table.Rows[0]["SoLuong"].ToString();
             ltMota.Text = table.Rows[0]["Mota"].ToString();
             DoDuLieuPaged();
 
@@ -91,10 +91,10 @@ public partial class ChiTietSanPham : System.Web.UI.Page
         {
             i = int.Parse(txt_SoLuongSPMua.Text);
             i++;
-            if (i > int.Parse(lbSanPhamHienCo.Text))
-            {
-                i = int.Parse(lbSanPhamHienCo.Text);
-            }
+            //if (i > int.Parse(lbSanPhamHienCo.Text))
+            //{
+            //    i = int.Parse(lbSanPhamHienCo.Text);
+            //}
         }
         catch
         {
@@ -116,10 +116,10 @@ public partial class ChiTietSanPham : System.Web.UI.Page
             }
             else
             {
-                if (int.Parse(txt_SoLuongSPMua.Text) > int.Parse(lbSanPhamHienCo.Text))
-                {
-                    txt_SoLuongSPMua.Text = lbSanPhamHienCo.Text;
-                }
+                //if (int.Parse(txt_SoLuongSPMua.Text) > int.Parse(lbSanPhamHienCo.Text))
+                //{
+                //    txt_SoLuongSPMua.Text = lbSanPhamHienCo.Text;
+                //}
             }
         }
         catch

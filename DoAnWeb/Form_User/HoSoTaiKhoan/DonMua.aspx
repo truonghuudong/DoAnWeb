@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Form_User/HoSoTaiKhoan/MasterPage_HoSoTaiKhoan.master" AutoEventWireup="true" CodeFile="DonMua.aspx.cs" Inherits="Form_User_HoSoTaiKhoan_DonMua" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Lịch Sử Mua Hàng</title>
     <style>
         .table_donhang-ngoai{
             border-collapse:collapse;

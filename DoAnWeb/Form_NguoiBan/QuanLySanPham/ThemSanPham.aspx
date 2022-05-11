@@ -183,7 +183,7 @@
                     <div class="chitietsanpham-items_title">
                         Giá sản phẩm:
                     </div>
-                    <asp:TextBox ID="txt_GiaSP" class="giaSP" TextMode="Number" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txt_GiaSP" class="giaSP" AutoPostBack ="true" OnTextChanged="txt_GiaSP_TextChanged" TextMode="Number" runat="server"></asp:TextBox>
                 </div>
                 <div class="chitietsanpham-items">
                     <div class="chitietsanpham-items_title">
@@ -281,7 +281,7 @@
                     <div class="chitietsanpham-items_title">
                         Giá sản phẩm:
                     </div>
-                <asp:TextBox ID="txt_GiaSP_Them" class="giaSP" TextMode="Number" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txt_GiaSP_Them" class="giaSP" AutoPostBack="true" OnTextChanged="txt_GiaSP_Them_TextChanged" TextMode="Number" runat="server"></asp:TextBox>
                 </div>
                 <div class="chitietsanpham-items">
                     <div class="chitietsanpham-items_title">

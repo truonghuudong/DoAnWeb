@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterPage_NguoiBan.master" AutoEventWireup="true" CodeFile="XemSanPhamKM.aspx.cs" Inherits="Form_NguoiBan_QuanLyKhuyenMai_XemSanPhamKM" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title>Các Sant Phẩm Đang Khuyến Mãi</title>
+    <title>Các Sản Phẩm Đang Khuyến Mãi</title>
     <style>
         .thongke{
                 margin-top:10px;

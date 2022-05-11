@@ -244,7 +244,7 @@
                             <a class="danhmuc-items_link" href="../Form_Admin/QuanLyThue.aspx">Quản lý thuế</a>
                         </div>
                         <div id="danhmuc_baocaothongke" runat="server" class="danhmuc-items">
-                            <a class="danhmuc-items_link" href="../Form_Admin/BaoCaoThongKe.aspx">Báo cáo thông kê</a>
+                            <a class="danhmuc-items_link" href="../Form_Admin/BaoCaoThongKe.aspx">Báo cáo thống kê</a>
                         </div>
                     </div>
                     <div class="menu-noidung">

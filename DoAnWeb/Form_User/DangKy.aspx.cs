@@ -62,28 +62,28 @@ public partial class DangKy : System.Web.UI.Page
             if (inputPassword_NhapLai.Text.Equals(inputPassword.Text))
             {
 
-                try
-                {
-                    string strKetQua = DangKyTaiKhoanThanhVien(inputTenDN.Text, inputEmail.Text, inputPassword.Text).Rows[0]["IdTaiKhoan"].ToString();
-                    int ketQua = int.Parse(strKetQua);
-                    if (ketQua>0)
+                    try
                     {
-                        SendActivationEmail(ketQua);
-                        lbNotify_DangNhap.Text = "Mời Bạn Xác Thực Email";
+                        string strKetQua = DangKyTaiKhoanThanhVien(inputTenDN.Text, inputEmail.Text, inputPassword.Text).Rows[0]["IdTaiKhoan"].ToString();
+                        int ketQua = int.Parse(strKetQua);
+                        if (ketQua>0)
+                        {
+                            SendActivationEmail(ketQua);
+                            lbNotify_DangNhap.Text = "Mời Bạn Xác Thực Email";
+                        }
+                        else
+                        {
+                            lbNotify_DangNhap.Text = "Đăng ký không thành công";
+                        }
+
+
                     }
-                    else
+                        catch
                     {
-                        lbNotify_DangNhap.Text = "Đăng ký không thành công";
+                        lbNotify_DangNhap.Text = "Lỗi";
                     }
 
-
-                }
-                    catch
-                {
-                    lbNotify_DangNhap.Text = "Lỗi";
-                }
-
-        }
+            }
             else
             {
                 lbNotify_DangNhap.Text = "Mật khâu nhập lại không trùng";

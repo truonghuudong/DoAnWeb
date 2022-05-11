@@ -107,6 +107,10 @@ public partial class Form_NguoiBan_QuanLyKhuyenMai_ThemKhuyenMai : System.Web.UI
                 lb_thongbao_capnhat.Text = "Thêm thất bại";
             }
         }
+        else
+        {
+            lb_thongbao_capnhat.Text = "Vui lòng nhập đầy đủ thông tin!";
+        }
     }
 
 

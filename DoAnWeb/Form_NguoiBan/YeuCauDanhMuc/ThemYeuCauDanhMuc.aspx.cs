@@ -61,6 +61,7 @@ public partial class Form_NguoiBan_YeuCauDanhMuc_ThemYeuCauDanhMuc : System.Web.
             else
             {
                 SetChiTietDanhMuc(idDanhMuc, tenDanhMuc);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Thêm Yêu Cầu Danh Mục Thành Công')", true);
             }
         //}
         //catch
