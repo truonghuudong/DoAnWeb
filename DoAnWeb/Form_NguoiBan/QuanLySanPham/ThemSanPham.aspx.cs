@@ -455,4 +455,20 @@ public partial class Form_NguoiBan_QuanLySanPham_ThemSanPham : System.Web.UI.Pag
             txt_GiaSP.Text = 0 + "";
         }
     }
+
+    protected void txt_SoLuongSP_TextChanged(object sender, EventArgs e)
+    {
+        if (int.Parse(txt_SoLuongSP.Text) < 0)
+        {
+            txt_SoLuongSP.Text = "0";
+        }
+    }
+
+    protected void txt_SoLUongSP_Them_TextChanged(object sender, EventArgs e)
+    {
+        if (int.Parse(txt_SoLUongSP_Them.Text) < 0)
+        {
+            txt_SoLUongSP_Them.Text = "0";
+        }
+    }
 }

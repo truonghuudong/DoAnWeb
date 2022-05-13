@@ -282,17 +282,20 @@ public partial class DangNhap : System.Web.UI.Page
                 else
                 {
                     lbNotify_DangNhap.Text = "Tên tài khoản hoặc mật khẩu không chính xác";
+                    LoadCaptCha();
                 }
             }
             else
             {
                 lbNotify_DangNhap.Text = "Lỗi captcha ";
+                LoadCaptCha();
             }
 
         }
         else
         {
             lbNotify_DangNhap.Text = "Vui lòng nhập đầy đủ thông tin";
+            LoadCaptCha();
         }
     }
 

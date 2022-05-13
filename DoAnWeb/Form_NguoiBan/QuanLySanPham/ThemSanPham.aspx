@@ -155,7 +155,7 @@
                     <div class="chitietsanpham-items_title">
                         Số lượng sản phẩm:
                     </div>
-                    <asp:TextBox TextMode="Number" MaxLength="0" class="soLuongSP" ID="txt_SoLuongSP" runat="server"></asp:TextBox>
+                    <asp:TextBox AutoPostBack="true" OnTextChanged="txt_SoLuongSP_TextChanged" TextMode="Number" MaxLength="0" class="soLuongSP" ID="txt_SoLuongSP" runat="server"></asp:TextBox>
                 </div>
                 <div class="chitietsanpham-items">
                     <div class="chitietsanpham-items_title">
@@ -253,7 +253,7 @@
                     <div class="chitietsanpham-items_title">
                         Số lượng sản phẩm:
                     </div>
-                    <asp:TextBox TextMode="Number" MaxLength="0" class="soLuongSP" ID="txt_SoLUongSP_Them" runat="server"></asp:TextBox>
+                    <asp:TextBox TextMode="Number" AutoPostBack="true" OnTextChanged="txt_SoLUongSP_Them_TextChanged" MaxLength="0" class="soLuongSP" ID="txt_SoLUongSP_Them" runat="server"></asp:TextBox>
                 </div>
                 <div class="chitietsanpham-items">
                     <div class="chitietsanpham-items_title">

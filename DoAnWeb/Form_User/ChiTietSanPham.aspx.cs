@@ -417,7 +417,8 @@ public partial class ChiTietSanPham : System.Web.UI.Page
             {
                 if (ketQuaKiemTra > 0)
                 {
-                    
+                    if(!txt_TenNguoiNhan.Text.Equals("") && !txt_SDT.Text.Equals("") && !txt_DiaChi.Text.Equals(""))
+                    {
                         string idSP = Request.QueryString.Get("IdSP").ToString();
                         DataTable table = GetSanPham(idSP);
 
@@ -425,7 +426,13 @@ public partial class ChiTietSanPham : System.Web.UI.Page
                         InsertChiTietHoaDon(idHoaDon, idSP, int.Parse(txt_SoLuongSPMua.Text)
                                 , int.Parse(table.Rows[0]["GiaKhuyenMai"].ToString()), lb_Size.Text);
 
-                    Response.Redirect("~/Form_User/HoSoTaiKhoan/DonMua.aspx");
+                        Response.Redirect("~/Form_User/HoSoTaiKhoan/DonMua.aspx");
+                    }
+                    else
+                    {
+                        lb_thongbao_form.Text = "Vui lòng nhập đầy đủ thông tin";
+                        lb_thongbao_form.Visible = true;
+                    }
                 }
                 else
                 {
