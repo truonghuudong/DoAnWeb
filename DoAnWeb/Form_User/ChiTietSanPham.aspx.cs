@@ -18,7 +18,7 @@ public partial class ChiTietSanPham : System.Web.UI.Page
     {
 
         //tạo mảng các id sản phẩm cần xuất hiện thử đồ
-        string[] idSanPhamCanThuDo = {"92","99", "98", "95" ,"96", "97","100","288","291","295","297","298","301" };
+        string[] idSanPhamCanThuDo = { };//{"92","99", "98", "95" ,"96", "97","100","288","291","295","297","298","301" };
 
         if (!IsPostBack)
         {

@@ -254,7 +254,8 @@ public partial class DangNhap : System.Web.UI.Page
                                         if (link != null && !link.Contains("/Form_User/DangKy.aspx")
                                             && !link.Contains("/Form_Admin/") &&
                                             !link.Contains("/Form_NguoiBan/") &&
-                                            !link.Contains("Form_User/DangNhap.aspx"))
+                                            !link.Contains("Form_User/DangNhap.aspx")&&
+                                            !link.Contains("Form_User/ActivationEmail.aspx"))
                                         {
                                             Response.Redirect((string)link);
                                             //lbNotify_DangNhap.Text = (string)refUrl;

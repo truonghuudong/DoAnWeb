@@ -95,7 +95,7 @@
 
             <div class="row-label">
                     <div class="label-thongtinhoso">
-                        Xác nhân mật khẩu mới
+                        Xác nhận mật khẩu mới
                     </div>
                     <div class="input-thongtin">
                         <asp:TextBox CssClass="txt_tennguoidung"  TextMode="Password"  ID="txt_xacminhMK" runat="server"></asp:TextBox>
