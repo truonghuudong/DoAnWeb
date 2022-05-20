@@ -176,7 +176,7 @@
 
                 <!-- Dang Nhap Header -->
                 <div class="formDangNhap__header">
-                    <h3 class="formDangNhap__header-btnDN">Đăng Ký</h3>
+                    <h3 class="formDangNhap__header-btnDN">Đăng Ký Người Bán</h3>
                 </div>
                 <!-- Dang Nhap Header -->
 
