@@ -68,6 +68,7 @@
         .btn:hover{
             background-color:var(--primary-color);
         }
+
         .title{
             padding:10px 0px 10px 5px;
             font-size:1.7rem;
@@ -77,6 +78,52 @@
             background-color:var(--while-color);
         }
 
+        .taikhoan__popover{
+            border-radius:3px;
+            position:absolute;
+            background-color:var(--while-color);
+            display:none;
+            animation:HeaderNotifyGrowth ease-in 0.3s;
+            transform-origin:20px top;
+            z-index:999;
+            margin-left:50px;
+        }
+        .taikhoan__popover ul{
+            margin:0px;
+        }
+
+        .tentaikhoan:hover .taikhoan__popover{
+             display:block;
+        }
+            .taikhoan__popover::before{
+                content: "";
+                border-width: 10px 16px;
+                border-style: solid;
+                border-color: transparent transparent var(--while-color) transparent;
+                left: 65%;
+                position:absolute;
+                top: -20px;
+                z-index:0
+            }
+            .taikhoan__popover::after{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 100px;
+                    height: 10px;
+                    left: 15px;
+                    top: -10px;
+                    z-index: 999;
+            }
+
+            .taikhoan__popover-list {
+                list-style: none;
+                padding: 0;
+            }
+
+            .buttonBaoCao{
+                color:red;
+            }
     </style>
 
 
@@ -101,10 +148,14 @@
                     <tr>
                         <th></th>
                         <th>Id Đơn Hàng</th>
+                        <th>Tên Tài Khoản</th>
                         <th>Người Nhận</th>
                         <th>Số Điện Thoại</th>
+                        <th>Địa Chỉ</th>
                         <th>Ngày Đặt</th>
+                        <th >Phí Ship</th>
                         <th>Trạng Thái</th>
+                        <th>Chức Năng</th>
                     </tr>
             </HeaderTemplate>
             <ItemTemplate>
@@ -117,21 +168,44 @@
                         <%#Eval("IdHoaDon")%>
                     </td>
                     <td>
+                        <div class="tentaikhoan"><%#Eval("TenTaiKhoan")%>
+                            <div class="taikhoan__popover">
+                                <ul class="taikhoan__popover-list">
+                                    <%--<li class="list-item">
+                                        <a href="../../Form_NguoiBan/QuanLyTaiKhoan/QuangLyTaiKhoan.aspx" class="list-item_link">Tài Khoản Của Tôi</a>
+                                    </li>   --%>        
+                                    <asp:Button ID="btnBaoCao" CssClass="buttonBaoCao" runat="server" CommandArgument='<%#Eval("IdTaiKhoan")%>' Text="Báo Cáo" class="list-item_link btndangxuat" OnClick="btnBaoCao_Click"/>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </td>
+                    <td>
                         <%#Eval("TenNguoiNhan")%>
                     </td>
                     <td>
                         <%#Eval("SDTNguoiNhan")%>
                     </td>
                     <td>
+                        <%#Eval("DiaChi")%>
+                    </td>
+                    <td>
                         <asp:Label ID="lb_Ngay" runat="server"></asp:Label>
+                    </td>
+                    <td >
+                        <asp:DropDownList AutoPostBack="true" OnSelectedIndexChanged="ddl_phiShip_SelectedIndexChanged" CssClass="dropdownlist"  ID="ddl_phiShip" runat="server"></asp:DropDownList>
+
                     </td>
                     <td>
                         <asp:DropDownList AutoPostBack="true" OnSelectedIndexChanged="ddl_TrangThai_SelectedIndexChanged" CssClass="dropdownlist" ID="ddl_TrangThai" runat="server"></asp:DropDownList>
                     </td>
+                    <td>
+                        <asp:Button ID="btn_Xoa_HD" CommandArgument='<%#Eval("IdHoaDon")%>' runat="server" Text="Xóa" OnClick="btn_Xoa_HD_Click"/>
+                    </td>
                 </tr>
                 <tr id="td_ChiTietHD" runat="server" visible="false">
                     <td ></td>
-                    <td colspan="6">
+                    <td colspan="9">
                         <asp:Panel ID="pnl_ChiTietHD" runat="server">
                             <asp:Repeater ID="rpt_ChiTietHoaDon" runat="server">
                                 <HeaderTemplate>

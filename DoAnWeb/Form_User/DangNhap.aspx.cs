@@ -45,63 +45,67 @@ public partial class DangNhap : System.Web.UI.Page
                 FaceBookUser faceBookUser = new JavaScriptSerializer().Deserialize<FaceBookUser>(data);
                 faceBookUser.PictureUrl = string.Format("https://graph.facebook.com/{0}/picture", faceBookUser.Id);
 
-                if (kiemTraIdFaceBook(faceBookUser.Id) == 1)
-                {
-                    //Đăng nhập
-                    DataTable TaiKhoan = DangNhapBangIdFaceBook(faceBookUser.Id);
-                    var userSession = new UserLogin();
-                    userSession.Id = int.Parse(TaiKhoan.Rows[0]["IdTaiKhoan"].ToString());
-                    userSession.UserName = TaiKhoan.Rows[0]["TenTaiKhoan"].ToString();
-                    userSession.PassWord = TaiKhoan.Rows[0]["MatKhau"].ToString();
-                    userSession.Quyen = TaiKhoan.Rows[0]["IdQuyen"].ToString() + "";
-                    Session.Add("User", userSession);
-
-                }
-                else
-                {
-                    //Tạo Tài Khoản Rồi Mới Đăng Nhập
-                    string tenDN = RandomString(10, true);
-                    taoTaiKhoanThanhVienVoiIdFaceBook(tenDN.ToString(), faceBookUser.Email.ToString(),
-                        faceBookUser.Id.ToString());
-
-
-                    DataTable TaiKhoan = DangNhapBangIdFaceBook(faceBookUser.Id);
-                    var userSession = new UserLogin();
-                    userSession.Id = int.Parse(TaiKhoan.Rows[0]["IdTaiKhoan"].ToString());
-                    userSession.UserName = TaiKhoan.Rows[0]["TenTaiKhoan"].ToString();
-                    userSession.PassWord = TaiKhoan.Rows[0]["MatKhau"].ToString();
-                    userSession.Quyen = TaiKhoan.Rows[0]["IdQuyen"].ToString() + "";
-                    Session.Add("User", userSession);
-
-                }
-
-
-
-
-
-
-
-                try
-                {
-                    object refUrl = ViewState["RefUrl"];
-                    string link = (string)refUrl;
-                    if (link != null && !link.Contains("/Form_User/DangKy.aspx")
-                        && !link.Contains("/Form_Admin/") &&
-                        !link.Contains("/Form_NguoiBan/") &&
-                        !link.Contains("Form_User/DangNhap.aspx"))
+                    if (kiemTraIdFaceBook(faceBookUser.Id) == 1)
                     {
-                        Response.Redirect((string)link);
-                        //lbNotify_DangNhap.Text = (string)refUrl;
+                        //Đăng nhập
+                        DataTable TaiKhoan = DangNhapBangIdFaceBook(faceBookUser.Id);
+                        if (TaiKhoan.Rows.Count == 0)
+                        {
+                            lbNotify_DangNhap.Text = "Tài Khoản Chưa Được Kích Hoạt";
+                        }
+                        else
+                        {
+                            var userSession = new UserLogin();
+                            userSession.Id = int.Parse(TaiKhoan.Rows[0]["IdTaiKhoan"].ToString());
+                            userSession.UserName = TaiKhoan.Rows[0]["TenTaiKhoan"].ToString();
+                            userSession.PassWord = TaiKhoan.Rows[0]["MatKhau"].ToString();
+                            userSession.Quyen = TaiKhoan.Rows[0]["IdQuyen"].ToString() + "";
+                            Session.Add("User", userSession);
+
+                            try
+                            {
+                                object refUrl = ViewState["RefUrl"];
+                                string link = (string)refUrl;
+                                if (link != null && !link.Contains("/Form_User/DangKy.aspx")
+                                    && !link.Contains("/Form_Admin/") &&
+                                    !link.Contains("/Form_NguoiBan/") &&
+                                    !link.Contains("Form_User/DangNhap.aspx"))
+                                {
+                                    Response.Redirect((string)link);
+                                    //lbNotify_DangNhap.Text = (string)refUrl;
+                                }
+                                else
+                                {
+                                    Response.Redirect("~/Form_User/TrangChu.aspx");
+                                }
+                            }
+                            catch
+                            {
+                                Response.Redirect("~/Form_User/TrangChu.aspx");
+                            }
+
+                    }
+
                     }
                     else
                     {
-                        Response.Redirect("~/Form_User/TrangChu.aspx");
+                            string tenDN = RandomString(10, true);
+                            taoTaiKhoanThanhVienVoiIdFaceBook(tenDN.ToString(), faceBookUser.Email.ToString(),
+                                faceBookUser.Id.ToString());
+
+
+                            DataTable TaiKhoan = DangNhapBangIdFaceBook(faceBookUser.Id);
+                            var userSession = new UserLogin();
+                            userSession.Id = int.Parse(TaiKhoan.Rows[0]["IdTaiKhoan"].ToString());
+                            userSession.UserName = TaiKhoan.Rows[0]["TenTaiKhoan"].ToString();
+                            userSession.PassWord = TaiKhoan.Rows[0]["MatKhau"].ToString();
+                            userSession.Quyen = TaiKhoan.Rows[0]["IdQuyen"].ToString() + "";
+                            Session.Add("User", userSession);
+                        
+                        //Tạo Tài Khoản Rồi Mới Đăng Nhập
+
                     }
-                }
-                catch
-                {
-                    Response.Redirect("~/Form_User/TrangChu.aspx");
-                }
+
 
                 //pnlFaceBookUser.Visible = true;
                 //lblId.Text = faceBookUser.Id;

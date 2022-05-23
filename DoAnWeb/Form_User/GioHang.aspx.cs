@@ -270,8 +270,8 @@ public partial class Form_User_Default : System.Web.UI.Page
 
     void InsertHoaDOnAndChiTietHoaDon(string idtaiKhoan, string tenNguoiNhan, string SDT, string diaChi)
     {
-        try
-        {
+        //try
+        //{
             foreach (ListSanPhamTheoIdTaiKhoan listItem in list)
             {
                 string idHoaDon = InsertHoaDon(idtaiKhoan, tenNguoiNhan, SDT, diaChi);
@@ -286,11 +286,11 @@ public partial class Form_User_Default : System.Web.UI.Page
             }
             Session.Remove("GioHang");
             Response.Redirect("~/Form_User/HoSoTaiKhoan/DonMua.aspx");
-        }
-        catch
-        {
+        //}
+        //catch
+        //{
 
-        }
+        //}
     }
     string GetIdTaiKhoan()
     {

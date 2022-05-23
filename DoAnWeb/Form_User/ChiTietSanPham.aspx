@@ -265,7 +265,7 @@
             <div class="chitietsanpham_anhSP">
                 <div class="body-inner_ibtn" id="img_thutrangphuc" visible="false" runat="server">
                         <div class="fileUpload-button" runat="server" id="fileUpload_button">
-                            <asp:ImageButton ID="ibtn_AnhDaiDien" ImageUrl="~/HinhAnh/Sprites_AnhDaiDien/anhdaidien1.jpg" OnClick="ibtn_AnhDaiDien_Click" runat="server"/>
+                            <asp:ImageButton ID="ibtn_AnhDaiDien" ImageUrl="~/HinhAnh/Sprites_AnhDaiDien/anhdaidien2.png" OnClick="ibtn_AnhDaiDien_Click" runat="server"/>
                             <asp:FileUpload CssClass="fileUpload" ID="fileUpload" runat="server" />
                             <asp:Label ID="lb_linkanhtamthoi" runat="server" Hidden="hidden"></asp:Label>
                         </div>

@@ -52,7 +52,7 @@ public partial class Form_NguoiBan_QuanLyDonHang_TatCaDonHang : System.Web.UI.Pa
             new SqlParameter("@idnguoiban",SqlDbType.NVarChar,10),
             new SqlParameter("@trangthai",SqlDbType.NVarChar,3)
         };
-        p[0].Value = GetIdTaiKhoan();
+        p[0].Value = GetIdTaiKhoan().ToString();
         p[1].Value = trangThai;
         return DB.ExecuteQuery("GetHoaDonTheoIdNguoiBan", p);
     }
@@ -67,6 +67,30 @@ public partial class Form_NguoiBan_QuanLyDonHang_TatCaDonHang : System.Web.UI.Pa
         return DB.ExecuteQuery("GetChiTietHoaDonTheoIdHoaDon", p);
     }
 
+    DataTable  dataphiShip()
+    {
+        SqlParameter[] p = {};
+        return DB.ExecuteQuery("getPhiShip", p);
+    }
+    DataTable TaoDataPhiShip()
+    {
+        DataTable table = new DataTable();
+        DataColumn idPhiShip = new DataColumn("IdPhiShip");
+        DataColumn tenPhiShip = new DataColumn("TenPhiShip");
+        table.Columns.Add(idPhiShip);
+        table.Columns.Add(tenPhiShip);
+        table.Rows.Add(0, "");
+
+        foreach(DataRow row in dataphiShip().Rows)
+        {
+            table.Rows.Add(row["IdPhiShip"].ToString(),row["KhuVuc"].ToString() + ":" + row["Gia"].ToString());
+        }
+
+
+        return table;
+    }
+
+
 
     protected void rpt_HoaDon_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
@@ -79,6 +103,8 @@ public partial class Form_NguoiBan_QuanLyDonHang_TatCaDonHang : System.Web.UI.Pa
 
 
             DropDownList ddl_TrangThai = e.Item.FindControl("ddl_TrangThai") as DropDownList;
+            DropDownList ddl_phiShip = e.Item.FindControl("ddl_phiShip") as DropDownList;
+
             Label lb_ngay = e.Item.FindControl("lb_Ngay") as Label;
 
             lb_ngay.Text = ngay.ToString("dd/MM/yyyy");
@@ -87,12 +113,44 @@ public partial class Form_NguoiBan_QuanLyDonHang_TatCaDonHang : System.Web.UI.Pa
             ddl_TrangThai.DataValueField = "Id";
             ddl_TrangThai.DataBind();
 
+            ddl_phiShip.DataSource = TaoDataPhiShip();
+            ddl_phiShip.DataTextField = "TenPhiShip";
+            ddl_phiShip.DataValueField = "IdPhiShip";
+            ddl_phiShip.DataBind();
+            ddl_phiShip.Items[0].Attributes.Add("hidden","hidden");
+            ddl_phiShip.SelectedValue = (e.Item.DataItem as DataRowView)["IdPhiShip"].ToString();
+
             string trangthai = (e.Item.DataItem as DataRowView)["TrangThai"].ToString();
             ddl_TrangThai.SelectedValue = trangthai;
             if (trangthai == "0")
             {
                 ddl_TrangThai.Enabled = false;
+                ddl_phiShip.Enabled = false;
             }
+            if (trangthai == "1")
+            {
+                ddl_TrangThai.Enabled = false;
+                ddl_phiShip.Enabled = false;
+            }
+
+            if (trangthai == "2")
+            {
+                ddl_TrangThai.Items[0].Attributes.Add("hidden", "hidden");
+                ddl_TrangThai.Items[2].Attributes.Add("hidden", "hidden");
+                ddl_TrangThai.Items[3].Attributes.Add("hidden", "hidden");
+                ddl_phiShip.Enabled = false;
+            }
+            if (trangthai == "4")
+            {
+                ddl_TrangThai.Items[1].Attributes.Add("hidden", "hidden");
+                ddl_TrangThai.Items[3].Attributes.Add("hidden", "hidden");
+            }
+
+            if (ddl_phiShip.SelectedIndex == 0)
+            {
+                ddl_TrangThai.Enabled = false;
+            }
+
 
             AddMauDropDownList(trangthai, ddl_TrangThai);
 
@@ -209,5 +267,96 @@ public partial class Form_NguoiBan_QuanLyDonHang_TatCaDonHang : System.Web.UI.Pa
     protected void btn_DaHuy_Click(object sender, EventArgs e)
     {
         doDuLieu("0");
+    }
+
+    void UpdatePhiShip(string idHoaDon,string idPhiShip)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@IdHoaDon",SqlDbType.NVarChar,10),
+            new SqlParameter("@IdPhiShip",SqlDbType.NVarChar,10)
+        };
+        p[0].Value = idHoaDon;
+        p[1].Value = idPhiShip;
+        DB.ExecuteNonQuery("updatePhiShip", p);
+    }
+
+
+    protected void ddl_phiShip_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+        RepeaterItem item = (sender as DropDownList).NamingContainer as RepeaterItem;
+        DropDownList ddl_trangThai = item.FindControl("ddl_TrangThai") as DropDownList;
+        string idHoaDon = (item.FindControl("lb_IdHoaDon") as Label).Text;
+
+        string idPhiShip = (sender as DropDownList).SelectedValue;
+        UpdatePhiShip(idHoaDon, idPhiShip);
+        ddl_trangThai.Enabled = true;
+        doDuLieu("");
+
+        
+
+    }
+
+    int BaoCaoTaiKHoan(string idTaiKhoan)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@idTaiKhoan",SqlDbType.NVarChar,10)
+        };
+        p[0].Value = idTaiKhoan;
+        return DB.ExecuteNonQuery("ToCaoTaiKhoan", p);
+    }
+
+
+    protected void btnBaoCao_Click(object sender, EventArgs e)
+    {
+        string idTaiKhoan = (sender as Button).CommandArgument;
+        try
+        {
+            int ketqua = BaoCaoTaiKHoan(idTaiKhoan);
+            if (ketqua > 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Báo Cáo Thành Công')", true);
+            }
+        }
+        catch
+        {
+
+        }
+    }
+    int deleteHoaDon(string idHoaDon)
+    {
+        SqlParameter[] p =
+        {
+            new SqlParameter("@idHD",SqlDbType.NVarChar,10)
+        };
+        p[0].Value = idHoaDon;
+
+        return DB.ExecuteNonQuery("DeleteHoaDon", p);
+    }
+
+
+    protected void btn_Xoa_HD_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            int ketQua = deleteHoaDon((sender as Button).CommandArgument);
+            if (ketQua > 0)
+            {
+                doDuLieu("");
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Xóa Thành Công')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Xóa Thất Bại')", true);
+            }
+        }
+        catch
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Lỗi Không Xác Định')", true);
+        }
+
+
     }
 }

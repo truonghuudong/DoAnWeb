@@ -176,7 +176,7 @@
                                 <asp:Label ID="lb_sdt" runat="server" Text='<%#Eval("SDT")%>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Trạng Thái" >
+                        <asp:TemplateField HeaderText="Khóa Tài Khoản" >
                             <HeaderStyle HorizontalAlign="Center" Width="100px" />
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
@@ -252,7 +252,7 @@
                                 <asp:Label ID="lb_sdt" runat="server" Text='<%#Eval("SDT")%>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Trạng Thái" >
+                        <asp:TemplateField HeaderText="Khóa Tài Khoản" >
                             <HeaderStyle HorizontalAlign="Center" Width="100px" />
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>

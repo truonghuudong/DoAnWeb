@@ -262,6 +262,12 @@
                         <asp:SiteMapDataSource ID="SiteMap" SiteMapProvider="Menu_NguoiBan" runat="server" ShowStartingNode="False" />--%>
                         <div class="sidenav">
                             <a href="../QuanLyTaiKhoan/QuangLyTaiKhoan.aspx">Hồ Sơ Của Tôi</a>
+                            <div class="dropdown-btn">Quản Lý Đơn Hàng
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <div class="dropdown-container">
+                                <a href="../QuanLyDonHang/TatCaDonHang.aspx">Tất Cả Đơn Hàng</a>
+                            </div>
                             <div class="dropdown-btn">Quản Lý Sản Phẩm
                                 <i class="fa fa-caret-down"></i>
                             </div>
@@ -269,17 +275,17 @@
                                 <a href="../QuanLySanPham/TatCaSanPham.aspx">Tất Cả Sản Phẩm</a>
                                 <a href="../QuanLySanPham/ThemSanPham.aspx">Thêm Sản Phẩm</a>
                             </div>
-                            <div class="dropdown-btn">Quản Lý Đơn Hàng
-                                <i class="fa fa-caret-down"></i>
-                            </div>
-                            <div class="dropdown-container">
-                                <a href="../QuanLyDonHang/TatCaDonHang.aspx">Tất Cả Đơn Hàng</a>
-                            </div>
                             <div class="dropdown-btn">Quản Lý Khuyến Mãi
                                 <i class="fa fa-caret-down"></i>
                             </div>
                             <div class="dropdown-container">
                                 <a href="../QuanLyKhuyenMai/ThemKhuyenMai.aspx">Thêm Khuyến Mãi</a>
+                            </div>
+                            <div class="dropdown-btn">Quản Lý Phí Ship
+                                <i class="fa fa-caret-down"></i>
+                            </div>
+                            <div class="dropdown-container">
+                                <a href="../QuanLyShip/QuanLyShip.aspx">Quản Lý Phí Ship</a>
                             </div>
                             <div class="dropdown-btn">Yêu Cầu Danh Mục
                                 <i class="fa fa-caret-down"></i>

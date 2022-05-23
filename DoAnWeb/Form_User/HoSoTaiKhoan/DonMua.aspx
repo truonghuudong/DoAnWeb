@@ -131,6 +131,7 @@
                         <th>Id Đơn Hàng</th>
                         <th>Shop</th>
                         <th>Ngày Đặt</th>
+                        <th>Phí Ship</th>
                         <th>Trạng Thái</th>
                     </tr>
             </HeaderTemplate>
@@ -148,6 +149,9 @@
                     </td>
                     <td>
                         <asp:Label ID="lb_Ngay" runat="server" ></asp:Label>
+                    </td>
+                    <td style="max-width:80px">
+                        <asp:DropDownList AutoPostBack="true" Enabled="false" CssClass="dropdownlist" ID="ddl_PhiShip" runat="server"></asp:DropDownList>
                     </td>
                     <td>
                         <asp:DropDownList AutoPostBack="true" OnSelectedIndexChanged="ddl_TrangThai_SelectedIndexChanged" CssClass="dropdownlist" ID="ddl_TrangThai" runat="server"></asp:DropDownList>

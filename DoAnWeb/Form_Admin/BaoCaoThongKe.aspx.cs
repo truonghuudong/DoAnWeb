@@ -17,6 +17,8 @@ public partial class Form_Admin_BaoCaoThongKe : System.Web.UI.Page
             lb_thongbao.Visible = false;
             txt_TuNgay.Attributes.Add("onclick", "txt_TuNgayClick()");
             txt_DenNgay.Attributes.Add("onclick", "txt_DenNgayClick()");
+
+            
         }
     }
 
@@ -64,6 +66,8 @@ public partial class Form_Admin_BaoCaoThongKe : System.Web.UI.Page
                 rpt_ThongKe.DataSource = GetBaoCaoThongKe(cl_TuNgay.SelectedDate, cl_DenNgay.SelectedDate);
                 
                 rpt_ThongKe.DataBind();
+
+                
             }
             else
             {
@@ -78,9 +82,9 @@ public partial class Form_Admin_BaoCaoThongKe : System.Web.UI.Page
         //}
     }
 
+    int TongDoanhThuWebSite = 0;
     protected void rpt_ThongKe_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
-        int TongDoanhThuWebSite = 0;
 
         if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
         {
@@ -107,18 +111,21 @@ public partial class Form_Admin_BaoCaoThongKe : System.Web.UI.Page
             lb_doanhThuWebSite.Text = String.Format("{0:0,0}", doanhThuWebSite);
             lb_DoanhThu.Text = String.Format("{0:0,0}", int.Parse(doanhThu));
             lb_Thue.Text = String.Format("{0:0,0}", int.Parse(tongThue));
-            
-
-            
-
         }
         lb_tongDanhThuWebSite.Text = String.Format("{0:0,0}", TongDoanhThuWebSite);
     }
 
     protected void txt_TyleThanhToan_TextChanged(object sender, EventArgs e)
     {
-        rpt_ThongKe.DataSource = GetBaoCaoThongKe(cl_TuNgay.SelectedDate, cl_DenNgay.SelectedDate);
-        rpt_ThongKe.DataBind();
+        try
+        {
+            rpt_ThongKe.DataSource = GetBaoCaoThongKe(cl_TuNgay.SelectedDate, cl_DenNgay.SelectedDate);
+            rpt_ThongKe.DataBind();
+        }
+        catch
+        {
+
+        }
     }
 
     protected void btn_ThongKeTheoNgay_Click(object sender, EventArgs e)

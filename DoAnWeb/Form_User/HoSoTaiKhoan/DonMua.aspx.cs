@@ -67,6 +67,29 @@ public partial class Form_User_HoSoTaiKhoan_DonMua : System.Web.UI.Page
         return DB.ExecuteQuery("GetHoaDonTheoIdHoaDon", p);
     }
 
+    DataTable dataphiShip()
+    {
+        SqlParameter[] p = { };
+        return DB.ExecuteQuery("getPhiShip", p);
+    }
+    DataTable TaoDataPhiShip()
+    {
+        DataTable table = new DataTable();
+        DataColumn idPhiShip = new DataColumn("IdPhiShip");
+        DataColumn tenPhiShip = new DataColumn("TenPhiShip");
+        table.Columns.Add(idPhiShip);
+        table.Columns.Add(tenPhiShip);
+        table.Rows.Add(0, "");
+
+        foreach (DataRow row in dataphiShip().Rows)
+        {
+            table.Rows.Add(row["IdPhiShip"].ToString(), row["KhuVuc"].ToString() + ":" + row["Gia"].ToString());
+        }
+
+
+        return table;
+    }
+
 
     protected void rpt_HoaDon_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
@@ -81,6 +104,7 @@ public partial class Form_User_HoSoTaiKhoan_DonMua : System.Web.UI.Page
 
 
             DropDownList ddl_TrangThai = e.Item.FindControl("ddl_TrangThai") as DropDownList;
+            DropDownList ddl_phiShip = e.Item.FindControl("ddl_PhiShip") as DropDownList;
             Label lb_ngay = e.Item.FindControl("lb_Ngay") as Label;
 
             lb_ngay.Text = ngay.ToString("dd/MM/yyyy");
@@ -89,12 +113,26 @@ public partial class Form_User_HoSoTaiKhoan_DonMua : System.Web.UI.Page
             ddl_TrangThai.DataValueField = "Id";
             ddl_TrangThai.DataBind();
 
+
+            ddl_phiShip.DataSource = TaoDataPhiShip();
+            ddl_phiShip.DataTextField = "TenPhiShip";
+            ddl_phiShip.DataValueField = "IdPhiShip";
+            ddl_phiShip.DataBind();
+            ddl_phiShip.SelectedValue = (e.Item.DataItem as DataRowView)["IdPhiShip"].ToString();
+
             string trangthai = (e.Item.DataItem as DataRowView)["TrangThai"].ToString();
             ddl_TrangThai.SelectedValue = trangthai;
-            if (trangthai == "2" || trangthai == "1")
+            if (trangthai == "2" || trangthai == "1" ||trangthai=="0")
             {
                 ddl_TrangThai.Enabled = false;
             }
+            if (trangthai=="4")
+            {
+                ddl_TrangThai.Items[1].Attributes.Add("hidden", "hidden");
+                ddl_TrangThai.Items[2].Attributes.Add("hidden", "hidden");
+                ddl_TrangThai.Items[3].Attributes.Add("hidden", "hidden");
+            }
+
             AddMauDropDownList(trangthai, ddl_TrangThai);
             rpt_CTHD.DataSource = GetChiTietHDTheoIdHoaDon(idhoadon);
             rpt_CTHD.DataBind();
