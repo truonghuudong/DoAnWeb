@@ -137,7 +137,7 @@
                             <asp:Label ID="lb_tenLoaiSP" runat="server" Text='<%#Eval("TenLoaiSP")%>'></asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList CssClass="DropDownList" ID="ddl_trangthai_ctdm" AutoPostBack="true" runat="server"></asp:DropDownList>
+                            <asp:DropDownList CssClass="DropDownList" ID="ddl_trangthai_ctdm" AutoPostBack="true" OnSelectedIndexChanged="ddl_trangthai_ctdm_SelectedIndexChanged" runat="server"></asp:DropDownList>
                         </td>
                         <td  style="text-align:center">
                             <%-- <%#Eval("IdLoaiSP")%> --%>

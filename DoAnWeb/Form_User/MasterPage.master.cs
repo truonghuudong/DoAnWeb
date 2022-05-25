@@ -25,7 +25,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 user = (UserLogin)Session["User"];
                 lbTenTaiKhoan.Text = user.UserName;
 
-                string linkAnh = LinkAnhDaiDien(dangNhap(user.UserName, user.PassWord));
+                string linkAnh = LinkAnhDaiDien(user.Id);
                 if (!linkAnh.Equals(""))
                 {
                     ImgDanhDaiDien.ImageUrl = "../HinhAnh/Sprites_AnhDaiDien/" + linkAnh;
@@ -116,7 +116,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             p[0].Value = Id;
             DataTable table = DB.ExecuteQuery("AnhDaiDien", p);
 
-            link = table.Rows[0][3].ToString();
+            link = table.Rows[0]["Anh"].ToString();
             return link;
         }catch
         { }

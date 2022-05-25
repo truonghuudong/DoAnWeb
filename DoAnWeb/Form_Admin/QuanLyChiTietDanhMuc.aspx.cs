@@ -67,18 +67,26 @@ public partial class Form_Admin_QuanLyChiTietDanhMuc : System.Web.UI.Page
             //DropDownList ddlCountries = (e.Item.FindControl("ddlCountries") as DropDownList);
             DropDownList selectList = (e.Item.FindControl("ddl_trangthai_ctdm") as DropDownList);
 
+
             //đô dữ liệu vào dropdownlist
             selectList.DataSource = dataTrangThai();
             selectList.DataTextField = "TrangThai";
             selectList.DataValueField = "Id";
             selectList.DataBind();
 
+
+
             //lấy trậng thái hiện tại của loaisp
             string trangthai = (e.Item.DataItem as DataRowView)["TrangThai"].ToString();
+
 
             //chọn trạng thái hiện tại của sản phẩm
             selectList.SelectedValue = trangthai;
 
+            //if (selectList.SelectedValue=="3")
+            //{
+            //    selectList.Enabled = false;
+            //}
             //them mau cho dropdownlist
             AddMauDropDownList(trangthai, selectList);
 

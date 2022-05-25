@@ -176,11 +176,11 @@
 
                 <!-- Dang Nhap Header -->
                 <div class="formDangNhap__header">
-<<<<<<< HEAD
+
                     <h3 class="formDangNhap__header-btnDN">Đăng Ký Kênh Người Bán</h3>
-=======
-                    <h3 class="formDangNhap__header-btnDN">Đăng Ký Người Bán</h3>
->>>>>>> 267c0cee03eee7ec212c7072a874db108be44f01
+
+                    
+
                 </div>
                 <!-- Dang Nhap Header -->
 

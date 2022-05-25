@@ -60,6 +60,7 @@ public partial class Form_User_Default : System.Web.UI.Page
                 rpt_SanPhamTrongGioHang.DataSource = ls.spTrongGioHang;
                 rpt_SanPhamTrongGioHang.DataBind();
             }
+            
         }
 
     }
@@ -70,6 +71,17 @@ public partial class Form_User_Default : System.Web.UI.Page
         int gia = int.Parse((e.Item.FindControl("lb_giasp_rpt") as Label).Text);
         int soluong = int.Parse((e.Item.FindControl("lb_soluong_rpt") as Label).Text);
         tongtien.Text = (gia * soluong).ToString();
+
+        if (soluong <= 1)
+        {
+            (e.Item.FindControl("btn_tru_rpt") as Button).Enabled = false;
+        }
+        else
+        {
+            (e.Item.FindControl("btn_tru_rpt") as Button).Enabled = true;
+        }
+
+
     }
 
     protected void btn_Xoa_rpt_Click(object sender, EventArgs e)
@@ -113,9 +125,7 @@ public partial class Form_User_Default : System.Web.UI.Page
         int soluong = int.Parse(soluongSP.Text);
         soluong++;
         soluongSP.Text = soluong + "";
-
         string idsp = (item.FindControl("lb_idSP_rpt") as Label).Text;
-
         CapNhatSoLuongTrongGioHang(idsp, soluong);
 
     }
@@ -130,6 +140,7 @@ public partial class Form_User_Default : System.Web.UI.Page
 
         string idsp = (item.FindControl("lb_idSP_rpt") as Label).Text;
         CapNhatSoLuongTrongGioHang(idsp, soluong);
+        
     }
 
     void CapNhatSoLuongTrongGioHang(string idsp,int soluong)

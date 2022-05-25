@@ -126,6 +126,7 @@ public partial class Form_NguoiBan_QuanLyDonHang_TatCaDonHang : System.Web.UI.Pa
             {
                 ddl_TrangThai.Enabled = false;
                 ddl_phiShip.Enabled = false;
+                ddl_phiShip.SelectedIndex = 0;
             }
             if (trangthai == "1")
             {

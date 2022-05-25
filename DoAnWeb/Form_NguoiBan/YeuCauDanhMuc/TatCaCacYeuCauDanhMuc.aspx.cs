@@ -138,10 +138,12 @@ public partial class Form_NguoiBan_YeuCauDanhMuc_TatCaCacYeuCauDanhMuc : System.
 
         //them mau cho dropdownlist
         AddMauDropDownList(trangthai, ddl_trangthai);
-        if(trangthai == "1")
+        if(trangthai == "1" || trangthai == "3")
         {
             ddl_trangthai.Enabled = false;
         }
+
+        ddl_trangthai.Items[0].Attributes.Add("hidden", "hidden");
 
     }
 }

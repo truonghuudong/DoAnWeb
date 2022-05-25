@@ -126,6 +126,12 @@ public partial class Form_User_HoSoTaiKhoan_DonMua : System.Web.UI.Page
             {
                 ddl_TrangThai.Enabled = false;
             }
+            if(trangthai == "0")
+            {
+                ddl_phiShip.SelectedIndex = 0;
+            }
+
+
             if (trangthai=="4")
             {
                 ddl_TrangThai.Items[1].Attributes.Add("hidden", "hidden");

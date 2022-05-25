@@ -67,3 +67,45 @@ while (@@FETCH_STATUS = 0)
 	end
 close cursor_sp
 deallocate cursor_sp
+
+
+	Create Proc InsertThongKeTheoThang
+	as
+		insert into ThongKe
+			select tk.IdTaiKhoan,MONTH(hd.Ngay),YEAR(hd.Ngay),
+			sum(cthd.DonGia*cthd.SoLuong) as DoanhThu,
+			sum(cthd.TienThue*cthd.SoLuong) as TongThue,
+			(sum(cthd.DonGia*cthd.SoLuong)-sum(cthd.TienThue*cthd.SoLuong))*10/100 as DoanhThuWeb,
+			0 as TrangThai
+		from TaiKhoan tk,HoaDon hd,ChiTietHD cthd,SanPham sp
+		where hd.IdHoaDon = cthd.IdHoaDon and cthd.IdSP = sp.IdSP and sp.IdTaiKhoan=tk.IdTaiKhoan
+				and hd.TrangThai = '1'
+		group by tk.IdTaiKhoan,MONTH(hd.Ngay),YEAR(hd.Ngay)
+
+--mã hóa mật khẩu
+
+EncryptByPassPhrase
+--giải mã mật khẩu
+DecrуptBуPaѕѕPhraѕe
+
+--mật khẩu giải mã 'Dong123'
+
+
+
+DECLARE cursor_sp cursor
+	for select IdTaiKhoan,MatKhau from TaiKhoan
+declare @idsp int
+declare @matKhau nvarchar(255)
+open cursor_sp
+fetch next from cursor_sp into @idsp,@matkhau
+while (@@FETCH_STATUS = 0)
+	begin
+		update TaiKhoan Set MatKhau = DecryptByPassPhrase('Dong123',@matKhau) where IdTaiKhoan= @idsp
+		fetch next from cursor_sp into @idsp,@matkhau
+	end
+close cursor_sp
+deallocate cursor_sp
+
+
+--select EncryptedData = EncryptByPassPhrase('123', 'admin' )
+--select convert(varchar(100),DecryptByPassPhrase('123', 0x0100000075B24804C1A3BB07034DC0D08FDDED5BAD29FA31CD7027A174C28FC0BF4F28A0)) as giaima
